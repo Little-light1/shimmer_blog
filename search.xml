@@ -12,12 +12,6 @@
       </tags>
   </entry>
   <entry>
-    <title>新年快乐</title>
-    <url>/shimmer-blog/2021/02/11/hello-world/</url>
-    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
-]]></content>
-  </entry>
-  <entry>
     <title>关于我</title>
     <url>/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/</url>
     <content><![CDATA[<p>姓名：张振</p>
@@ -29,7 +23,13 @@
 <p><strong>顺道寻光</strong></p>
 <img src="https://avatars.githubusercontent.com/u/58460937?s=460&u=2262a14212d169693533720c53b02167303cab09&v=4" style="zoom:50%;" />]]></content>
       <tags>
-        <tag>About me</tag>
+        <tag>Aboutme</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>新年快乐</title>
+    <url>/shimmer-blog/2021/02/11/hello-world/</url>
+    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
+]]></content>
   </entry>
 </search>
