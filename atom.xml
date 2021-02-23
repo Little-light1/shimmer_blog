@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Shimmer&#39;s Blog</title>
+  <icon>https://www.gravatar.com/avatar/fd7392a28c5d2348aa0c6e6579484cc7</icon>
+  <subtitle>黑暗中寻光的人</subtitle>
+  <link href="https://gitee.com/shimmer612/atom.xml" rel="self"/>
+  
+  <link href="https://gitee.com/shimmer612/"/>
+  <updated>2021-02-23T08:31:17.915Z</updated>
+  <id>https://gitee.com/shimmer612/</id>
+  
+  <author>
+    <name>Shimmer</name>
+    <email>zhangdazhen@126.com</email>
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于我</title>
+    <link href="https://gitee.com/shimmer612/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
+    <id>https://gitee.com/shimmer612/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/</id>
+    <published>2021-02-22T16:00:00.000Z</published>
+    <updated>2021-02-23T08:31:17.915Z</updated>
+    
+    <content type="html"><![CDATA[<p>姓名：张振</p><p>年龄：25</p><p>现居：江苏-常州</p><hr><p><strong>路</strong></p><p><strong>很长</strong></p><p><strong>顺道寻光</strong></p><img src="https://avatars.githubusercontent.com/u/58460937?s=460&u=2262a14212d169693533720c53b02167303cab09&v=4" style="zoom:50%;" />]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;姓名：张振&lt;/p&gt;
+&lt;p&gt;年龄：25&lt;/p&gt;
+&lt;p&gt;现居：江苏-常州&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;strong&gt;路&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;很长&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;顺道寻光&lt;/strong&gt;&lt;/p&gt;
+&lt;img src=&quot;h</summary>
+      
+    
+    
+    
+    
+    <category term="About me" scheme="https://gitee.com/shimmer612/tags/About-me/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dav结构的分析</title>
+    <link href="https://gitee.com/shimmer612/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://gitee.com/shimmer612/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/</id>
+    <published>2021-02-22T10:34:00.000Z</published>
+    <updated>2021-02-23T02:22:05.583Z</updated>
+    
+    <content type="html"><![CDATA[<p>下面是davjs   models的一个基本结构</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"> <span class="comment">//dav model的名字</span></span><br><span class="line">namespace: <span class="string">&#x27;example&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据</span></span><br><span class="line">state: &#123;<span class="attr">num</span>:<span class="number">1</span>&#125;, <span class="comment">//表示当前的example中的state状态，这里可以给初始值，这里num初始为1</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//这里是做异步处理的相当于VueX的action</span></span><br><span class="line">effects: &#123; </span><br><span class="line"> <span class="comment">//payload是参数   put触发action ，select获取数据， call异步操作   </span></span><br><span class="line">*<span class="function"><span class="title">addByONe</span>(<span class="params">&#123; payload&#125;, &#123; call, put,select &#125;</span>)</span> &#123; </span><br><span class="line">    </span><br><span class="line"> <span class="comment">//这里使用select</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.num) <span class="comment">//这里就获取到了当前state中的数据num</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> param1;</span><br><span class="line"> </span><br><span class="line">param1 = num + payload; 这里就可以使用num进行操作了</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> put(&#123;</span><br><span class="line">type: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">num:param1</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">   </span><br><span class="line"><span class="comment">//用来保存更新state值 上面的put方法调用这里的方法,</span></span><br><span class="line">reducers: &#123;</span><br><span class="line"><span class="function"><span class="title">save</span>(<span class="params">state, action</span>)</span> &#123; <span class="comment">//这里的state是当前总的state，这里的action包含了上面传递的参数和type</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> &#123; ...state, ...action.num &#125;; <span class="comment">//这里用ES6语法来更新当前state中num的值</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;下面是davjs   models的一个基本结构&lt;/p&gt;
+&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span</summary>
+      
+    
+    
+    
+    
+    <category term="Davjs" scheme="https://gitee.com/shimmer612/tags/Davjs/"/>
+    
+    <category term="React" scheme="https://gitee.com/shimmer612/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>新年快乐</title>
+    <link href="https://gitee.com/shimmer612/2021/02/11/hello-world/"/>
+    <id>https://gitee.com/shimmer612/2021/02/11/hello-world/</id>
+    <published>2021-02-10T16:00:00.000Z</published>
+    <updated>2021-02-23T05:25:35.342Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>大家新年快乐</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;大家新年快乐&lt;/strong&gt;&lt;/p&gt;
+</summary>
+      
+    
+    
+    
+    
+  </entry>
+  
+</feed>

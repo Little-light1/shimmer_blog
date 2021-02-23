@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Dav结构的分析</title>
+    <url>/shimmer-blog/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>下面是davjs   models的一个基本结构</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"> <span class="comment">//dav model的名字</span></span><br><span class="line">namespace: <span class="string">&#x27;example&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据</span></span><br><span class="line">state: &#123;<span class="attr">num</span>:<span class="number">1</span>&#125;, <span class="comment">//表示当前的example中的state状态，这里可以给初始值，这里num初始为1</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//这里是做异步处理的相当于VueX的action</span></span><br><span class="line">effects: &#123; </span><br><span class="line"> <span class="comment">//payload是参数   put触发action ，select获取数据， call异步操作   </span></span><br><span class="line">*<span class="function"><span class="title">addByONe</span>(<span class="params">&#123; payload&#125;, &#123; call, put,select &#125;</span>)</span> &#123; </span><br><span class="line">    </span><br><span class="line"> <span class="comment">//这里使用select</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.num) <span class="comment">//这里就获取到了当前state中的数据num</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> param1;</span><br><span class="line"> </span><br><span class="line">param1 = num + payload; 这里就可以使用num进行操作了</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> put(&#123;</span><br><span class="line">type: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">num:param1</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">   </span><br><span class="line"><span class="comment">//用来保存更新state值 上面的put方法调用这里的方法,</span></span><br><span class="line">reducers: &#123;</span><br><span class="line"><span class="function"><span class="title">save</span>(<span class="params">state, action</span>)</span> &#123; <span class="comment">//这里的state是当前总的state，这里的action包含了上面传递的参数和type</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> &#123; ...state, ...action.num &#125;; <span class="comment">//这里用ES6语法来更新当前state中num的值</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Davjs</tag>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新年快乐</title>
+    <url>/shimmer-blog/2021/02/11/hello-world/</url>
+    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于我</title>
+    <url>/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/</url>
+    <content><![CDATA[<p>姓名：张振</p>
+<p>年龄：25</p>
+<p>现居：江苏-常州</p>
+<hr>
+<p><strong>路</strong></p>
+<p><strong>很长</strong></p>
+<p><strong>顺道寻光</strong></p>
+<img src="https://avatars.githubusercontent.com/u/58460937?s=460&u=2262a14212d169693533720c53b02167303cab09&v=4" style="zoom:50%;" />]]></content>
+      <tags>
+        <tag>About me</tag>
+      </tags>
+  </entry>
+</search>
