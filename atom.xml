@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Shimmer&#39;s Blog</title>
-  <icon>https://www.gravatar.com/avatar/fd7392a28c5d2348aa0c6e6579484cc7</icon>
-  <subtitle>黑暗中寻光的人</subtitle>
-  <link href="https://gitee.com/shimmer612/shimmer-blog/atom.xml" rel="self"/>
   
-  <link href="https://gitee.com/shimmer612/shimmer-blog/"/>
+  <subtitle>黑暗中寻光的人</subtitle>
+  <link href="https://gitee.com/shimmer612/atom.xml" rel="self"/>
+  
+  <link href="https://gitee.com/shimmer612/"/>
   <updated>2021-02-24T07:30:24.443Z</updated>
-  <id>https://gitee.com/shimmer612/shimmer-blog/</id>
+  <id>https://gitee.com/shimmer612/</id>
   
   <author>
     <name>Shimmer</name>
-    <email>zhangdazhen@126.com</email>
+    
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
     <title>davJs学习02</title>
-    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/02/24/umi%E4%B8%AD%EF%BC%8Cdavjs%E5%AD%A6%E4%B9%A002/"/>
-    <id>https://gitee.com/shimmer612/shimmer-blog/2021/02/24/umi%E4%B8%AD%EF%BC%8Cdavjs%E5%AD%A6%E4%B9%A002/</id>
+    <link href="https://gitee.com/shimmer612/2021/02/24/umi%E4%B8%AD%EF%BC%8Cdavjs%E5%AD%A6%E4%B9%A002/"/>
+    <id>https://gitee.com/shimmer612/2021/02/24/umi%E4%B8%AD%EF%BC%8Cdavjs%E5%AD%A6%E4%B9%A002/</id>
     <published>2021-02-23T16:00:00.000Z</published>
     <updated>2021-02-24T07:30:24.443Z</updated>
     
@@ -36,18 +36,18 @@
     
     
     
-    <category term="Davjs" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/Davjs/"/>
+    <category term="Davjs" scheme="https://gitee.com/shimmer612/tags/Davjs/"/>
     
-    <category term="React" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/React/"/>
+    <category term="React" scheme="https://gitee.com/shimmer612/tags/React/"/>
     
-    <category term="UmiJs" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/UmiJs/"/>
+    <category term="UmiJs" scheme="https://gitee.com/shimmer612/tags/UmiJs/"/>
     
   </entry>
   
   <entry>
     <title>关于我</title>
-    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
-    <id>https://gitee.com/shimmer612/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/</id>
+    <link href="https://gitee.com/shimmer612/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
+    <id>https://gitee.com/shimmer612/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/</id>
     <published>2021-02-22T16:00:00.000Z</published>
     <updated>2021-02-23T08:49:18.453Z</updated>
     
@@ -69,14 +69,14 @@
     
     
     
-    <category term="Aboutme" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/Aboutme/"/>
+    <category term="Aboutme" scheme="https://gitee.com/shimmer612/tags/Aboutme/"/>
     
   </entry>
   
   <entry>
     <title>Dav结构的分析</title>
-    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/"/>
-    <id>https://gitee.com/shimmer612/shimmer-blog/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/</id>
+    <link href="https://gitee.com/shimmer612/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://gitee.com/shimmer612/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/</id>
     <published>2021-02-22T10:34:00.000Z</published>
     <updated>2021-02-23T02:22:05.583Z</updated>
     
@@ -92,16 +92,16 @@
     
     
     
-    <category term="Davjs" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/Davjs/"/>
+    <category term="Davjs" scheme="https://gitee.com/shimmer612/tags/Davjs/"/>
     
-    <category term="React" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/React/"/>
+    <category term="React" scheme="https://gitee.com/shimmer612/tags/React/"/>
     
   </entry>
   
   <entry>
     <title>新年快乐</title>
-    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/02/11/hello-world/"/>
-    <id>https://gitee.com/shimmer612/shimmer-blog/2021/02/11/hello-world/</id>
+    <link href="https://gitee.com/shimmer612/2021/02/11/hello-world/"/>
+    <id>https://gitee.com/shimmer612/2021/02/11/hello-world/</id>
     <published>2021-02-10T16:00:00.000Z</published>
     <updated>2021-02-23T05:25:35.342Z</updated>
     
