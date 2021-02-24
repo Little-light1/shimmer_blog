@@ -12,6 +12,12 @@
       </tags>
   </entry>
   <entry>
+    <title>新年快乐</title>
+    <url>/shimmer-blog/2021/02/11/hello-world/</url>
+    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
+]]></content>
+  </entry>
+  <entry>
     <title>davJs学习02</title>
     <url>/shimmer-blog/2021/02/24/umi%E4%B8%AD%EF%BC%8Cdavjs%E5%AD%A6%E4%B9%A002/</url>
     <content><![CDATA[<p><strong>最近公司新项目用的UmiJs3.x，整个项目的数据，通过内置的Davjs来控制。</strong></p>
@@ -31,12 +37,6 @@
         <tag>React</tag>
         <tag>UmiJs</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>新年快乐</title>
-    <url>/shimmer-blog/2021/02/11/hello-world/</url>
-    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
-]]></content>
   </entry>
   <entry>
     <title>关于我</title>
