@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/shimmer-blog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/shimmer-blog/"/>
-  <updated>2021-03-02T01:21:36.707Z</updated>
+  <updated>2021-03-03T08:17:17.395Z</updated>
   <id>https://gitee.com/shimmer612/shimmer-blog/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>一些小记录</title>
+    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/03/03/%E5%B0%8F%E8%AE%B0/"/>
+    <id>https://gitee.com/shimmer612/shimmer-blog/2021/03/03/%E5%B0%8F%E8%AE%B0/</id>
+    <published>2021-03-02T16:00:00.000Z</published>
+    <updated>2021-03-03T08:17:17.395Z</updated>
+    
+    <content type="html"><![CDATA[<p><strong>开发中写样式less中，最外层取一个不易重的类名，其余子元素类名写在里面</strong></p><p><strong>尽量不要写到margin负值</strong></p><p><strong>样式遵循设计图</strong></p><p><strong>图片名称起相关英文名</strong></p><p><strong>flex布局多使用space-around做分割，除非必须用space-between</strong></p><p><strong>类名过长用xx-xx这样写</strong></p><p><strong>页面起名大驼峰比如<code>ChargeManage</code></strong></p><hr>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;&lt;strong&gt;开发中写样式less中，最外层取一个不易重的类名，其余子元素类名写在里面&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;尽量不要写到margin负值&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;样式遵循设计图&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;stro</summary>
+      
+    
+    
+    
+    
+    <category term="tips" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/tips/"/>
+    
+  </entry>
   
   <entry>
     <title>React项目(UmiJS)中使用高德地图</title>
