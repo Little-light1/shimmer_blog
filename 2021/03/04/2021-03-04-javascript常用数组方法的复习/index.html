@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    javascript常用数组方法的复习 |  Shimmer&#39;s Blog
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/shimmer-blog/favicon.ico" />
+  
+  
+<link rel="stylesheet" href="/shimmer-blog/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/shimmer-blog/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/shimmer-blog/atom.xml" title="Shimmer's Blog" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-2021-03-04-javascript常用数组方法的复习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  javascript常用数组方法的复习
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/shimmer-blog/2021/03/04/2021-03-04-javascript%E5%B8%B8%E7%94%A8%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E7%9A%84%E5%A4%8D%E4%B9%A0/" class="article-date">
+  <time datetime="2021-03-03T16:00:00.000Z" itemprop="datePublished">2021-03-04</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>分析项目代码经常会看到一些数组方法，some,slice等等。概念都模糊不清，感觉知道又感觉不知道。还是要到W3C上去查一下用法。</strong></p>
+<p><strong>所以这次把一些常用的数组方法整理一下，用来巩固复习</strong></p>
+<h5 id="forEach"><a href="#forEach" class="headerlink" title="forEach()"></a><code>forEach()</code></h5><p><strong><code>forEach() </code>对数组的每一项进行操作</strong></p>
+<p><strong><code>callback</code> 函数接收3个值，<code>item</code>数组项，<code>index</code>元素下标，<code>arr</code>数组本身</strong></p>
+<p><strong>返回值<code>undefined</code></strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr1 = []</span><br><span class="line">arr.forEach(<span class="function"><span class="params">item</span>=&gt;</span>&#123;</span><br><span class="line">    arr1.push(item*<span class="number">2</span>) </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">//[ 2, 4, 6, 8, 10, 12 ]</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="filter"><a href="#filter" class="headerlink" title="filter()"></a><code>filter()</code></h5><p><strong><code>filter() </code>返回一个新数组，包含复合要求的所有元素</strong></p>
+<p><strong><code>callback </code>函数接收3个值，<code>item</code>数组项，<code>index</code>元素下标，<code>arr</code>数组本身</strong></p>
+<p><strong>返回值：复合要求的新数组</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.filter(<span class="function"><span class="params">item</span>=&gt;</span>item&gt;=<span class="number">3</span>)</span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">//[ 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="map"><a href="#map" class="headerlink" title="map()"></a><code>map()</code></h5><p><strong><code>map()</code> 方法创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值</strong></p>
+<p><strong><code>callback </code>函数接收3个值，<code>item</code>数组项，<code>index</code>元素下标，<code>arr</code>数组本身</strong></p>
+<p><strong>返回值：原数组每个元素执行回调函数的结果组成的新数组。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">let</span> arr1 = arr.map(<span class="function"><span class="params">item</span>=&gt;</span>item*<span class="number">2</span>)</span><br><span class="line"><span class="keyword">let</span> arr2 = arr.map(<span class="function"><span class="params">item</span>=&gt;</span>item&gt;<span class="number">3</span>)</span><br><span class="line"><span class="built_in">console</span>.log(arr1);  <span class="comment">//[ 2, 4, 6, 8, 10, 12 ]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2);<span class="comment">//[ false, false, false, true, true, true ]</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="slice"><a href="#slice" class="headerlink" title="slice()"></a><code>slice()</code></h5><p><strong><code>slice()</code> 方法返回一个新的数组对象，这一对象是一个由 <code>begin</code> 和 <code>end</code> 决定的原数组的浅拷贝（包括 <code>begin</code>，不包括<code>end</code>）。原始数组不会被改变。</strong></p>
+<p><code>**begin</code> 可选**</p>
+<p><strong>提取起始处的索引（从 <code>0</code> 开始），从该索引开始提取原数组元素。</strong></p>
+<p><strong>如果该参数为负数，则表示从原数组中的倒数第几个元素开始提取，<code>slice(-2)</code> 表示提取原数组中的倒数第二个元素到最后一个元素（包含最后一个元素）。</strong></p>
+<p><strong>如果省略 <code>begin</code>，则 <code>slice</code> 从索引 <code>0</code> 开始。</strong></p>
+<p><strong>如果 <code>begin</code> 超出原数组的索引范围，则会返回空数组。</strong></p>
+<p><strong><code>end</code> 可选</strong></p>
+<p><strong>提取终止处的索引（从 <code>0</code> 开始），在该索引处结束提取原数组元素。<code>slice</code> 会提取原数组中索引从 <code>begin</code> 到 <code>end</code> 的所有元素（包含 <code>begin</code>，但不包含 <code>end</code>）</strong></p>
+<p><strong>如果该参数为负数， 则它表示在原数组中的倒数第几个元素结束抽取。 <code>slice(-2,-1)</code> 表示抽取了原数组中的倒数第二个元素到最后一个元素（不包含最后一个元素，也就是只有倒数第二个元素）。</strong></p>
+<p><strong>如果 <code>end</code> 被省略，则 <code>slice</code> 会一直提取到原数组末尾。</strong></p>
+<p><strong>如果 <code>end</code> 大于数组的长度，<code>slice</code> 也会一直提取到原数组末尾。</strong></p>
+<p><strong>返回值：一个含有被提取元素的新数组。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="keyword">let</span> arr1  = arr.slice(<span class="number">2</span>,<span class="number">4</span>)</span><br><span class="line"><span class="keyword">let</span> arr2 = arr.slice()</span><br><span class="line"><span class="built_in">console</span>.log(arr1);<span class="comment">//[ 3, 4 ]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2);<span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="find"><a href="#find" class="headerlink" title="find()"></a><code>find()</code></h5><p><strong><code>find()</code>方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 [<code>undefined</code>]</strong></p>
+<p><strong><code>callback </code>函数接收3个值，<code>item</code>数组项，<code>index</code>元素下标，<code>arr</code>数组本身</strong></p>
+<p><strong>数组中第一个满足所提供测试函数的元素的值，否则返回 [<code>undefined</code>]</strong></p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">let</span> arr =<span class="meta"> [1,2,3,4,5,6]</span></span><br><span class="line"><span class="attribute">let</span> arr<span class="number">1</span> = arr.find(item=&gt;item&gt;<span class="number">4</span>)</span><br><span class="line"><span class="attribute">console</span>.log(arr<span class="number">1</span>); //<span class="number">5</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="sort"><a href="#sort" class="headerlink" title="sort()"></a><code>sort()</code></h5><p><strong><code>sort()</code>对数组的元素进行排序，并返回数组</strong></p>
+<p><strong>如果省略，元素按照转换为的字符串的各个字符的Unicode位点进行排序。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">5</span>,<span class="number">4</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr1 = arr.sort()</span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">//[ 1, 2, 3, 4, 5 ]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">6</span>,<span class="number">7</span>]</span><br><span class="line"><span class="keyword">let</span> arr3 = [<span class="number">3</span>,<span class="number">1</span>,<span class="number">4</span>,<span class="number">2</span>,<span class="number">5</span>,<span class="number">8</span>,<span class="number">6</span>,<span class="number">7</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> arr1 = arr.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> a-b</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr1); <span class="comment">//[ 1, 2, 3, 4, 5, 6, 7, 8 ]</span></span><br><span class="line"><span class="keyword">let</span> arr2 = arr3.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> b-a</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr2); <span class="comment">//[ 8, 7, 6, 5, 4, 3, 2, 1 ]</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="some"><a href="#some" class="headerlink" title="some()"></a><code>some()</code></h5><p><strong><code>some()</code> 方法测试数组中是不是至少有1个元素通过了被提供的函数测试。它返回的是一个Boolean类型的值。</strong></p>
+<p><strong>注意：如果用一个空数组进行测试，在任何情况下它返回的都是<code>false</code>。</strong></p>
+<p><strong><code>callback </code>函数接收3个值，<code>item</code>数组项，<code>index</code>元素下标，<code>arr</code>数组本身</strong>    </p>
+<p><strong>返回值： 数组中有至少一个元素通过回调函数的测试就会返回<code>true</code>；所有元素都没有通过回调函数的测试返回值才会为<code>false</code>。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> aa = arr.some(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">5</span>)</span><br><span class="line"><span class="keyword">const</span> bb = arr.some(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">7</span>)</span><br><span class="line"><span class="built_in">console</span>.log(aa);<span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="every"><a href="#every" class="headerlink" title="every()"></a><code>every()</code></h5><p><strong><code>every()</code>方法测试一个数组内的所有元素是否都能通过某个指定函数的测试。它返回一个布尔值。</strong></p>
+<p><strong>注意：若收到一个空数组，此方法在一切情况下都会返回 <code>true</code>。</strong></p>
+<p><strong><code>callback </code>函数接收3个值，<code>item</code>数组项，<code>index</code>元素下标，<code>arr</code>数组本身</strong>    </p>
+<p><strong>返回值：如果回调函数的每一次返回都为true，返回 <code>true</code> ，否则返回 <code>false</code>。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">2</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> aa = arr.every(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">3</span>)</span><br><span class="line"><span class="keyword">const</span> bb = arr.every(<span class="function"><span class="params">item</span> =&gt;</span> item &gt; <span class="number">1</span>)</span><br><span class="line"><span class="built_in">console</span>.log(aa); <span class="comment">//fasle</span></span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>差不多就是这些常用的。</strong></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/shimmer-blog/2021/03/04/2021-03-04-javascript%E5%B8%B8%E7%94%A8%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E7%9A%84%E5%A4%8D%E4%B9%A0/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+      <a href="/shimmer-blog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            扩展运算符(...)的复习
+          
+        </div>
+      </a>
+    
+    
+      <a href="/shimmer-blog/2021/03/03/%E5%B0%8F%E8%AE%B0/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">一些小记录</div>
+      </a>
+    
+  </nav>
+
+  
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021
+        <i class="ri-heart-fill heart_icon"></i> Shimmer
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/shimmer-blog/"><img src="/shimmer-blog/images/ayer-side.svg" alt="Shimmer&#39;s Blog"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/shimmer-blog/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/shimmer-blog/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/shimmer-blog/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/shimmer-blog/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/shimmer-blog/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/shimmer-blog/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/shimmer-blog/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/shimmer-blog/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/shimmer-blog/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+
+<script src="/shimmer-blog/js/clickLove.js"></script>
+
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/shimmer-blog/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>
