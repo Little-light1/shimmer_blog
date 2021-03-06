@@ -137,6 +137,67 @@
     
     
     <article
+  id="post-react hooks学习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/shimmer-blog/2021/03/05/react%20hooks%E5%AD%A6%E4%B9%A0/"
+    >react hooks学习</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/shimmer-blog/2021/03/05/react%20hooks%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2021-03-04T16:00:00.000Z" itemprop="datePublished">2021-03-05</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="react-hooks学习"><a href="#react-hooks学习" class="headerlink" title="react hooks学习"></a>react hooks学习</h2><h5 id="01、什么是react-hooks"><a href="#01、什么是react-hooks" class="headerlink" title="01、什么是react hooks"></a>01、什么是react hooks</h5><p>react hooks就是react提供的内置函数，这些函数可以让，函数式组件和类组件一样拥有组件状态和副作用。</p>
+<p><strong>什么是状态？</strong></p>
+<p>React中的放数据的地方。</p>
+<p><strong>什么是副作用？</strong></p>
+<p>在 React 组件中执行数据获取、订阅或者手动修改 DOM，我们统一把这些操作称为“副作用”</p>
+<h5 id="02、useState"><a href="#02、useState" class="headerlink" title="02、useState"></a>02、<code>useState</code></h5><p><code>useState</code> 就类似于类组件中的<code>this.state</code></p>
+<p><code>useState</code>的用法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;useState , useEffect&#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Main =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1 onClick=&#123;<span class="function">()=&gt;</span>&#123;setCount(count+<span class="number">2</span>)&#125;&#125;&gt;当前的数为：&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Main /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getEementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="03、useEffect"><a href="#03、useEffect" class="headerlink" title="03、useEffect"></a>03、<code>useEffect</code></h5><p><code>useEffect</code>就相当于生命周期的<code>componentDidMoun</code>t和<code>componentDidUPdate</code></p>
+<p>使用方法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;useState , useEffect&#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Main =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 相当于componentDidMount和componentDidUpdate</span></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 打印点击的次数</span></span><br><span class="line">   <span class="built_in">console</span>.log( <span class="string">`You clicked <span class="subst">$&#123;count/<span class="number">2</span>&#125;</span> times`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1 onClick=&#123;<span class="function">()=&gt;</span>&#123;setCount(count+<span class="number">2</span>)&#125;&#125;&gt;当前的数为：&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Main /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/react/" rel="tag">react</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-2021-03-04-扩展运算符(...)的复习"
   class="article article-type-post"
   itemscope
@@ -768,6 +829,56 @@
 
     
     <article
+  id="post-davjs学习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/shimmer-blog/2021/02/23/davjs%E5%AD%A6%E4%B9%A0/"
+    >Dav结构的分析</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/shimmer-blog/2021/02/23/davjs%E5%AD%A6%E4%B9%A0/" class="article-date">
+  <time datetime="2021-02-23T10:34:00.000Z" itemprop="datePublished">2021-02-23</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p>下面是davjs   models的一个基本结构</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"> <span class="comment">//dav model的名字</span></span><br><span class="line">namespace: <span class="string">&#x27;example&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据</span></span><br><span class="line">state: &#123;<span class="attr">num</span>:<span class="number">1</span>&#125;, <span class="comment">//表示当前的example中的state状态，这里可以给初始值，这里num初始为1</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//这里是做异步处理的相当于VueX的action</span></span><br><span class="line">effects: &#123; </span><br><span class="line"> <span class="comment">//payload是参数   put触发action ，select获取数据， call异步操作   </span></span><br><span class="line">*<span class="function"><span class="title">addByONe</span>(<span class="params">&#123; payload&#125;, &#123; call, put,select &#125;</span>)</span> &#123; </span><br><span class="line">    </span><br><span class="line"> <span class="comment">//这里使用select</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.num) <span class="comment">//这里就获取到了当前state中的数据num</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> param1;</span><br><span class="line"> </span><br><span class="line">param1 = num + payload; 这里就可以使用num进行操作了</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> put(&#123;</span><br><span class="line">type: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">num:param1</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">   </span><br><span class="line"><span class="comment">//用来保存更新state值 上面的put方法调用这里的方法,</span></span><br><span class="line">reducers: &#123;</span><br><span class="line"><span class="function"><span class="title">save</span>(<span class="params">state, action</span>)</span> &#123; <span class="comment">//这里的state是当前总的state，这里的action包含了上面传递的参数和type</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> &#123; ...state, ...action.num &#125;; <span class="comment">//这里用ES6语法来更新当前state中num的值</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/Davjs/" rel="tag">Davjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-关于我"
   class="article article-type-post"
   itemscope
@@ -779,7 +890,7 @@
     <header class="article-header">
        
 <h2 itemprop="name">
-  <a class="article-title" href="/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/"
+  <a class="article-title" href="/shimmer-blog/2021/02/12/%E5%85%B3%E4%BA%8E%E6%88%91/"
     >关于我</a> 
 </h2>
  
@@ -787,8 +898,8 @@
     </header>
      
     <div class="article-meta">
-      <a href="/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/" class="article-date">
-  <time datetime="2021-02-22T16:00:00.000Z" itemprop="datePublished">2021-02-23</time>
+      <a href="/shimmer-blog/2021/02/12/%E5%85%B3%E4%BA%8E%E6%88%91/" class="article-date">
+  <time datetime="2021-02-11T16:00:00.000Z" itemprop="datePublished">2021-02-12</time>
 </a>    
     </div>
       
@@ -822,106 +933,14 @@
 </article>
 
     
-    <article
-  id="post-davjs学习"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/shimmer-blog/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/"
-    >Dav结构的分析</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/shimmer-blog/2021/02/22/davjs%E5%AD%A6%E4%B9%A0/" class="article-date">
-  <time datetime="2021-02-22T10:34:00.000Z" itemprop="datePublished">2021-02-22</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p>下面是davjs   models的一个基本结构</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"> <span class="comment">//dav model的名字</span></span><br><span class="line">namespace: <span class="string">&#x27;example&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据</span></span><br><span class="line">state: &#123;<span class="attr">num</span>:<span class="number">1</span>&#125;, <span class="comment">//表示当前的example中的state状态，这里可以给初始值，这里num初始为1</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//这里是做异步处理的相当于VueX的action</span></span><br><span class="line">effects: &#123; </span><br><span class="line"> <span class="comment">//payload是参数   put触发action ，select获取数据， call异步操作   </span></span><br><span class="line">*<span class="function"><span class="title">addByONe</span>(<span class="params">&#123; payload&#125;, &#123; call, put,select &#125;</span>)</span> &#123; </span><br><span class="line">    </span><br><span class="line"> <span class="comment">//这里使用select</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.num) <span class="comment">//这里就获取到了当前state中的数据num</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> param1;</span><br><span class="line"> </span><br><span class="line">param1 = num + payload; 这里就可以使用num进行操作了</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> put(&#123;</span><br><span class="line">type: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">num:param1</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">   </span><br><span class="line"><span class="comment">//用来保存更新state值 上面的put方法调用这里的方法,</span></span><br><span class="line">reducers: &#123;</span><br><span class="line"><span class="function"><span class="title">save</span>(<span class="params">state, action</span>)</span> &#123; <span class="comment">//这里的state是当前总的state，这里的action包含了上面传递的参数和type</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> &#123; ...state, ...action.num &#125;; <span class="comment">//这里用ES6语法来更新当前state中num的值</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/Davjs/" rel="tag">Davjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/React/" rel="tag">React</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-hello-world"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/shimmer-blog/2021/02/11/hello-world/"
-    >新年快乐</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/shimmer-blog/2021/02/11/hello-world/" class="article-date">
-  <time datetime="2021-02-10T16:00:00.000Z" itemprop="datePublished">2021-02-11</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><strong>大家新年快乐</strong></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
   </article>
   
 
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/shimmer-blog/page/2/">2</a><a class="extend next" rel="next" href="/shimmer-blog/page/2/">下一页</a>
+  </nav>
   
 </section>
 </div>
