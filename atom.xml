@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/shimmer-blog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/shimmer-blog/"/>
-  <updated>2021-03-06T01:54:49.678Z</updated>
+  <updated>2021-03-08T07:28:10.961Z</updated>
   <id>https://gitee.com/shimmer612/shimmer-blog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react 中使用Swiper轮播图插件</title>
+    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/"/>
+    <id>https://gitee.com/shimmer612/shimmer-blog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/</id>
+    <published>2021-03-07T16:00:00.000Z</published>
+    <updated>2021-03-08T07:28:10.961Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="第一步、安装"><a href="#第一步、安装" class="headerlink" title="第一步、安装"></a>第一步、安装</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i swiper</span><br></pre></td></tr></table></figure><h5 id="第二步、使用"><a href="#第二步、使用" class="headerlink" title="第二步、使用"></a>第二步、使用</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide &#125; <span class="keyword">from</span> <span class="string">&#x27;swiper/react&#x27;</span>;</span><br><span class="line"><span class="comment">//根据自己的需要引用样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper.less&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">      slidesPerView=&#123;<span class="number">3</span>&#125;</span><br><span class="line">      onSlideChange=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;slide change&#x27;</span>)&#125;</span><br><span class="line">      onSwiper=&#123;<span class="function">(<span class="params">swiper</span>) =&gt;</span> <span class="built_in">console</span>.log(swiper)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">1</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">2</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">3</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">4</span>&lt;/SwiperSlide&gt;</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><p><strong>到这一个轮播图就已经实现了，但是只是轮播图没有别的东西，比如左右的按钮。这些需要我们手动添加。</strong></p><h5 id="第三步、添加功能（例：navigation按钮）"><a href="#第三步、添加功能（例：navigation按钮）" class="headerlink" title="第三步、添加功能（例：navigation按钮）"></a>第三步、添加功能（例：navigation按钮）</h5><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入所需功能和样式文件</span></span><br><span class="line"><span class="keyword">import</span> SwiperCore, &#123; Navigation &#125; <span class="keyword">from</span> <span class="string">&quot;swiper&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;swiper/components/navigation/navigation.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">SwiperCore.use([Navigation]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件上添加属性</span></span><br><span class="line">  &lt;Swiper</span><br><span class="line">    spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">    slidesPerView=&#123;<span class="number">1</span>&#125;</span><br><span class="line">    navigation</span><br><span class="line">    style=&#123;&#123; <span class="attr">padding</span>: <span class="string">&quot;24px&quot;</span> &#125;&#125;</span><br><span class="line">    &gt;</span><br></pre></td></tr></table></figure><p><strong>以上就是在react中使用swiper插件。</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;第一步、安装&quot;&gt;&lt;a href=&quot;#第一步、安装&quot; class=&quot;headerlink&quot; title=&quot;第一步、安装&quot;&gt;&lt;/a&gt;第一步、安装&lt;/h5&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class</summary>
+      
+    
+    
+    
+    
+    <category term="react" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/react/"/>
+    
+    <category term="swiper" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/swiper/"/>
+    
+  </entry>
   
   <entry>
     <title>react hooks学习</title>
