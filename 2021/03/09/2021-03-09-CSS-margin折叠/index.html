@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    react hooks学习 |  Shimmer&#39;s Blog
+    CSS margin折叠 |  Shimmer&#39;s Blog
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-react hooks学习"
+  id="post-2021-03-09-CSS-margin折叠"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  react hooks学习
+  CSS margin折叠
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/shimmer-blog/2021/03/05/react%20hooks%E5%AD%A6%E4%B9%A0/" class="article-date">
-  <time datetime="2021-03-04T16:00:00.000Z" itemprop="datePublished">2021-03-05</time>
+      <a href="/shimmer-blog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/" class="article-date">
+  <time datetime="2021-03-08T16:00:00.000Z" itemprop="datePublished">2021-03-09</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">313</span>
+            <span class="post-count">274</span>
         </span>
     </span>
 
@@ -94,19 +94,24 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="react-hooks学习"><a href="#react-hooks学习" class="headerlink" title="react hooks学习"></a>react hooks学习</h2><h5 id="01、什么是react-hooks"><a href="#01、什么是react-hooks" class="headerlink" title="01、什么是react hooks"></a>01、什么是react hooks</h5><p>react hooks就是react提供的内置函数，这些函数可以让，函数式组件和类组件一样拥有组件状态和副作用。</p>
-<p><strong>什么是状态？</strong></p>
-<p>React中的放数据的地方。</p>
-<p><strong>什么是副作用？</strong></p>
-<p>在 React 组件中执行数据获取、订阅或者手动修改 DOM，我们统一把这些操作称为“副作用”</p>
-<h5 id="02、useState"><a href="#02、useState" class="headerlink" title="02、useState"></a>02、<code>useState</code></h5><p><code>useState</code> 就类似于类组件中的<code>this.state</code></p>
-<p><code>useState</code>的用法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;useState , useEffect&#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Main =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1 onClick=&#123;<span class="function">()=&gt;</span>&#123;setCount(count+<span class="number">2</span>)&#125;&#125;&gt;当前的数为：&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Main /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getEementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-
-
-<h5 id="03、useEffect"><a href="#03、useEffect" class="headerlink" title="03、useEffect"></a>03、<code>useEffect</code></h5><p><code>useEffect</code>就相当于生命周期的<code>componentDidMoun</code>t和<code>componentDidUPdate</code></p>
-<p>使用方法</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;useState , useEffect&#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Main =<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 相当于componentDidMount和componentDidUpdate</span></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="comment">// 打印点击的次数</span></span><br><span class="line">   <span class="built_in">console</span>.log( <span class="string">`You clicked <span class="subst">$&#123;count/<span class="number">2</span>&#125;</span> times`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">return</span>(</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1 onClick=&#123;<span class="function">()=&gt;</span>&#123;setCount(count+<span class="number">2</span>)&#125;&#125;&gt;当前的数为：&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Main /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+  <h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p>
+<p><strong>这就是margin折叠</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> //这里给子元素设置margin-top</span><br><span class="line">//父元素却向下移动了101px</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;car-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .main &#123;</span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1440px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">810px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/bg.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">19px</span> <span class="number">0</span> <span class="number">17px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.car-message &#123;</span><br><span class="line"><span class="css">  <span class="attribute">margin-top</span>: <span class="number">101px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/one.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1404px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">51px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">  <span class="attribute">align-items</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>百度了下</strong></p>
+<p><strong>外边距叠加存在两种情况：一是父子外边距叠加；二是兄弟外边距叠加。</strong></p>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><strong>兄弟间重叠时</strong></p>
+<ol>
+<li><strong>底部元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
+<li><strong>底部元素的position的值为absolute/fixed</strong></li>
+</ol>
+<p><strong>父元素与子元素重叠</strong></p>
+<ol>
+<li><strong>父元素加入(<code>overflow: hidden</code>);</strong></li>
+<li><strong>父元素添加透明边框(<code>border:1px solid transparent</code>);</strong></li>
+<li><strong>子元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
+<li><strong>子元素加入浮动属性或定位</strong></li>
+</ol>
+<p><strong>这里我给父元素设置了<code>overflow:hidden</code>就解决了。</strong></p>
  
       <!-- reward -->
       
@@ -171,12 +176,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/shimmer-blog/2021/03/05/react%20hooks%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/shimmer-blog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/React/" rel="tag">React</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/css/" rel="tag">css</a></li></ul>
 
     </footer>
   </div>
@@ -184,19 +189,10 @@
    
   <nav class="article-nav">
     
+    
       <a href="/shimmer-blog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            react 中使用Swiper轮播图插件
-          
-        </div>
-      </a>
-    
-    
-      <a href="/shimmer-blog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">扩展运算符(...)的复习</div>
+        <div class="article-nav-title">react 中使用Swiper轮播图插件</div>
       </a>
     
   </nav>

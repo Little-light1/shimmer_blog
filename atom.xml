@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/shimmer-blog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/shimmer-blog/"/>
-  <updated>2021-03-09T05:15:36.072Z</updated>
+  <updated>2021-03-09T09:49:37.080Z</updated>
   <id>https://gitee.com/shimmer612/shimmer-blog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CSS margin折叠</title>
+    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/"/>
+    <id>https://gitee.com/shimmer612/shimmer-blog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/</id>
+    <published>2021-03-08T16:00:00.000Z</published>
+    <updated>2021-03-09T09:49:37.080Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p><p><strong>这就是margin折叠</strong></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> //这里给子元素设置margin-top</span><br><span class="line">//父元素却向下移动了101px</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;car-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .main &#123;</span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1440px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">810px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/bg.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">19px</span> <span class="number">0</span> <span class="number">17px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.car-message &#123;</span><br><span class="line"><span class="css">  <span class="attribute">margin-top</span>: <span class="number">101px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/one.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1404px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">51px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">  <span class="attribute">align-items</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><p><strong>百度了下</strong></p><p><strong>外边距叠加存在两种情况：一是父子外边距叠加；二是兄弟外边距叠加。</strong></p><h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><strong>兄弟间重叠时</strong></p><ol><li><strong>底部元素变为行内盒子(<code>display: inline-block</code>);</strong></li><li><strong>底部元素的position的值为absolute/fixed</strong></li></ol><p><strong>父元素与子元素重叠</strong></p><ol><li><strong>父元素加入(<code>overflow: hidden</code>);</strong></li><li><strong>父元素添加透明边框(<code>border:1px solid transparent</code>);</strong></li><li><strong>子元素变为行内盒子(<code>display: inline-block</code>);</strong></li><li><strong>子元素加入浮动属性或定位</strong></li></ol><p><strong>这里我给父元素设置了<code>overflow:hidden</code>就解决了。</strong></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;margin折叠&quot;&gt;&lt;a href=&quot;#margin折叠&quot; class=&quot;headerlink&quot; title=&quot;margin折叠&quot;&gt;&lt;/a&gt;margin折叠&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;今天在写页面的时候发现，子元素设置了&lt;code&gt;margin-top:101</summary>
+      
+    
+    
+    
+    
+    <category term="css" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>react 中使用Swiper轮播图插件</title>
