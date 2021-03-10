@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/shimmer-blog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/shimmer-blog/"/>
-  <updated>2021-03-09T09:49:37.080Z</updated>
+  <updated>2021-03-10T09:14:23.203Z</updated>
   <id>https://gitee.com/shimmer612/shimmer-blog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>从数组中取出随机几个数组成新数组（不重复取）</title>
+    <link href="https://gitee.com/shimmer612/shimmer-blog/2021/03/10/2021-03-10-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E5%87%BA%E9%9A%8F%E6%9C%BA%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%E6%96%B0%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8F%96%EF%BC%89/"/>
+    <id>https://gitee.com/shimmer612/shimmer-blog/2021/03/10/2021-03-10-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E5%87%BA%E9%9A%8F%E6%9C%BA%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%E6%96%B0%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8F%96%EF%BC%89/</id>
+    <published>2021-03-09T16:00:00.000Z</published>
+    <updated>2021-03-10T09:14:23.203Z</updated>
+    
+    <content type="html"><![CDATA[<p>​     要给自己的商城，加一个推荐商品的功能。想让他随机从商品表中取出4个数据。</p><p>​     一开始我用<code>Math.random()*arr.length</code>但是会取出相同的。这样就不太对，哪有推荐两个相同的商品呢。</p><p>​    然后想到获取当前选择的下标，把选择的那个删除。下一次随机，就随机不到那个数了。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//前台传来的当前商品的id</span></span><br><span class="line"><span class="keyword">const</span> nowGoodsIndex = req.query.goods_id-<span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">const</span> goods = <span class="keyword">await</span> Goods.find()</span><br><span class="line">    <span class="keyword">let</span> arr = []</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存入数组的id,因为id就是从1开始往上加。</span></span><br><span class="line">    goods.forEach(<span class="function">(<span class="params">element, index</span>) =&gt;</span> &#123;</span><br><span class="line">        arr.push(index+<span class="number">1</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//用splice把当前商品的id删除避免重复</span></span><br><span class="line">    arr.splice(nowGoodsIndex, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> newArr = []</span><br><span class="line">    <span class="comment">//随机取出4个，取出来一个就把那个数在数组中删掉。避免重复。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * arr.length);</span><br><span class="line">        newArr.push(arr[index]);</span><br><span class="line">        <span class="comment">//获取后，在数组中删除已经加入的随机数</span></span><br><span class="line">        arr.splice(index, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;​     要给自己的商城，加一个推荐商品的功能。想让他随机从商品表中取出4个数据。&lt;/p&gt;
+&lt;p&gt;​     一开始我用&lt;code&gt;Math.random()*arr.length&lt;/code&gt;但是会取出相同的。这样就不太对，哪有推荐两个相同的商品呢。&lt;/p&gt;
+&lt;p&gt;​ </summary>
+      
+    
+    
+    
+    
+    <category term="javascript" scheme="https://gitee.com/shimmer612/shimmer-blog/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>CSS margin折叠</title>
