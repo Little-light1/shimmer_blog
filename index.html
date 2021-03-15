@@ -140,6 +140,55 @@
     
     
     <article
+  id="post-如何在vue的css中使用data中的变量"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+     
+    <div class="article-meta">
+      <a href="/shimmer-blog/2021/03/15/%E5%A6%82%E4%BD%95%E5%9C%A8vue%E7%9A%84css%E4%B8%AD%E4%BD%BF%E7%94%A8data%E4%B8%AD%E7%9A%84%E5%8F%98%E9%87%8F/" class="article-date">
+  <time datetime="2021-03-14T16:00:00.000Z" itemprop="datePublished">2021-03-15</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p> 如何在vue的css中使用data中的变量。</p>
+<p>很简单用v-bind</p>
+<p><strong>一个简单的例子</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1 <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;h1&quot;</span> &gt;我是&#123;&#123; color &#125;&#125;&lt;/h1&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      color: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.h1 &#123;</span><br><span class="line">  color: v-bind(color);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>运行如下图所示：成功设置了文字的颜色。</p>
+<p><img src="https://s3.ax1x.com/2021/03/15/6BXT8s.png"></p>
+<p><strong>这样就可以做一个文字颜色不断变化的demo</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">    &lt;h1 <span class="class"><span class="keyword">class</span></span>=<span class="string">&quot;h1&quot;</span> @click=<span class="string">&quot;changeColor&quot;</span>&gt;我是&#123;&#123; color &#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;button @click=<span class="string">&quot;changeColor&quot;</span>&gt;变色&lt;/button&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    Child,</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="function"><span class="title">data</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      color: <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">      count: <span class="number">1</span>,</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  created () &#123;</span><br><span class="line">    <span class="built_in">setInterval</span>(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">      <span class="built_in">this</span>.changeColor()</span><br><span class="line">    &#125;,<span class="number">500</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  methods: &#123;</span><br><span class="line">    <span class="function"><span class="title">changeColor</span>(<span class="params"></span>)</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> arr = [</span><br><span class="line">        <span class="string">&#x27;red&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;blue&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;pink&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;black&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;hotpink&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;purple&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;lime&#x27;</span>,</span><br><span class="line">        <span class="string">&#x27;skyblue&#x27;</span>,</span><br><span class="line">      ]</span><br><span class="line">      <span class="built_in">this</span>.color = arr[<span class="built_in">this</span>.count]</span><br><span class="line">      <span class="built_in">this</span>.count++</span><br><span class="line">      <span class="keyword">if</span> (<span class="built_in">this</span>.count === <span class="number">8</span>) &#123;</span><br><span class="line">        <span class="built_in">this</span>.count = <span class="number">0</span></span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;style scoped&gt;</span><br><span class="line">.h1 &#123;</span><br><span class="line">  color: v-bind(color);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>运行结果如下图：</p>
+<p><a target="_blank" rel="noopener" href="https://imgtu.com/i/6Bv861"><img src="https://s3.ax1x.com/2021/03/15/6Bv861.gif" alt="6Bv861.gif"></a></p>
+<p>是不是感觉要方便许多。</p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/Vue3/" rel="tag">Vue3</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-2021-03-12-CSS的一些知识点"
   class="article article-type-post"
   itemscope
@@ -736,63 +785,6 @@
     <footer class="article-footer">
        
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/tips/" rel="tag">tips</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-2021-03-02-React项目(UmiJS)中使用高德地图"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/shimmer-blog/2021/03/02/2021-03-02-React%E9%A1%B9%E7%9B%AE(UmiJS)%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/"
-    >React项目(UmiJS)中使用高德地图</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/shimmer-blog/2021/03/02/2021-03-02-React%E9%A1%B9%E7%9B%AE(UmiJS)%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/" class="article-date">
-  <time datetime="2021-03-01T16:00:00.000Z" itemprop="datePublished">2021-03-02</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <h5 id="React-AMap"><a href="#React-AMap" class="headerlink" title="React AMap"></a>React AMap</h5><p>这是一个基于 React 封装的高德地图组件.</p>
-<p><strong>文档地址</strong></p>
-<p><code>https://uiw.gitee.io/react-amap/#/</code></p>
-<h6 id="01、安装"><a href="#01、安装" class="headerlink" title="01、安装"></a>01、安装</h6><p><code>npm install @uiw/react-amap --save</code></p>
-<h6 id="02、使用"><a href="#02、使用" class="headerlink" title="02、使用"></a>02、使用</h6><p>在文档左侧找到需要使用的例子。在右侧直接复制对应代码。按需进行修改。</p>
-<h6 id="03、例子（贝塞尔曲线的使用）"><a href="#03、例子（贝塞尔曲线的使用）" class="headerlink" title="03、例子（贝塞尔曲线的使用）"></a>03、例子（贝塞尔曲线的使用）</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="built_in">Map</span>, APILoader, BezierCurve &#125; <span class="keyword">from</span> <span class="string">&quot;@uiw/react-amap&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CarLine = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [show] = useState(<span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">const</span> path = [<span class="comment">// 每个弧线段有两种描述方式</span></span><br><span class="line">        [<span class="number">116.39</span>, <span class="number">39.91</span>, <span class="number">116.37</span>, <span class="number">39.91</span>],<span class="comment">// 起点</span></span><br><span class="line">        <span class="comment">// 第一段弧线</span></span><br><span class="line">        [<span class="number">116.380298</span>, <span class="number">39.907771</span>, <span class="number">116.38</span>, <span class="number">39.90</span>],<span class="comment">// 控制点，途经点</span></span><br><span class="line">        <span class="comment">// 第二段弧线</span></span><br><span class="line">        [<span class="number">116.385298</span>, <span class="number">39.907771</span>, <span class="number">116.40</span>, <span class="number">39.90</span>],<span class="comment">// 控制点，途经点// 弧线段有两种描述方式1</span></span><br><span class="line">        <span class="comment">// 第三段弧线</span></span><br><span class="line">        [<span class="comment">// 弧线段有两种描述方式2</span></span><br><span class="line">            [<span class="number">116.392872</span>, <span class="number">39.887391</span>],<span class="comment">// 控制点</span></span><br><span class="line">            [<span class="number">116.40772</span>, <span class="number">39.909252</span>],<span class="comment">// 控制点</span></span><br><span class="line">            [<span class="number">116.41</span>, <span class="number">39.89</span>]<span class="comment">// 途经点</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">// 第四段弧线</span></span><br><span class="line">        [<span class="number">116.423857</span>, <span class="number">39.889498</span>, <span class="number">116.422312</span>, <span class="number">39.899639</span>, <span class="number">116.425273</span>, <span class="number">39.902273</span>]</span><br><span class="line">        <span class="comment">// 控制点，控制点，途经点，每段最多两个控制点</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> handleParams = <span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> values</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;APILoader akay=<span class="string">&quot;a7a90e05a37d3f6bf76d4a9032fc9129&quot;</span>&gt;</span><br><span class="line">                &lt;div style=&#123;&#123; <span class="attr">width</span>: <span class="string">&quot;100%&quot;</span>, <span class="attr">height</span>: <span class="string">&quot;600px&quot;</span> &#125;&#125; &gt;</span><br><span class="line">                    &lt;<span class="built_in">Map</span> zoom=&#123;<span class="number">14</span>&#125; center=&#123;[<span class="number">116.397637</span>, <span class="number">39.900001</span>]&#125;&gt;</span><br><span class="line">                        &lt;BezierCurve</span><br><span class="line">                            visiable=&#123;show&#125;</span><br><span class="line">                            path=&#123;path&#125;</span><br><span class="line">                            isOutline=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">                            outlineColor=<span class="string">&quot;&quot;</span></span><br><span class="line">                            borderWeight=&#123;<span class="number">3</span>&#125;</span><br><span class="line">                            strokeColor=<span class="string">&quot;red&quot;</span></span><br><span class="line">                            strokeOpacity=&#123;<span class="number">1</span>&#125;</span><br><span class="line">                            strokeWeight=&#123;<span class="number">6</span>&#125;</span><br><span class="line">                            <span class="comment">// 线样式还支持 &#x27;dashed&#x27;</span></span><br><span class="line">                            strokeStyle=<span class="string">&quot;solid&quot;</span></span><br><span class="line">                            <span class="comment">// strokeStyle是dashed时有效</span></span><br><span class="line">                            strokeDasharray=&#123;[<span class="number">10</span>, <span class="number">10</span>]&#125;</span><br><span class="line">                            lineJoin=<span class="string">&quot;round&quot;</span></span><br><span class="line">                            lineCap=<span class="string">&quot;round&quot;</span></span><br><span class="line">                            zIndex=&#123;<span class="number">50</span>&#125;</span><br><span class="line">                        /&gt;</span><br><span class="line">                    &lt;/<span class="built_in">Map</span>&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/APILoader&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> CarLine</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p><img src="https://gitee.com/shimmer612/mypicturehouse/raw/master/myPicture/Snipaste_2021-03-02_09-02-09.png" alt="image"></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/React-UmiJS/" rel="tag">React UmiJS</a></li></ul>
 
     </footer>
   </div>
