@@ -13,7 +13,7 @@
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
-  <link rel="shortcut icon" href="/shimmer-blog/images/ayer.svg" />
+  <link rel="shortcut icon" href="/shimmer-blog/favicon.ico" />
   
   
 <link rel="stylesheet" href="/shimmer-blog/dist/main.css">
@@ -38,16 +38,13 @@
   <div id="app">
     
       
-      <canvas width="1777" height="841"
-        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
-      
     <main class="content on">
       
 <section class="cover">
     
   <div class="cover-frame">
     <div class="bg-box">
-      <img src="/shimmer-blog/images/1065736.jpg" alt="image frame" />
+      <img src="/shimmer-blog/images/qiaoba.jpg" alt="image frame" />
     </div>
     <div class="cover-inner text-center text-white">
       <h1><a href="/shimmer-blog/">Shimmer</a></h1>
@@ -76,7 +73,7 @@
   <script>
     try {
       var typed = new Typed("#subtitle", {
-        strings: ['路 很长 顺道寻光', '遇见你让我懂得什么是爱，走进你却体验了人生的灭顶之灾', '想要的都拥有，得不到的拼了命也要得到'],
+        strings: ['路 很长 顺道寻光', '遇见你让我懂得什么是爱，走进你却体验了人生的灭顶之灾！', '想要的都拥有，得不到的拼了命也要得到。'],
         startDelay: 0,
         typeSpeed: 200,
         loop: true,
@@ -210,8 +207,7 @@
     </footer>
   </div>
 
-    
- 
+   
     
 </article>
 
@@ -269,8 +265,7 @@
     </footer>
   </div>
 
-    
- 
+   
     
 </article>
 
@@ -324,8 +319,7 @@
     </footer>
   </div>
 
-    
- 
+   
     
 </article>
 
@@ -421,8 +415,7 @@
     </footer>
   </div>
 
-    
- 
+   
     
 </article>
 
@@ -473,8 +466,7 @@
     </footer>
   </div>
 
-    
- 
+   
     
 </article>
 
@@ -539,8 +531,7 @@
     </footer>
   </div>
 
-    
- 
+   
     
 </article>
 
@@ -594,8 +585,7 @@
     </footer>
   </div>
 
-    
- 
+   
     
 </article>
 
@@ -655,8 +645,62 @@
     </footer>
   </div>
 
+   
     
+</article>
+
+    
+    <article
+  id="post-2021-03-04-扩展运算符(...)的复习"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/shimmer-blog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/"
+    >扩展运算符(...)的复习</a> 
+</h2>
  
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/shimmer-blog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/" class="article-date">
+  <time datetime="2021-03-03T16:00:00.000Z" itemprop="datePublished">2021-03-04</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <p><strong>最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。</strong></p>
+<p><strong>像下面这样</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> setCacheComponents([</span><br><span class="line">        ...cacheComponentsClone,</span><br><span class="line">        &#123;</span><br><span class="line">          ...currentPane,</span><br><span class="line">          name: name || obj.item.props.children[<span class="number">1</span>] <span class="comment">// 如果调用addtab时传入了name则使用此name</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------------</span></span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          tableData: [</span><br><span class="line">            ...state.tableData,</span><br><span class="line">            &#123;</span><br><span class="line">              params: &#123;</span><br><span class="line">                ...payload.params,</span><br><span class="line">                page: payload.page || <span class="number">1</span>,</span><br><span class="line">                pageSize: payload.pageSize || <span class="number">10</span></span><br><span class="line">              &#125;,</span><br><span class="line">              tableKey: payload.tableKey,</span><br><span class="line">              loading: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>就整理了一下扩展运算符的用法。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    age: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    hobby:&#123;</span><br><span class="line">        play: <span class="string">&quot;ball&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; ...obj&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newObj);<span class="comment">//&#123; name: &#x27;张三&#x27;, age: &#x27;20&#x27;, sex: &#x27;男&#x27;, hobby: &#123; play: &#x27;ball&#x27; &#125; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = [...arr,...arr1]</span><br><span class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成数组</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefg&#x27;</span> </span><br><span class="line"><span class="keyword">const</span> newStr = [...str]</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;,&#x27;g&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构赋值   数组对象都可以</span></span><br><span class="line"><span class="keyword">const</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> bb = [...aa,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>项目里常用的就是在函数里，用来解构赋值的比较多</strong></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/javascript/" rel="tag">javascript</a></li></ul>
+
+    </footer>
+  </div>
+
+   
     
 </article>
 
@@ -764,64 +808,7 @@
     </footer>
   </div>
 
-    
- 
-    
-</article>
-
-    
-    <article
-  id="post-2021-03-04-扩展运算符(...)的复习"
-  class="article article-type-post"
-  itemscope
-  itemprop="blogPost"
-  data-scroll-reveal
->
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/shimmer-blog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/"
-    >扩展运算符(...)的复习</a> 
-</h2>
- 
-
-    </header>
-     
-    <div class="article-meta">
-      <a href="/shimmer-blog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/" class="article-date">
-  <time datetime="2021-03-03T16:00:00.000Z" itemprop="datePublished">2021-03-04</time>
-</a>    
-    </div>
-      
-    <div class="article-entry" itemprop="articleBody">
-       
-  <p><strong>最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。</strong></p>
-<p><strong>像下面这样</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> setCacheComponents([</span><br><span class="line">        ...cacheComponentsClone,</span><br><span class="line">        &#123;</span><br><span class="line">          ...currentPane,</span><br><span class="line">          name: name || obj.item.props.children[<span class="number">1</span>] <span class="comment">// 如果调用addtab时传入了name则使用此name</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------------</span></span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          tableData: [</span><br><span class="line">            ...state.tableData,</span><br><span class="line">            &#123;</span><br><span class="line">              params: &#123;</span><br><span class="line">                ...payload.params,</span><br><span class="line">                page: payload.page || <span class="number">1</span>,</span><br><span class="line">                pageSize: payload.pageSize || <span class="number">10</span></span><br><span class="line">              &#125;,</span><br><span class="line">              tableKey: payload.tableKey,</span><br><span class="line">              loading: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>就整理了一下扩展运算符的用法。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    age: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    hobby:&#123;</span><br><span class="line">        play: <span class="string">&quot;ball&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; ...obj&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newObj);<span class="comment">//&#123; name: &#x27;张三&#x27;, age: &#x27;20&#x27;, sex: &#x27;男&#x27;, hobby: &#123; play: &#x27;ball&#x27; &#125; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = [...arr,...arr1]</span><br><span class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成数组</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefg&#x27;</span> </span><br><span class="line"><span class="keyword">const</span> newStr = [...str]</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;,&#x27;g&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构赋值   数组对象都可以</span></span><br><span class="line"><span class="keyword">const</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> bb = [...aa,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>项目里常用的就是在函数里，用来解构赋值的比较多</strong></p>
- 
-      <!-- reward -->
-      
-    </div>
-    
-
-    <!-- copyright -->
-    
-    <footer class="article-footer">
-       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/shimmer-blog/tags/javascript/" rel="tag">javascript</a></li></ul>
-
-    </footer>
-  </div>
-
-    
- 
+   
     
 </article>
 
@@ -900,7 +887,7 @@
 <nav class="navbar">
   
   <div class="logo">
-    <a href="/shimmer-blog/"><img src="/shimmer-blog/images/太阳.png" alt="Shimmer"></a>
+    <a href="/shimmer-blog/"><img src="/shimmer-blog/images/ayer-side.svg" alt="Shimmer"></a>
   </div>
   
   <ul class="nav nav-main">
@@ -922,7 +909,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/shimmer-blog/2021/02/12/%E5%85%B3%E4%BA%8E%E6%88%91/">关于我</a>
+      <a class="nav-item-link" href="/shimmer-blog/2021/02/23/%E5%85%B3%E4%BA%8E%E6%88%91/">关于我</a>
     </li>
     
     <li class="nav-item">
@@ -1098,13 +1085,13 @@
 
 <!-- ClickLove -->
 
+
+<script src="/shimmer-blog/js/clickLove.js"></script>
+
+
 <!-- ClickBoom1 -->
 
 <!-- ClickBoom2 -->
-
-
-<script src="/shimmer-blog/js/clickBoom2.js"></script>
-
 
 <!-- CodeCopy -->
 
