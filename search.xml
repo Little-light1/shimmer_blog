@@ -130,6 +130,22 @@
       </tags>
   </entry>
   <entry>
+    <title>react 中使用Swiper轮播图插件</title>
+    <url>/myBlog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h5 id="第一步、安装"><a href="#第一步、安装" class="headerlink" title="第一步、安装"></a>第一步、安装</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i swiper</span><br></pre></td></tr></table></figure>
+<h5 id="第二步、使用"><a href="#第二步、使用" class="headerlink" title="第二步、使用"></a>第二步、使用</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide &#125; <span class="keyword">from</span> <span class="string">&#x27;swiper/react&#x27;</span>;</span><br><span class="line"><span class="comment">//根据自己的需要引用样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper.less&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">      slidesPerView=&#123;<span class="number">3</span>&#125;</span><br><span class="line">      onSlideChange=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;slide change&#x27;</span>)&#125;</span><br><span class="line">      onSwiper=&#123;<span class="function">(<span class="params">swiper</span>) =&gt;</span> <span class="built_in">console</span>.log(swiper)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">1</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">2</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">3</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">4</span>&lt;/SwiperSlide&gt;</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>到这一个轮播图就已经实现了，但是只是轮播图没有别的东西，比如左右的按钮。这些需要我们手动添加。</strong></p>
+<h5 id="第三步、添加功能（例：navigation按钮）"><a href="#第三步、添加功能（例：navigation按钮）" class="headerlink" title="第三步、添加功能（例：navigation按钮）"></a>第三步、添加功能（例：navigation按钮）</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入所需功能和样式文件</span></span><br><span class="line"><span class="keyword">import</span> SwiperCore, &#123; Navigation &#125; <span class="keyword">from</span> <span class="string">&quot;swiper&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;swiper/components/navigation/navigation.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">SwiperCore.use([Navigation]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件上添加属性</span></span><br><span class="line">  &lt;Swiper</span><br><span class="line">    spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">    slidesPerView=&#123;<span class="number">1</span>&#125;</span><br><span class="line">    navigation</span><br><span class="line">    style=&#123;&#123; <span class="attr">padding</span>: <span class="string">&quot;24px&quot;</span> &#125;&#125;</span><br><span class="line">    &gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>以上就是在react中使用swiper插件。</strong></p>
+]]></content>
+      <tags>
+        <tag>React</tag>
+        <tag>swiper</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>React项目(UmiJS)中使用高德地图</title>
     <url>/myBlog/2021/03/02/2021-03-02-React%E9%A1%B9%E7%9B%AE(UmiJS)%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
     <content><![CDATA[<h5 id="React-AMap"><a href="#React-AMap" class="headerlink" title="React AMap"></a>React AMap</h5><p>这是一个基于 React 封装的高德地图组件.</p>
@@ -163,22 +179,6 @@
       </tags>
   </entry>
   <entry>
-    <title>react 中使用Swiper轮播图插件</title>
-    <url>/myBlog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h5 id="第一步、安装"><a href="#第一步、安装" class="headerlink" title="第一步、安装"></a>第一步、安装</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i swiper</span><br></pre></td></tr></table></figure>
-<h5 id="第二步、使用"><a href="#第二步、使用" class="headerlink" title="第二步、使用"></a>第二步、使用</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide &#125; <span class="keyword">from</span> <span class="string">&#x27;swiper/react&#x27;</span>;</span><br><span class="line"><span class="comment">//根据自己的需要引用样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper.less&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">      slidesPerView=&#123;<span class="number">3</span>&#125;</span><br><span class="line">      onSlideChange=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;slide change&#x27;</span>)&#125;</span><br><span class="line">      onSwiper=&#123;<span class="function">(<span class="params">swiper</span>) =&gt;</span> <span class="built_in">console</span>.log(swiper)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">1</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">2</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">3</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">4</span>&lt;/SwiperSlide&gt;</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>到这一个轮播图就已经实现了，但是只是轮播图没有别的东西，比如左右的按钮。这些需要我们手动添加。</strong></p>
-<h5 id="第三步、添加功能（例：navigation按钮）"><a href="#第三步、添加功能（例：navigation按钮）" class="headerlink" title="第三步、添加功能（例：navigation按钮）"></a>第三步、添加功能（例：navigation按钮）</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入所需功能和样式文件</span></span><br><span class="line"><span class="keyword">import</span> SwiperCore, &#123; Navigation &#125; <span class="keyword">from</span> <span class="string">&quot;swiper&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;swiper/components/navigation/navigation.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">SwiperCore.use([Navigation]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件上添加属性</span></span><br><span class="line">  &lt;Swiper</span><br><span class="line">    spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">    slidesPerView=&#123;<span class="number">1</span>&#125;</span><br><span class="line">    navigation</span><br><span class="line">    style=&#123;&#123; <span class="attr">padding</span>: <span class="string">&quot;24px&quot;</span> &#125;&#125;</span><br><span class="line">    &gt;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>以上就是在react中使用swiper插件。</strong></p>
-]]></content>
-      <tags>
-        <tag>React</tag>
-        <tag>swiper</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>CSS margin折叠</title>
     <url>/myBlog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/</url>
     <content><![CDATA[<h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p>
@@ -202,6 +202,18 @@
 ]]></content>
       <tags>
         <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从数组中取出随机几个数组成新数组（不重复取）</title>
+    <url>/myBlog/2021/03/10/2021-03-10-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E5%87%BA%E9%9A%8F%E6%9C%BA%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%E6%96%B0%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8F%96%EF%BC%89/</url>
+    <content><![CDATA[<p>​     要给自己的商城，加一个推荐商品的功能。想让他随机从商品表中取出4个数据。</p>
+<p>​     一开始我用<code>Math.random()*arr.length</code>但是会取出相同的。这样就不太对，哪有推荐两个相同的商品呢。</p>
+<p>​    然后想到获取当前选择的下标，把选择的那个删除。下一次随机，就随机不到那个数了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//前台传来的当前商品的id</span></span><br><span class="line"><span class="keyword">const</span> nowGoodsIndex = req.query.goods_id-<span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">const</span> goods = <span class="keyword">await</span> Goods.find()</span><br><span class="line">    <span class="keyword">let</span> arr = []</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存入数组的id,因为id就是从1开始往上加。</span></span><br><span class="line">    goods.forEach(<span class="function">(<span class="params">element, index</span>) =&gt;</span> &#123;</span><br><span class="line">        arr.push(index+<span class="number">1</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//用splice把当前商品的id删除避免重复</span></span><br><span class="line">    arr.splice(nowGoodsIndex, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> newArr = []</span><br><span class="line">    <span class="comment">//随机取出4个，取出来一个就把那个数在数组中删掉。避免重复。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * arr.length);</span><br><span class="line">        newArr.push(arr[index]);</span><br><span class="line">        <span class="comment">//获取后，在数组中删除已经加入的随机数</span></span><br><span class="line">        arr.splice(index, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -264,33 +276,6 @@
       </tags>
   </entry>
   <entry>
-    <title>从数组中取出随机几个数组成新数组（不重复取）</title>
-    <url>/myBlog/2021/03/10/2021-03-10-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E5%87%BA%E9%9A%8F%E6%9C%BA%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%E6%96%B0%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8F%96%EF%BC%89/</url>
-    <content><![CDATA[<p>​     要给自己的商城，加一个推荐商品的功能。想让他随机从商品表中取出4个数据。</p>
-<p>​     一开始我用<code>Math.random()*arr.length</code>但是会取出相同的。这样就不太对，哪有推荐两个相同的商品呢。</p>
-<p>​    然后想到获取当前选择的下标，把选择的那个删除。下一次随机，就随机不到那个数了。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//前台传来的当前商品的id</span></span><br><span class="line"><span class="keyword">const</span> nowGoodsIndex = req.query.goods_id-<span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">const</span> goods = <span class="keyword">await</span> Goods.find()</span><br><span class="line">    <span class="keyword">let</span> arr = []</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存入数组的id,因为id就是从1开始往上加。</span></span><br><span class="line">    goods.forEach(<span class="function">(<span class="params">element, index</span>) =&gt;</span> &#123;</span><br><span class="line">        arr.push(index+<span class="number">1</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//用splice把当前商品的id删除避免重复</span></span><br><span class="line">    arr.splice(nowGoodsIndex, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> newArr = []</span><br><span class="line">    <span class="comment">//随机取出4个，取出来一个就把那个数在数组中删掉。避免重复。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * arr.length);</span><br><span class="line">        newArr.push(arr[index]);</span><br><span class="line">        <span class="comment">//获取后，在数组中删除已经加入的随机数</span></span><br><span class="line">        arr.splice(index, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS的一些知识点</title>
-    <url>/myBlog/2021/03/12/2021-03-12-CSS%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<p>今天是三月十二日植树节，记录一些自己写样式的时候，以前不知道的东西。</p>
-<h5 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h5><p><strong>设置<code>padding</code>的时候为了不改变盒子的大小要设置<code>box-sizing:border-box</code></strong></p>
-<h5 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h5><p><strong>盒子内部阴影在末尾加一个<code>inset</code>比如<code>box-shadow: 0 0 5px 0 red inset</code></strong></p>
-<h5 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h5><p><strong>设置透明度的时候<code>opacity:0.8</code>这样会让父元素子元素也改变透明度。可以改成<code>rgba(255,255,255,0.8)</code>的这种方式</strong></p>
-<h5 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h5><p><strong>网页字体最小就是<code>12px</code></strong></p>
-<h5 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h5><p><strong>设置背景图时使用路径时<code> background-image: url(~@/assets/carMonitor/warn-info.png);</code>写成这种样式。还有加上<code> background-size: cover;</code></strong></p>
-<p>不想写了，今天很难受，心情很不好。</p>
-]]></content>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Vue3中路由的相关配置</title>
     <url>/myBlog/2021/03/16/Vue3%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h5 id="Vue3中路由的相关配置"><a href="#Vue3中路由的相关配置" class="headerlink" title="Vue3中路由的相关配置"></a>Vue3中路由的相关配置</h5><h6 id="1、路由的配置"><a href="#1、路由的配置" class="headerlink" title="1、路由的配置"></a>1、路由的配置</h6><p><strong>在src路径下新建router文件夹，然后在该文件夹新建index.js文件</strong></p>
@@ -325,6 +310,21 @@
 ]]></content>
       <tags>
         <tag>Vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS的一些知识点</title>
+    <url>/myBlog/2021/03/12/2021-03-12-CSS%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<p>今天是三月十二日植树节，记录一些自己写样式的时候，以前不知道的东西。</p>
+<h5 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h5><p><strong>设置<code>padding</code>的时候为了不改变盒子的大小要设置<code>box-sizing:border-box</code></strong></p>
+<h5 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h5><p><strong>盒子内部阴影在末尾加一个<code>inset</code>比如<code>box-shadow: 0 0 5px 0 red inset</code></strong></p>
+<h5 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h5><p><strong>设置透明度的时候<code>opacity:0.8</code>这样会让父元素子元素也改变透明度。可以改成<code>rgba(255,255,255,0.8)</code>的这种方式</strong></p>
+<h5 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h5><p><strong>网页字体最小就是<code>12px</code></strong></p>
+<h5 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h5><p><strong>设置背景图时使用路径时<code> background-image: url(~@/assets/carMonitor/warn-info.png);</code>写成这种样式。还有加上<code> background-size: cover;</code></strong></p>
+<p>不想写了，今天很难受，心情很不好。</p>
+]]></content>
+      <tags>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
