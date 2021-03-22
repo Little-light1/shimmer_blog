@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>扩展运算符(...)的复习</title>
+    <url>/myBlog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<p><strong>最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。</strong></p>
+<p><strong>像下面这样</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> setCacheComponents([</span><br><span class="line">        ...cacheComponentsClone,</span><br><span class="line">        &#123;</span><br><span class="line">          ...currentPane,</span><br><span class="line">          name: name || obj.item.props.children[<span class="number">1</span>] <span class="comment">// 如果调用addtab时传入了name则使用此name</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------------</span></span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          tableData: [</span><br><span class="line">            ...state.tableData,</span><br><span class="line">            &#123;</span><br><span class="line">              params: &#123;</span><br><span class="line">                ...payload.params,</span><br><span class="line">                page: payload.page || <span class="number">1</span>,</span><br><span class="line">                pageSize: payload.pageSize || <span class="number">10</span></span><br><span class="line">              &#125;,</span><br><span class="line">              tableKey: payload.tableKey,</span><br><span class="line">              loading: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>就整理了一下扩展运算符的用法。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    age: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    hobby:&#123;</span><br><span class="line">        play: <span class="string">&quot;ball&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; ...obj&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newObj);<span class="comment">//&#123; name: &#x27;张三&#x27;, age: &#x27;20&#x27;, sex: &#x27;男&#x27;, hobby: &#123; play: &#x27;ball&#x27; &#125; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = [...arr,...arr1]</span><br><span class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成数组</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefg&#x27;</span> </span><br><span class="line"><span class="keyword">const</span> newStr = [...str]</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;,&#x27;g&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构赋值   数组对象都可以</span></span><br><span class="line"><span class="keyword">const</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> bb = [...aa,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>项目里常用的就是在函数里，用来解构赋值的比较多</strong></p>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>react 中使用Swiper轮播图插件</title>
+    <url>/myBlog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h5 id="第一步、安装"><a href="#第一步、安装" class="headerlink" title="第一步、安装"></a>第一步、安装</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i swiper</span><br></pre></td></tr></table></figure>
+<h5 id="第二步、使用"><a href="#第二步、使用" class="headerlink" title="第二步、使用"></a>第二步、使用</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide &#125; <span class="keyword">from</span> <span class="string">&#x27;swiper/react&#x27;</span>;</span><br><span class="line"><span class="comment">//根据自己的需要引用样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper.less&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">      slidesPerView=&#123;<span class="number">3</span>&#125;</span><br><span class="line">      onSlideChange=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;slide change&#x27;</span>)&#125;</span><br><span class="line">      onSwiper=&#123;<span class="function">(<span class="params">swiper</span>) =&gt;</span> <span class="built_in">console</span>.log(swiper)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">1</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">2</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">3</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">4</span>&lt;/SwiperSlide&gt;</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>到这一个轮播图就已经实现了，但是只是轮播图没有别的东西，比如左右的按钮。这些需要我们手动添加。</strong></p>
+<h5 id="第三步、添加功能（例：navigation按钮）"><a href="#第三步、添加功能（例：navigation按钮）" class="headerlink" title="第三步、添加功能（例：navigation按钮）"></a>第三步、添加功能（例：navigation按钮）</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入所需功能和样式文件</span></span><br><span class="line"><span class="keyword">import</span> SwiperCore, &#123; Navigation &#125; <span class="keyword">from</span> <span class="string">&quot;swiper&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;swiper/components/navigation/navigation.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">SwiperCore.use([Navigation]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件上添加属性</span></span><br><span class="line">  &lt;Swiper</span><br><span class="line">    spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">    slidesPerView=&#123;<span class="number">1</span>&#125;</span><br><span class="line">    navigation</span><br><span class="line">    style=&#123;&#123; <span class="attr">padding</span>: <span class="string">&quot;24px&quot;</span> &#125;&#125;</span><br><span class="line">    &gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>以上就是在react中使用swiper插件。</strong></p>
+]]></content>
+      <tags>
+        <tag>React</tag>
+        <tag>swiper</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>对Ant-Design Table组件进行封装</title>
     <url>/myBlog/2021/02/26/2021-02-26-%E5%AF%B9Ant-Design-Table%E7%BB%84%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[<p><strong>Table组件封装页面,</strong></p>
@@ -56,8 +88,8 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>AntDesign</tag>
         <tag>React</tag>
+        <tag>AntDesign</tag>
       </tags>
   </entry>
   <entry>
@@ -130,22 +162,6 @@
       </tags>
   </entry>
   <entry>
-    <title>react 中使用Swiper轮播图插件</title>
-    <url>/myBlog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h5 id="第一步、安装"><a href="#第一步、安装" class="headerlink" title="第一步、安装"></a>第一步、安装</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i swiper</span><br></pre></td></tr></table></figure>
-<h5 id="第二步、使用"><a href="#第二步、使用" class="headerlink" title="第二步、使用"></a>第二步、使用</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide &#125; <span class="keyword">from</span> <span class="string">&#x27;swiper/react&#x27;</span>;</span><br><span class="line"><span class="comment">//根据自己的需要引用样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper.less&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">      slidesPerView=&#123;<span class="number">3</span>&#125;</span><br><span class="line">      onSlideChange=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;slide change&#x27;</span>)&#125;</span><br><span class="line">      onSwiper=&#123;<span class="function">(<span class="params">swiper</span>) =&gt;</span> <span class="built_in">console</span>.log(swiper)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">1</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">2</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">3</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">4</span>&lt;/SwiperSlide&gt;</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>到这一个轮播图就已经实现了，但是只是轮播图没有别的东西，比如左右的按钮。这些需要我们手动添加。</strong></p>
-<h5 id="第三步、添加功能（例：navigation按钮）"><a href="#第三步、添加功能（例：navigation按钮）" class="headerlink" title="第三步、添加功能（例：navigation按钮）"></a>第三步、添加功能（例：navigation按钮）</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入所需功能和样式文件</span></span><br><span class="line"><span class="keyword">import</span> SwiperCore, &#123; Navigation &#125; <span class="keyword">from</span> <span class="string">&quot;swiper&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;swiper/components/navigation/navigation.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">SwiperCore.use([Navigation]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件上添加属性</span></span><br><span class="line">  &lt;Swiper</span><br><span class="line">    spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">    slidesPerView=&#123;<span class="number">1</span>&#125;</span><br><span class="line">    navigation</span><br><span class="line">    style=&#123;&#123; <span class="attr">padding</span>: <span class="string">&quot;24px&quot;</span> &#125;&#125;</span><br><span class="line">    &gt;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>以上就是在react中使用swiper插件。</strong></p>
-]]></content>
-      <tags>
-        <tag>React</tag>
-        <tag>swiper</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>React项目(UmiJS)中使用高德地图</title>
     <url>/myBlog/2021/03/02/2021-03-02-React%E9%A1%B9%E7%9B%AE(UmiJS)%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
     <content><![CDATA[<h5 id="React-AMap"><a href="#React-AMap" class="headerlink" title="React AMap"></a>React AMap</h5><p>这是一个基于 React 封装的高德地图组件.</p>
@@ -160,60 +176,6 @@
 ]]></content>
       <tags>
         <tag>React UmiJS</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>扩展运算符(...)的复习</title>
-    <url>/myBlog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<p><strong>最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。</strong></p>
-<p><strong>像下面这样</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> setCacheComponents([</span><br><span class="line">        ...cacheComponentsClone,</span><br><span class="line">        &#123;</span><br><span class="line">          ...currentPane,</span><br><span class="line">          name: name || obj.item.props.children[<span class="number">1</span>] <span class="comment">// 如果调用addtab时传入了name则使用此name</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------------</span></span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          tableData: [</span><br><span class="line">            ...state.tableData,</span><br><span class="line">            &#123;</span><br><span class="line">              params: &#123;</span><br><span class="line">                ...payload.params,</span><br><span class="line">                page: payload.page || <span class="number">1</span>,</span><br><span class="line">                pageSize: payload.pageSize || <span class="number">10</span></span><br><span class="line">              &#125;,</span><br><span class="line">              tableKey: payload.tableKey,</span><br><span class="line">              loading: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>就整理了一下扩展运算符的用法。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    age: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    hobby:&#123;</span><br><span class="line">        play: <span class="string">&quot;ball&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; ...obj&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newObj);<span class="comment">//&#123; name: &#x27;张三&#x27;, age: &#x27;20&#x27;, sex: &#x27;男&#x27;, hobby: &#123; play: &#x27;ball&#x27; &#125; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = [...arr,...arr1]</span><br><span class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成数组</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefg&#x27;</span> </span><br><span class="line"><span class="keyword">const</span> newStr = [...str]</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;,&#x27;g&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构赋值   数组对象都可以</span></span><br><span class="line"><span class="keyword">const</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> bb = [...aa,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>项目里常用的就是在函数里，用来解构赋值的比较多</strong></p>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS margin折叠</title>
-    <url>/myBlog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/</url>
-    <content><![CDATA[<h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p>
-<p><strong>这就是margin折叠</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> //这里给子元素设置margin-top</span><br><span class="line">//父元素却向下移动了101px</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;car-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .main &#123;</span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1440px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">810px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/bg.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">19px</span> <span class="number">0</span> <span class="number">17px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.car-message &#123;</span><br><span class="line"><span class="css">  <span class="attribute">margin-top</span>: <span class="number">101px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/one.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1404px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">51px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">  <span class="attribute">align-items</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>百度了下</strong></p>
-<p><strong>外边距叠加存在两种情况：一是父子外边距叠加；二是兄弟外边距叠加。</strong></p>
-<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><strong>兄弟间重叠时</strong></p>
-<ol>
-<li><strong>底部元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
-<li><strong>底部元素的position的值为absolute/fixed</strong></li>
-</ol>
-<p><strong>父元素与子元素重叠</strong></p>
-<ol>
-<li><strong>父元素加入(<code>overflow: hidden</code>);</strong></li>
-<li><strong>父元素添加透明边框(<code>border:1px solid transparent</code>);</strong></li>
-<li><strong>子元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
-<li><strong>子元素加入浮动属性或定位</strong></li>
-</ol>
-<p><strong>这里我给父元素设置了<code>overflow:hidden</code>就解决了。</strong></p>
-]]></content>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>从数组中取出随机几个数组成新数组（不重复取）</title>
-    <url>/myBlog/2021/03/10/2021-03-10-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E5%87%BA%E9%9A%8F%E6%9C%BA%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%E6%96%B0%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8F%96%EF%BC%89/</url>
-    <content><![CDATA[<p>​     要给自己的商城，加一个推荐商品的功能。想让他随机从商品表中取出4个数据。</p>
-<p>​     一开始我用<code>Math.random()*arr.length</code>但是会取出相同的。这样就不太对，哪有推荐两个相同的商品呢。</p>
-<p>​    然后想到获取当前选择的下标，把选择的那个删除。下一次随机，就随机不到那个数了。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//前台传来的当前商品的id</span></span><br><span class="line"><span class="keyword">const</span> nowGoodsIndex = req.query.goods_id-<span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">const</span> goods = <span class="keyword">await</span> Goods.find()</span><br><span class="line">    <span class="keyword">let</span> arr = []</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存入数组的id,因为id就是从1开始往上加。</span></span><br><span class="line">    goods.forEach(<span class="function">(<span class="params">element, index</span>) =&gt;</span> &#123;</span><br><span class="line">        arr.push(index+<span class="number">1</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//用splice把当前商品的id删除避免重复</span></span><br><span class="line">    arr.splice(nowGoodsIndex, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> newArr = []</span><br><span class="line">    <span class="comment">//随机取出4个，取出来一个就把那个数在数组中删掉。避免重复。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * arr.length);</span><br><span class="line">        newArr.push(arr[index]);</span><br><span class="line">        <span class="comment">//获取后，在数组中删除已经加入的随机数</span></span><br><span class="line">        arr.splice(index, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
       </tags>
   </entry>
   <entry>
@@ -276,6 +238,132 @@
       </tags>
   </entry>
   <entry>
+    <title>CSS margin折叠</title>
+    <url>/myBlog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/</url>
+    <content><![CDATA[<h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p>
+<p><strong>这就是margin折叠</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> //这里给子元素设置margin-top</span><br><span class="line">//父元素却向下移动了101px</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;car-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .main &#123;</span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1440px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">810px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/bg.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">19px</span> <span class="number">0</span> <span class="number">17px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.car-message &#123;</span><br><span class="line"><span class="css">  <span class="attribute">margin-top</span>: <span class="number">101px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/one.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1404px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">51px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">  <span class="attribute">align-items</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>百度了下</strong></p>
+<p><strong>外边距叠加存在两种情况：一是父子外边距叠加；二是兄弟外边距叠加。</strong></p>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><strong>兄弟间重叠时</strong></p>
+<ol>
+<li><strong>底部元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
+<li><strong>底部元素的position的值为absolute/fixed</strong></li>
+</ol>
+<p><strong>父元素与子元素重叠</strong></p>
+<ol>
+<li><strong>父元素加入(<code>overflow: hidden</code>);</strong></li>
+<li><strong>父元素添加透明边框(<code>border:1px solid transparent</code>);</strong></li>
+<li><strong>子元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
+<li><strong>子元素加入浮动属性或定位</strong></li>
+</ol>
+<p><strong>这里我给父元素设置了<code>overflow:hidden</code>就解决了。</strong></p>
+]]></content>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>从数组中取出随机几个数组成新数组（不重复取）</title>
+    <url>/myBlog/2021/03/10/2021-03-10-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E5%87%BA%E9%9A%8F%E6%9C%BA%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%E6%96%B0%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8F%96%EF%BC%89/</url>
+    <content><![CDATA[<p>​     要给自己的商城，加一个推荐商品的功能。想让他随机从商品表中取出4个数据。</p>
+<p>​     一开始我用<code>Math.random()*arr.length</code>但是会取出相同的。这样就不太对，哪有推荐两个相同的商品呢。</p>
+<p>​    然后想到获取当前选择的下标，把选择的那个删除。下一次随机，就随机不到那个数了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//前台传来的当前商品的id</span></span><br><span class="line"><span class="keyword">const</span> nowGoodsIndex = req.query.goods_id-<span class="number">1</span></span><br><span class="line"> </span><br><span class="line">    <span class="keyword">const</span> goods = <span class="keyword">await</span> Goods.find()</span><br><span class="line">    <span class="keyword">let</span> arr = []</span><br><span class="line"></span><br><span class="line">    <span class="comment">//存入数组的id,因为id就是从1开始往上加。</span></span><br><span class="line">    goods.forEach(<span class="function">(<span class="params">element, index</span>) =&gt;</span> &#123;</span><br><span class="line">        arr.push(index+<span class="number">1</span>)</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="comment">//用splice把当前商品的id删除避免重复</span></span><br><span class="line">    arr.splice(nowGoodsIndex, <span class="number">1</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">let</span> newArr = []</span><br><span class="line">    <span class="comment">//随机取出4个，取出来一个就把那个数在数组中删掉。避免重复。</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt;= <span class="number">3</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">let</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * arr.length);</span><br><span class="line">        newArr.push(arr[index]);</span><br><span class="line">        <span class="comment">//获取后，在数组中删除已经加入的随机数</span></span><br><span class="line">        arr.splice(index, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>创建一个vue3.0+element-plus项目</title>
+    <url>/myBlog/2021/03/20/2021-03-20-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvue3.0+element-plus%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h5 id="创建一个vue3-0-element-plus项目"><a href="#创建一个vue3-0-element-plus项目" class="headerlink" title="创建一个vue3.0+element-plus项目"></a>创建一个vue3.0+element-plus项目</h5><p><strong>首先要确认自己电脑中的@vue/cli&gt;4.5</strong></p>
+<p><strong>可以用<code>vue -V</code>查看</strong></p>
+<p><strong>没有的话可以用<code>npm i -g @vue/cli</code>升级</strong></p>
+<p><strong>升级成功后</strong></p>
+<p>**<code>vue create my-pro</code>**这里选择Vue 3的项目。</p>
+<p><img src="https://s4.ax1x.com/2021/03/20/6h81Dx.png"></p>
+<p>创建成功后。</p>
+<p>执行下面的命令。</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> my-<span class="keyword">pro</span></span><br><span class="line">vue <span class="built_in">add</span> element-plus</span><br></pre></td></tr></table></figure>
+<p>全局加载和按需加载自己选择。</p>
+<p>安装成功后。</p>
+<p><code>npm run serve</code></p>
+<p>发现项目跑起来了。</p>
+<p><img src="https://s4.ax1x.com/2021/03/20/6h8hMn.png"></p>
+<p>按需加载的话，需要在src/plugins/element.js文件里，引入自己所需要的组件就可以了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ElButton,ElTimeline &#125; <span class="keyword">from</span> <span class="string">&#x27;element-plus&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (app) =&gt; &#123;</span><br><span class="line">  app.use(ElButton)</span><br><span class="line">  app.use(ElTimeline)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>vue3</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>杂记</title>
+    <url>/myBlog/2021/03/19/2021-03-19-%E6%9D%82%E8%AE%B0/</url>
+    <content><![CDATA[<p>年初七到常州实习，租的短租房，和软件班的一个同事合住，六十一天。当晚凌晨两点多，接到了她的电话。她问我，人在哪，明天上不上班。我说我在常州明天上班。那我就舒服多了她说。</p>
+<p>认识这么久好像除了当初追她的时候，也是凌晨两点多，接过她一次电话。她说你害怕那种夜里无助的感觉，不想再把自己全身心托付给另一个人了。</p>
+<p>第二个电话就是分手这次。</p>
+<p>还在一起的时候，她希望夜里打电话，我要接到。我当时无法理解，她说的那种夜里无助，害怕的感觉，打我的电话却打不通的那种绝望，有多难受。</p>
+<p>我不理解夜里有什么好奔溃的，早点睡觉不行吗？我也没想到追她的时候她和我说的话。完全的抛在了脑后。</p>
+<p>后来我才慢慢的明白，她说的那种感觉。</p>
+<p>人和人是不一样的，我这么多年一直没有理解这个道理。直到最近才深有体会。</p>
+<p>我总觉得，我可以做到的事，我不以为意地事情，我觉得可以的OK的事情，别人也应该可以。</p>
+<p>原来，人的性格各有不同，要尊重不同的性格，不同的人生。</p>
+<p>可是都是亡羊补牢，为时已晚。</p>
+<p>她就这样又一次的闯进了我的生活，打乱了我生活的节奏，扰乱了我的心绪，然后挥挥衣袖，没有一丝的拖泥带水，消失在丛林深处。</p>
+<p>煎熬了两周，我重新开始了我的生活节奏，上班下班，锻炼，减肥。我内心深处，自然而然地认为，或许我变得更好，她就会回来。</p>
+<p>真的很感谢她，没有她，可能我现在还是一个在学校宿舍混吃等死，找不到工作的应届生吧。为了她努力学习找工作，让我现在坐在办公室里，成为了班级里少数优秀的人。</p>
+<p>别人向往投来羡慕的目光，我知道这一切都是因为她，但是现在她不在了。</p>
+<p>我曾急切地想把她找回来。急切地想得到她热烈地回应。</p>
+<p>想到高中时候地一篇作文题目。</p>
+<p>你若盛开，蝴蝶自来。</p>
+<p>我不知道最后，来的是不是她这只蝴蝶，我只知道只要我盛开了，才会有蝴蝶。</p>
+<p>谁回去叮一朵没有盛开地花呢？</p>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS的一些知识点</title>
+    <url>/myBlog/2021/03/12/2021-03-12-CSS%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<p>今天是三月十二日植树节，记录一些自己写样式的时候，以前不知道的东西。</p>
+<h5 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h5><p><strong>设置<code>padding</code>的时候为了不改变盒子的大小要设置<code>box-sizing:border-box</code></strong></p>
+<h5 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h5><p><strong>盒子内部阴影在末尾加一个<code>inset</code>比如<code>box-shadow: 0 0 5px 0 red inset</code></strong></p>
+<h5 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h5><p><strong>设置透明度的时候<code>opacity:0.8</code>这样会让父元素子元素也改变透明度。可以改成<code>rgba(255,255,255,0.8)</code>的这种方式</strong></p>
+<h5 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h5><p><strong>网页字体最小就是<code>12px</code></strong></p>
+<h5 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h5><p><strong>设置背景图时使用路径时<code> background-image: url(~@/assets/carMonitor/warn-info.png);</code>写成这种样式。还有加上<code> background-size: cover;</code></strong></p>
+<p>不想写了，今天很难受，心情很不好。</p>
+]]></content>
+      <tags>
+        <tag>css</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>杂记02</title>
+    <url>/myBlog/2021/03/22/2021-03-22-%E6%9D%82%E8%AE%B002/</url>
+    <content><![CDATA[<p>今天也没学什么新东西，但是博客总要点新的东西吧。就随便写一点吧。</p>
+<p>今天想给自己的在线购物商城加一个客服聊天功能。百度了下用<code>socket.io</code>可以实现，但是自己折腾了半天也没有成功，就放弃了。</p>
+<p>不过给订单页面加了一个快递查询的功能，用的假数据，点击直接返回一串快递信息，是我自己淘宝买东西的物流信息。用<code>element-ui</code>的<code>TimeLine</code>实现的。</p>
+<p>其实想了很多功能，却不知道怎么实现，比如点击付款按钮，跳出来一个二维码，扫描二维码，跳转到订单页面，没有找到什么插件可以监听二维码的扫描事件。用的<code>qrimage</code>只能生成二维码，扫描跳转到设置特定的页面。</p>
+<p>痛点很多，要学习的东西也很多。</p>
+<p>总感觉自己不是一个合格的前端。</p>
+<p>不务正业去学了后台。写了几个接口学了<code>mongo</code>,也满足自己平时写写小项目自己写后台了。也挺不错的。express真的挺香的。</p>
+<p>昨天去滆湖公园放了风筝，很开心。和高中同学聊聊天散散步真的很愉快。</p>
+<p>还是没事多出去走一走，呼吸呼吸新鲜的空气。</p>
+<p>整个人的精神会好很多。</p>
+<p>看着漫天的飞翔的风筝，抽芽的柳树，盛开的油菜花和家乡的Sakura。</p>
+<p>那时候之前所有的烦闷与苦痛全部抛在脑后。</p>
+<p>真好！</p>
+<p><a href=""><img src="https://z3.ax1x.com/2021/03/22/6ouenP.jpg" alt="6ouenP.jpg"></a></p>
+]]></content>
+      <tags>
+        <tag>随笔</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Vue3中路由的相关配置</title>
     <url>/myBlog/2021/03/16/Vue3%E4%B8%AD%E8%B7%AF%E7%94%B1%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h5 id="Vue3中路由的相关配置"><a href="#Vue3中路由的相关配置" class="headerlink" title="Vue3中路由的相关配置"></a>Vue3中路由的相关配置</h5><h6 id="1、路由的配置"><a href="#1、路由的配置" class="headerlink" title="1、路由的配置"></a>1、路由的配置</h6><p><strong>在src路径下新建router文件夹，然后在该文件夹新建index.js文件</strong></p>
@@ -313,21 +401,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS的一些知识点</title>
-    <url>/myBlog/2021/03/12/2021-03-12-CSS%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<p>今天是三月十二日植树节，记录一些自己写样式的时候，以前不知道的东西。</p>
-<h5 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h5><p><strong>设置<code>padding</code>的时候为了不改变盒子的大小要设置<code>box-sizing:border-box</code></strong></p>
-<h5 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h5><p><strong>盒子内部阴影在末尾加一个<code>inset</code>比如<code>box-shadow: 0 0 5px 0 red inset</code></strong></p>
-<h5 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h5><p><strong>设置透明度的时候<code>opacity:0.8</code>这样会让父元素子元素也改变透明度。可以改成<code>rgba(255,255,255,0.8)</code>的这种方式</strong></p>
-<h5 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h5><p><strong>网页字体最小就是<code>12px</code></strong></p>
-<h5 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h5><p><strong>设置背景图时使用路径时<code> background-image: url(~@/assets/carMonitor/warn-info.png);</code>写成这种样式。还有加上<code> background-size: cover;</code></strong></p>
-<p>不想写了，今天很难受，心情很不好。</p>
-]]></content>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Dav结构的分析</title>
     <url>/myBlog/2021/02/23/davjs%E5%AD%A6%E4%B9%A0/</url>
     <content><![CDATA[<p>下面是davjs   models的一个基本结构</p>
@@ -337,12 +410,6 @@
         <tag>React</tag>
         <tag>Davjs</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>新年快乐</title>
-    <url>/myBlog/2021/02/11/hello-world/</url>
-    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
-]]></content>
   </entry>
   <entry>
     <title>react hooks学习</title>
@@ -364,6 +431,12 @@
       <tags>
         <tag>React</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>新年快乐</title>
+    <url>/myBlog/2021/02/11/hello-world/</url>
+    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
+]]></content>
   </entry>
   <entry>
     <title>davJs学习02</title>
@@ -595,79 +668,6 @@
 ]]></content>
       <tags>
         <tag>Vue3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>创建一个vue3.0+element-plus项目</title>
-    <url>/myBlog/2021/03/20/2021-03-20-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvue3.0+element-plus%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<h5 id="创建一个vue3-0-element-plus项目"><a href="#创建一个vue3-0-element-plus项目" class="headerlink" title="创建一个vue3.0+element-plus项目"></a>创建一个vue3.0+element-plus项目</h5><p><strong>首先要确认自己电脑中的@vue/cli&gt;4.5</strong></p>
-<p><strong>可以用<code>vue -V</code>查看</strong></p>
-<p><strong>没有的话可以用<code>npm i -g @vue/cli</code>升级</strong></p>
-<p><strong>升级成功后</strong></p>
-<p>**<code>vue create my-pro</code>**这里选择Vue 3的项目。</p>
-<p><img src="https://s4.ax1x.com/2021/03/20/6h81Dx.png"></p>
-<p>创建成功后。</p>
-<p>执行下面的命令。</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> my-<span class="keyword">pro</span></span><br><span class="line">vue <span class="built_in">add</span> element-plus</span><br></pre></td></tr></table></figure>
-<p>全局加载和按需加载自己选择。</p>
-<p>安装成功后。</p>
-<p><code>npm run serve</code></p>
-<p>发现项目跑起来了。</p>
-<p><img src="https://s4.ax1x.com/2021/03/20/6h8hMn.png"></p>
-<p>按需加载的话，需要在src/plugins/element.js文件里，引入自己所需要的组件就可以了。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ElButton,ElTimeline &#125; <span class="keyword">from</span> <span class="string">&#x27;element-plus&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (app) =&gt; &#123;</span><br><span class="line">  app.use(ElButton)</span><br><span class="line">  app.use(ElTimeline)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>vue3</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>杂记</title>
-    <url>/myBlog/2021/03/19/2021-03-19-%E6%9D%82%E8%AE%B0/</url>
-    <content><![CDATA[<p>年初七到常州实习，租的短租房，和软件班的一个同事合住，六十一天。当晚凌晨两点多，接到了她的电话。她问我，人在哪，明天上不上班。我说我在常州明天上班。那我就舒服多了她说。</p>
-<p>认识这么久好像除了当初追她的时候，也是凌晨两点多，接过她一次电话。她说你害怕那种夜里无助的感觉，不想再把自己全身心托付给另一个人了。</p>
-<p>第二个电话就是分手这次。</p>
-<p>还在一起的时候，她希望夜里打电话，我要接到。我当时无法理解，她说的那种夜里无助，害怕的感觉，打我的电话却打不通的那种绝望，有多难受。</p>
-<p>我不理解夜里有什么好奔溃的，早点睡觉不行吗？我也没想到追她的时候她和我说的话。完全的抛在了脑后。</p>
-<p>后来我才慢慢的明白，她说的那种感觉。</p>
-<p>人和人是不一样的，我这么多年一直没有理解这个道理。直到最近才深有体会。</p>
-<p>我总觉得，我可以做到的事，我不以为意地事情，我觉得可以的OK的事情，别人也应该可以。</p>
-<p>原来，人的性格各有不同，要尊重不同的性格，不同的人生。</p>
-<p>可是都是亡羊补牢，为时已晚。</p>
-<p>她就这样又一次的闯进了我的生活，打乱了我生活的节奏，扰乱了我的心绪，然后挥挥衣袖，没有一丝的拖泥带水，消失在丛林深处。</p>
-<p>煎熬了两周，我重新开始了我的生活节奏，上班下班，锻炼，减肥。我内心深处，自然而然地认为，或许我变得更好，她就会回来。</p>
-<p>真的很感谢她，没有她，可能我现在还是一个在学校宿舍混吃等死，找不到工作的应届生吧。为了她努力学习找工作，让我现在坐在办公室里，成为了班级里少数优秀的人。</p>
-<p>别人向往投来羡慕的目光，我知道这一切都是因为她，但是现在她不在了。</p>
-<p>我曾急切地想把她找回来。急切地想得到她热烈地回应。</p>
-<p>想到高中时候地一篇作文题目。</p>
-<p>你若盛开，蝴蝶自来。</p>
-<p>我不知道最后，来的是不是她这只蝴蝶，我只知道只要我盛开了，才会有蝴蝶。</p>
-<p>谁回去叮一朵没有盛开地花呢？</p>
-]]></content>
-      <tags>
-        <tag>随笔</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>杂记02</title>
-    <url>/myBlog/2021/03/22/2021-03-22-%E6%9D%82%E8%AE%B002/</url>
-    <content><![CDATA[<p>今天也没学什么新东西，但是博客总要点新的东西吧。就随便写一点吧。</p>
-<p>今天想给自己的在线购物商城加一个客服聊天功能。百度了下用<code>socket.io</code>可以实现，但是自己折腾了半天也没有成功，就放弃了。</p>
-<p>不过给订单页面加了一个快递查询的功能，用的假数据，点击直接返回一串快递信息，是我自己淘宝买东西的物流信息。用<code>element-ui</code>的<code>TimeLine</code>实现的。</p>
-<p>其实想了很多功能，却不知道怎么实现，比如点击付款按钮，跳出来一个二维码，扫描二维码，跳转到订单页面，没有找到什么插件可以监听二维码的扫描事件。用的<code>qrimage</code>只能生成二维码，扫描跳转到设置特定的页面。</p>
-<p>痛点很多，要学习的东西也很多。</p>
-<p>总感觉自己不是一个合格的前端。</p>
-<p>不务正业去学了后台。写了几个接口学了<code>mongo</code>,也满足自己平时写写小项目自己写后台了。也挺不错的。express真的挺香的。</p>
-<p>昨天去滆湖公园放了风筝，很开心。和高中同学聊聊天散散步真的很愉快。</p>
-<p>还是没事多出去走一走，呼吸呼吸新鲜的空气。</p>
-<p>整个人的精神会好很多。</p>
-<p>看着漫天的飞翔的风筝，抽芽的柳树，盛开的油菜花和家乡的Sakura。</p>
-<p>那时候之前所有的烦闷与苦痛全部抛在脑后。</p>
-<p>真好！</p>
-<p><a href=""><img src="https://z3.ax1x.com/2021/03/22/6ouenP.jpg" alt="6ouenP.jpg"></a></p>
-]]></content>
-      <tags>
-        <tag>随笔</tag>
       </tags>
   </entry>
 </search>
