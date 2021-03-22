@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/myBlog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/myBlog/"/>
-  <updated>2021-03-20T06:15:27.903Z</updated>
+  <updated>2021-03-22T08:18:42.194Z</updated>
   <id>https://gitee.com/shimmer612/myBlog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>杂记02</title>
+    <link href="https://gitee.com/shimmer612/myBlog/2021/03/22/2021-03-22-%E6%9D%82%E8%AE%B002/"/>
+    <id>https://gitee.com/shimmer612/myBlog/2021/03/22/2021-03-22-%E6%9D%82%E8%AE%B002/</id>
+    <published>2021-03-21T16:00:00.000Z</published>
+    <updated>2021-03-22T08:18:42.194Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天也没学什么新东西，但是博客总要点新的东西吧。就随便写一点吧。</p><p>今天想给自己的在线购物商城加一个客服聊天功能。百度了下用<code>socket.io</code>可以实现，但是自己折腾了半天也没有成功，就放弃了。</p><p>不过给订单页面加了一个快递查询的功能，用的假数据，点击直接返回一串快递信息，是我自己淘宝买东西的物流信息。用<code>element-ui</code>的<code>TimeLine</code>实现的。</p><p>其实想了很多功能，却不知道怎么实现，比如点击付款按钮，跳出来一个二维码，扫描二维码，跳转到订单页面，没有找到什么插件可以监听二维码的扫描事件。用的<code>qrimage</code>只能生成二维码，扫描跳转到设置特定的页面。</p><p>痛点很多，要学习的东西也很多。</p><p>总感觉自己不是一个合格的前端。</p><p>不务正业去学了后台。写了几个接口学了<code>mongo</code>,也满足自己平时写写小项目自己写后台了。也挺不错的。express真的挺香的。</p><p>昨天去滆湖公园放了风筝，很开心。和高中同学聊聊天散散步真的很愉快。</p><p>还是没事多出去走一走，呼吸呼吸新鲜的空气。</p><p>整个人的精神会好很多。</p><p>看着漫天的飞翔的风筝，抽芽的柳树，盛开的油菜花和家乡的Sakura。</p><p>那时候之前所有的烦闷与苦痛全部抛在脑后。</p><p>真好！</p><p><a href=""><img src="https://z3.ax1x.com/2021/03/22/6ouenP.jpg" alt="6ouenP.jpg"></a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天也没学什么新东西，但是博客总要点新的东西吧。就随便写一点吧。&lt;/p&gt;
+&lt;p&gt;今天想给自己的在线购物商城加一个客服聊天功能。百度了下用&lt;code&gt;socket.io&lt;/code&gt;可以实现，但是自己折腾了半天也没有成功，就放弃了。&lt;/p&gt;
+&lt;p&gt;不过给订单页面加了一个快递查</summary>
+      
+    
+    
+    
+    
+    <category term="随笔" scheme="https://gitee.com/shimmer612/myBlog/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>创建一个vue3.0+element-plus项目</title>
@@ -470,27 +494,6 @@
     
     
     <category term="Aboutme" scheme="https://gitee.com/shimmer612/myBlog/tags/Aboutme/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>新年快乐</title>
-    <link href="https://gitee.com/shimmer612/myBlog/2021/02/11/hello-world/"/>
-    <id>https://gitee.com/shimmer612/myBlog/2021/02/11/hello-world/</id>
-    <published>2021-02-10T16:00:00.000Z</published>
-    <updated>2021-02-23T05:25:35.342Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>大家新年快乐</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;大家新年快乐&lt;/strong&gt;&lt;/p&gt;
-</summary>
-      
-    
-    
-    
     
   </entry>
   
