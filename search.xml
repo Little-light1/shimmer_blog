@@ -1,38 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>扩展运算符(...)的复习</title>
-    <url>/myBlog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/</url>
-    <content><![CDATA[<p><strong>最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。</strong></p>
-<p><strong>像下面这样</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> setCacheComponents([</span><br><span class="line">        ...cacheComponentsClone,</span><br><span class="line">        &#123;</span><br><span class="line">          ...currentPane,</span><br><span class="line">          name: name || obj.item.props.children[<span class="number">1</span>] <span class="comment">// 如果调用addtab时传入了name则使用此name</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------------</span></span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          tableData: [</span><br><span class="line">            ...state.tableData,</span><br><span class="line">            &#123;</span><br><span class="line">              params: &#123;</span><br><span class="line">                ...payload.params,</span><br><span class="line">                page: payload.page || <span class="number">1</span>,</span><br><span class="line">                pageSize: payload.pageSize || <span class="number">10</span></span><br><span class="line">              &#125;,</span><br><span class="line">              tableKey: payload.tableKey,</span><br><span class="line">              loading: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>就整理了一下扩展运算符的用法。</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    age: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    hobby:&#123;</span><br><span class="line">        play: <span class="string">&quot;ball&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; ...obj&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newObj);<span class="comment">//&#123; name: &#x27;张三&#x27;, age: &#x27;20&#x27;, sex: &#x27;男&#x27;, hobby: &#123; play: &#x27;ball&#x27; &#125; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = [...arr,...arr1]</span><br><span class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成数组</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefg&#x27;</span> </span><br><span class="line"><span class="keyword">const</span> newStr = [...str]</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;,&#x27;g&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构赋值   数组对象都可以</span></span><br><span class="line"><span class="keyword">const</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> bb = [...aa,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>项目里常用的就是在函数里，用来解构赋值的比较多</strong></p>
-]]></content>
-      <tags>
-        <tag>javascript</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>react 中使用Swiper轮播图插件</title>
-    <url>/myBlog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<h5 id="第一步、安装"><a href="#第一步、安装" class="headerlink" title="第一步、安装"></a>第一步、安装</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i swiper</span><br></pre></td></tr></table></figure>
-<h5 id="第二步、使用"><a href="#第二步、使用" class="headerlink" title="第二步、使用"></a>第二步、使用</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide &#125; <span class="keyword">from</span> <span class="string">&#x27;swiper/react&#x27;</span>;</span><br><span class="line"><span class="comment">//根据自己的需要引用样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper.less&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">      slidesPerView=&#123;<span class="number">3</span>&#125;</span><br><span class="line">      onSlideChange=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;slide change&#x27;</span>)&#125;</span><br><span class="line">      onSwiper=&#123;<span class="function">(<span class="params">swiper</span>) =&gt;</span> <span class="built_in">console</span>.log(swiper)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">1</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">2</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">3</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">4</span>&lt;/SwiperSlide&gt;</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p><strong>到这一个轮播图就已经实现了，但是只是轮播图没有别的东西，比如左右的按钮。这些需要我们手动添加。</strong></p>
-<h5 id="第三步、添加功能（例：navigation按钮）"><a href="#第三步、添加功能（例：navigation按钮）" class="headerlink" title="第三步、添加功能（例：navigation按钮）"></a>第三步、添加功能（例：navigation按钮）</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入所需功能和样式文件</span></span><br><span class="line"><span class="keyword">import</span> SwiperCore, &#123; Navigation &#125; <span class="keyword">from</span> <span class="string">&quot;swiper&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;swiper/components/navigation/navigation.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">SwiperCore.use([Navigation]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件上添加属性</span></span><br><span class="line">  &lt;Swiper</span><br><span class="line">    spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">    slidesPerView=&#123;<span class="number">1</span>&#125;</span><br><span class="line">    navigation</span><br><span class="line">    style=&#123;&#123; <span class="attr">padding</span>: <span class="string">&quot;24px&quot;</span> &#125;&#125;</span><br><span class="line">    &gt;</span><br></pre></td></tr></table></figure>
-
-
-<p><strong>以上就是在react中使用swiper插件。</strong></p>
-]]></content>
-      <tags>
-        <tag>React</tag>
-        <tag>swiper</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>对Ant-Design Table组件进行封装</title>
     <url>/myBlog/2021/02/26/2021-02-26-%E5%AF%B9Ant-Design-Table%E7%BB%84%E4%BB%B6%E8%BF%9B%E8%A1%8C%E5%B0%81%E8%A3%85/</url>
     <content><![CDATA[<p><strong>Table组件封装页面,</strong></p>
@@ -88,8 +56,41 @@
 </ul>
 ]]></content>
       <tags>
-        <tag>React</tag>
         <tag>AntDesign</tag>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React项目(UmiJS)中使用高德地图</title>
+    <url>/myBlog/2021/03/02/2021-03-02-React%E9%A1%B9%E7%9B%AE(UmiJS)%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
+    <content><![CDATA[<h5 id="React-AMap"><a href="#React-AMap" class="headerlink" title="React AMap"></a>React AMap</h5><p>这是一个基于 React 封装的高德地图组件.</p>
+<p><strong>文档地址</strong></p>
+<p><code>https://uiw.gitee.io/react-amap/#/</code></p>
+<h6 id="01、安装"><a href="#01、安装" class="headerlink" title="01、安装"></a>01、安装</h6><p><code>npm install @uiw/react-amap --save</code></p>
+<h6 id="02、使用"><a href="#02、使用" class="headerlink" title="02、使用"></a>02、使用</h6><p>在文档左侧找到需要使用的例子。在右侧直接复制对应代码。按需进行修改。</p>
+<h6 id="03、例子（贝塞尔曲线的使用）"><a href="#03、例子（贝塞尔曲线的使用）" class="headerlink" title="03、例子（贝塞尔曲线的使用）"></a>03、例子（贝塞尔曲线的使用）</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="built_in">Map</span>, APILoader, BezierCurve &#125; <span class="keyword">from</span> <span class="string">&quot;@uiw/react-amap&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CarLine = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [show] = useState(<span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">const</span> path = [<span class="comment">// 每个弧线段有两种描述方式</span></span><br><span class="line">        [<span class="number">116.39</span>, <span class="number">39.91</span>, <span class="number">116.37</span>, <span class="number">39.91</span>],<span class="comment">// 起点</span></span><br><span class="line">        <span class="comment">// 第一段弧线</span></span><br><span class="line">        [<span class="number">116.380298</span>, <span class="number">39.907771</span>, <span class="number">116.38</span>, <span class="number">39.90</span>],<span class="comment">// 控制点，途经点</span></span><br><span class="line">        <span class="comment">// 第二段弧线</span></span><br><span class="line">        [<span class="number">116.385298</span>, <span class="number">39.907771</span>, <span class="number">116.40</span>, <span class="number">39.90</span>],<span class="comment">// 控制点，途经点// 弧线段有两种描述方式1</span></span><br><span class="line">        <span class="comment">// 第三段弧线</span></span><br><span class="line">        [<span class="comment">// 弧线段有两种描述方式2</span></span><br><span class="line">            [<span class="number">116.392872</span>, <span class="number">39.887391</span>],<span class="comment">// 控制点</span></span><br><span class="line">            [<span class="number">116.40772</span>, <span class="number">39.909252</span>],<span class="comment">// 控制点</span></span><br><span class="line">            [<span class="number">116.41</span>, <span class="number">39.89</span>]<span class="comment">// 途经点</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">// 第四段弧线</span></span><br><span class="line">        [<span class="number">116.423857</span>, <span class="number">39.889498</span>, <span class="number">116.422312</span>, <span class="number">39.899639</span>, <span class="number">116.425273</span>, <span class="number">39.902273</span>]</span><br><span class="line">        <span class="comment">// 控制点，控制点，途经点，每段最多两个控制点</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> handleParams = <span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> values</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;APILoader akay=<span class="string">&quot;a7a90e05a37d3f6bf76d4a9032fc9129&quot;</span>&gt;</span><br><span class="line">                &lt;div style=&#123;&#123; <span class="attr">width</span>: <span class="string">&quot;100%&quot;</span>, <span class="attr">height</span>: <span class="string">&quot;600px&quot;</span> &#125;&#125; &gt;</span><br><span class="line">                    &lt;<span class="built_in">Map</span> zoom=&#123;<span class="number">14</span>&#125; center=&#123;[<span class="number">116.397637</span>, <span class="number">39.900001</span>]&#125;&gt;</span><br><span class="line">                        &lt;BezierCurve</span><br><span class="line">                            visiable=&#123;show&#125;</span><br><span class="line">                            path=&#123;path&#125;</span><br><span class="line">                            isOutline=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">                            outlineColor=<span class="string">&quot;&quot;</span></span><br><span class="line">                            borderWeight=&#123;<span class="number">3</span>&#125;</span><br><span class="line">                            strokeColor=<span class="string">&quot;red&quot;</span></span><br><span class="line">                            strokeOpacity=&#123;<span class="number">1</span>&#125;</span><br><span class="line">                            strokeWeight=&#123;<span class="number">6</span>&#125;</span><br><span class="line">                            <span class="comment">// 线样式还支持 &#x27;dashed&#x27;</span></span><br><span class="line">                            strokeStyle=<span class="string">&quot;solid&quot;</span></span><br><span class="line">                            <span class="comment">// strokeStyle是dashed时有效</span></span><br><span class="line">                            strokeDasharray=&#123;[<span class="number">10</span>, <span class="number">10</span>]&#125;</span><br><span class="line">                            lineJoin=<span class="string">&quot;round&quot;</span></span><br><span class="line">                            lineCap=<span class="string">&quot;round&quot;</span></span><br><span class="line">                            zIndex=&#123;<span class="number">50</span>&#125;</span><br><span class="line">                        /&gt;</span><br><span class="line">                    &lt;/<span class="built_in">Map</span>&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/APILoader&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> CarLine</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><img src="https://gitee.com/shimmer612/mypicturehouse/raw/master/myPicture/Snipaste_2021-03-02_09-02-09.png" alt="image"></p>
+]]></content>
+      <tags>
+        <tag>React UmiJS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>react 中使用Swiper轮播图插件</title>
+    <url>/myBlog/2021/03/08/2021-03-08-react-%E4%B8%AD%E4%BD%BF%E7%94%A8Swiper%E8%BD%AE%E6%92%AD%E5%9B%BE%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<h5 id="第一步、安装"><a href="#第一步、安装" class="headerlink" title="第一步、安装"></a>第一步、安装</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">npm i swiper</span><br></pre></td></tr></table></figure>
+<h5 id="第二步、使用"><a href="#第二步、使用" class="headerlink" title="第二步、使用"></a>第二步、使用</h5><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Swiper, SwiperSlide &#125; <span class="keyword">from</span> <span class="string">&#x27;swiper/react&#x27;</span>;</span><br><span class="line"><span class="comment">//根据自己的需要引用样式</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;swiper/swiper.less&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Swiper</span><br><span class="line">      spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">      slidesPerView=&#123;<span class="number">3</span>&#125;</span><br><span class="line">      onSlideChange=&#123;<span class="function">() =&gt;</span> <span class="built_in">console</span>.log(<span class="string">&#x27;slide change&#x27;</span>)&#125;</span><br><span class="line">      onSwiper=&#123;<span class="function">(<span class="params">swiper</span>) =&gt;</span> <span class="built_in">console</span>.log(swiper)&#125;</span><br><span class="line">    &gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">1</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">2</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">3</span>&lt;/SwiperSlide&gt;</span><br><span class="line">      &lt;SwiperSlide&gt;Slide <span class="number">4</span>&lt;/SwiperSlide&gt;</span><br><span class="line">    &lt;/Swiper&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><strong>到这一个轮播图就已经实现了，但是只是轮播图没有别的东西，比如左右的按钮。这些需要我们手动添加。</strong></p>
+<h5 id="第三步、添加功能（例：navigation按钮）"><a href="#第三步、添加功能（例：navigation按钮）" class="headerlink" title="第三步、添加功能（例：navigation按钮）"></a>第三步、添加功能（例：navigation按钮）</h5><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//引入所需功能和样式文件</span></span><br><span class="line"><span class="keyword">import</span> SwiperCore, &#123; Navigation &#125; <span class="keyword">from</span> <span class="string">&quot;swiper&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;swiper/components/navigation/navigation.less&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line">SwiperCore.use([Navigation]);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 组件上添加属性</span></span><br><span class="line">  &lt;Swiper</span><br><span class="line">    spaceBetween=&#123;<span class="number">50</span>&#125;</span><br><span class="line">    slidesPerView=&#123;<span class="number">1</span>&#125;</span><br><span class="line">    navigation</span><br><span class="line">    style=&#123;&#123; <span class="attr">padding</span>: <span class="string">&quot;24px&quot;</span> &#125;&#125;</span><br><span class="line">    &gt;</span><br></pre></td></tr></table></figure>
+
+
+<p><strong>以上就是在react中使用swiper插件。</strong></p>
+]]></content>
+      <tags>
+        <tag>React</tag>
+        <tag>swiper</tag>
       </tags>
   </entry>
   <entry>
@@ -162,20 +163,45 @@
       </tags>
   </entry>
   <entry>
-    <title>React项目(UmiJS)中使用高德地图</title>
-    <url>/myBlog/2021/03/02/2021-03-02-React%E9%A1%B9%E7%9B%AE(UmiJS)%E4%B8%AD%E4%BD%BF%E7%94%A8%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE/</url>
-    <content><![CDATA[<h5 id="React-AMap"><a href="#React-AMap" class="headerlink" title="React AMap"></a>React AMap</h5><p>这是一个基于 React 封装的高德地图组件.</p>
-<p><strong>文档地址</strong></p>
-<p><code>https://uiw.gitee.io/react-amap/#/</code></p>
-<h6 id="01、安装"><a href="#01、安装" class="headerlink" title="01、安装"></a>01、安装</h6><p><code>npm install @uiw/react-amap --save</code></p>
-<h6 id="02、使用"><a href="#02、使用" class="headerlink" title="02、使用"></a>02、使用</h6><p>在文档左侧找到需要使用的例子。在右侧直接复制对应代码。按需进行修改。</p>
-<h6 id="03、例子（贝塞尔曲线的使用）"><a href="#03、例子（贝塞尔曲线的使用）" class="headerlink" title="03、例子（贝塞尔曲线的使用）"></a>03、例子（贝塞尔曲线的使用）</h6><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; <span class="built_in">Map</span>, APILoader, BezierCurve &#125; <span class="keyword">from</span> <span class="string">&quot;@uiw/react-amap&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CarLine = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [show] = useState(<span class="literal">true</span>);</span><br><span class="line">    <span class="keyword">const</span> path = [<span class="comment">// 每个弧线段有两种描述方式</span></span><br><span class="line">        [<span class="number">116.39</span>, <span class="number">39.91</span>, <span class="number">116.37</span>, <span class="number">39.91</span>],<span class="comment">// 起点</span></span><br><span class="line">        <span class="comment">// 第一段弧线</span></span><br><span class="line">        [<span class="number">116.380298</span>, <span class="number">39.907771</span>, <span class="number">116.38</span>, <span class="number">39.90</span>],<span class="comment">// 控制点，途经点</span></span><br><span class="line">        <span class="comment">// 第二段弧线</span></span><br><span class="line">        [<span class="number">116.385298</span>, <span class="number">39.907771</span>, <span class="number">116.40</span>, <span class="number">39.90</span>],<span class="comment">// 控制点，途经点// 弧线段有两种描述方式1</span></span><br><span class="line">        <span class="comment">// 第三段弧线</span></span><br><span class="line">        [<span class="comment">// 弧线段有两种描述方式2</span></span><br><span class="line">            [<span class="number">116.392872</span>, <span class="number">39.887391</span>],<span class="comment">// 控制点</span></span><br><span class="line">            [<span class="number">116.40772</span>, <span class="number">39.909252</span>],<span class="comment">// 控制点</span></span><br><span class="line">            [<span class="number">116.41</span>, <span class="number">39.89</span>]<span class="comment">// 途经点</span></span><br><span class="line">        ],</span><br><span class="line">        <span class="comment">// 第四段弧线</span></span><br><span class="line">        [<span class="number">116.423857</span>, <span class="number">39.889498</span>, <span class="number">116.422312</span>, <span class="number">39.899639</span>, <span class="number">116.425273</span>, <span class="number">39.902273</span>]</span><br><span class="line">        <span class="comment">// 控制点，控制点，途经点，每段最多两个控制点</span></span><br><span class="line">    ];</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> handleParams = <span class="function">(<span class="params">values</span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> values</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;&gt;</span><br><span class="line">            &lt;APILoader akay=<span class="string">&quot;a7a90e05a37d3f6bf76d4a9032fc9129&quot;</span>&gt;</span><br><span class="line">                &lt;div style=&#123;&#123; <span class="attr">width</span>: <span class="string">&quot;100%&quot;</span>, <span class="attr">height</span>: <span class="string">&quot;600px&quot;</span> &#125;&#125; &gt;</span><br><span class="line">                    &lt;<span class="built_in">Map</span> zoom=&#123;<span class="number">14</span>&#125; center=&#123;[<span class="number">116.397637</span>, <span class="number">39.900001</span>]&#125;&gt;</span><br><span class="line">                        &lt;BezierCurve</span><br><span class="line">                            visiable=&#123;show&#125;</span><br><span class="line">                            path=&#123;path&#125;</span><br><span class="line">                            isOutline=&#123;<span class="literal">true</span>&#125;</span><br><span class="line">                            outlineColor=<span class="string">&quot;&quot;</span></span><br><span class="line">                            borderWeight=&#123;<span class="number">3</span>&#125;</span><br><span class="line">                            strokeColor=<span class="string">&quot;red&quot;</span></span><br><span class="line">                            strokeOpacity=&#123;<span class="number">1</span>&#125;</span><br><span class="line">                            strokeWeight=&#123;<span class="number">6</span>&#125;</span><br><span class="line">                            <span class="comment">// 线样式还支持 &#x27;dashed&#x27;</span></span><br><span class="line">                            strokeStyle=<span class="string">&quot;solid&quot;</span></span><br><span class="line">                            <span class="comment">// strokeStyle是dashed时有效</span></span><br><span class="line">                            strokeDasharray=&#123;[<span class="number">10</span>, <span class="number">10</span>]&#125;</span><br><span class="line">                            lineJoin=<span class="string">&quot;round&quot;</span></span><br><span class="line">                            lineCap=<span class="string">&quot;round&quot;</span></span><br><span class="line">                            zIndex=&#123;<span class="number">50</span>&#125;</span><br><span class="line">                        /&gt;</span><br><span class="line">                    &lt;/<span class="built_in">Map</span>&gt;</span><br><span class="line">                &lt;/div&gt;</span><br><span class="line">            &lt;/APILoader&gt;</span><br><span class="line">        &lt;/&gt;</span><br><span class="line">    );</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> CarLine</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>扩展运算符(...)的复习</title>
+    <url>/myBlog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/</url>
+    <content><![CDATA[<p><strong>最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。</strong></p>
+<p><strong>像下面这样</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"> setCacheComponents([</span><br><span class="line">        ...cacheComponentsClone,</span><br><span class="line">        &#123;</span><br><span class="line">          ...currentPane,</span><br><span class="line">          name: name || obj.item.props.children[<span class="number">1</span>] <span class="comment">// 如果调用addtab时传入了name则使用此name</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------------</span></span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          tableData: [</span><br><span class="line">            ...state.tableData,</span><br><span class="line">            &#123;</span><br><span class="line">              params: &#123;</span><br><span class="line">                ...payload.params,</span><br><span class="line">                page: payload.page || <span class="number">1</span>,</span><br><span class="line">                pageSize: payload.pageSize || <span class="number">10</span></span><br><span class="line">              &#125;,</span><br><span class="line">              tableKey: payload.tableKey,</span><br><span class="line">              loading: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>就整理了一下扩展运算符的用法。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    age: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    hobby:&#123;</span><br><span class="line">        play: <span class="string">&quot;ball&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; ...obj&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newObj);<span class="comment">//&#123; name: &#x27;张三&#x27;, age: &#x27;20&#x27;, sex: &#x27;男&#x27;, hobby: &#123; play: &#x27;ball&#x27; &#125; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = [...arr,...arr1]</span><br><span class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成数组</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefg&#x27;</span> </span><br><span class="line"><span class="keyword">const</span> newStr = [...str]</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;,&#x27;g&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构赋值   数组对象都可以</span></span><br><span class="line"><span class="keyword">const</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> bb = [...aa,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure>
 
 
-<p><img src="https://gitee.com/shimmer612/mypicturehouse/raw/master/myPicture/Snipaste_2021-03-02_09-02-09.png" alt="image"></p>
+<p><strong>项目里常用的就是在函数里，用来解构赋值的比较多</strong></p>
 ]]></content>
       <tags>
-        <tag>React UmiJS</tag>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS margin折叠</title>
+    <url>/myBlog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/</url>
+    <content><![CDATA[<h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p>
+<p><strong>这就是margin折叠</strong></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> //这里给子元素设置margin-top</span><br><span class="line">//父元素却向下移动了101px</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;car-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .main &#123;</span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1440px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">810px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/bg.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">19px</span> <span class="number">0</span> <span class="number">17px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.car-message &#123;</span><br><span class="line"><span class="css">  <span class="attribute">margin-top</span>: <span class="number">101px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/one.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1404px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">51px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">  <span class="attribute">align-items</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>百度了下</strong></p>
+<p><strong>外边距叠加存在两种情况：一是父子外边距叠加；二是兄弟外边距叠加。</strong></p>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><strong>兄弟间重叠时</strong></p>
+<ol>
+<li><strong>底部元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
+<li><strong>底部元素的position的值为absolute/fixed</strong></li>
+</ol>
+<p><strong>父元素与子元素重叠</strong></p>
+<ol>
+<li><strong>父元素加入(<code>overflow: hidden</code>);</strong></li>
+<li><strong>父元素添加透明边框(<code>border:1px solid transparent</code>);</strong></li>
+<li><strong>子元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
+<li><strong>子元素加入浮动属性或定位</strong></li>
+</ol>
+<p><strong>这里我给父元素设置了<code>overflow:hidden</code>就解决了。</strong></p>
+]]></content>
+      <tags>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -238,32 +264,6 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS margin折叠</title>
-    <url>/myBlog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/</url>
-    <content><![CDATA[<h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p>
-<p><strong>这就是margin折叠</strong></p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"> //这里给子元素设置margin-top</span><br><span class="line">//父元素却向下移动了101px</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;car-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .main &#123;</span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1440px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">810px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/bg.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">19px</span> <span class="number">0</span> <span class="number">17px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.car-message &#123;</span><br><span class="line"><span class="css">  <span class="attribute">margin-top</span>: <span class="number">101px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/one.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1404px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">51px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">  <span class="attribute">align-items</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>百度了下</strong></p>
-<p><strong>外边距叠加存在两种情况：一是父子外边距叠加；二是兄弟外边距叠加。</strong></p>
-<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><strong>兄弟间重叠时</strong></p>
-<ol>
-<li><strong>底部元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
-<li><strong>底部元素的position的值为absolute/fixed</strong></li>
-</ol>
-<p><strong>父元素与子元素重叠</strong></p>
-<ol>
-<li><strong>父元素加入(<code>overflow: hidden</code>);</strong></li>
-<li><strong>父元素添加透明边框(<code>border:1px solid transparent</code>);</strong></li>
-<li><strong>子元素变为行内盒子(<code>display: inline-block</code>);</strong></li>
-<li><strong>子元素加入浮动属性或定位</strong></li>
-</ol>
-<p><strong>这里我给父元素设置了<code>overflow:hidden</code>就解决了。</strong></p>
-]]></content>
-      <tags>
-        <tag>css</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>从数组中取出随机几个数组成新数组（不重复取）</title>
     <url>/myBlog/2021/03/10/2021-03-10-%E4%BB%8E%E6%95%B0%E7%BB%84%E4%B8%AD%E5%8F%96%E5%87%BA%E9%9A%8F%E6%9C%BA%E5%87%A0%E4%B8%AA%E6%95%B0%E7%BB%84%E6%88%90%E6%96%B0%E6%95%B0%E7%BB%84%EF%BC%88%E4%B8%8D%E9%87%8D%E5%A4%8D%E5%8F%96%EF%BC%89/</url>
     <content><![CDATA[<p>​     要给自己的商城，加一个推荐商品的功能。想让他随机从商品表中取出4个数据。</p>
@@ -276,27 +276,18 @@
       </tags>
   </entry>
   <entry>
-    <title>创建一个vue3.0+element-plus项目</title>
-    <url>/myBlog/2021/03/20/2021-03-20-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvue3.0+element-plus%E9%A1%B9%E7%9B%AE/</url>
-    <content><![CDATA[<h5 id="创建一个vue3-0-element-plus项目"><a href="#创建一个vue3-0-element-plus项目" class="headerlink" title="创建一个vue3.0+element-plus项目"></a>创建一个vue3.0+element-plus项目</h5><p><strong>首先要确认自己电脑中的@vue/cli&gt;4.5</strong></p>
-<p><strong>可以用<code>vue -V</code>查看</strong></p>
-<p><strong>没有的话可以用<code>npm i -g @vue/cli</code>升级</strong></p>
-<p><strong>升级成功后</strong></p>
-<p>**<code>vue create my-pro</code>**这里选择Vue 3的项目。</p>
-<p><img src="https://s4.ax1x.com/2021/03/20/6h81Dx.png"></p>
-<p>创建成功后。</p>
-<p>执行下面的命令。</p>
-<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> my-<span class="keyword">pro</span></span><br><span class="line">vue <span class="built_in">add</span> element-plus</span><br></pre></td></tr></table></figure>
-<p>全局加载和按需加载自己选择。</p>
-<p>安装成功后。</p>
-<p><code>npm run serve</code></p>
-<p>发现项目跑起来了。</p>
-<p><img src="https://s4.ax1x.com/2021/03/20/6h8hMn.png"></p>
-<p>按需加载的话，需要在src/plugins/element.js文件里，引入自己所需要的组件就可以了。</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ElButton,ElTimeline &#125; <span class="keyword">from</span> <span class="string">&#x27;element-plus&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (app) =&gt; &#123;</span><br><span class="line">  app.use(ElButton)</span><br><span class="line">  app.use(ElTimeline)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    <title>CSS的一些知识点</title>
+    <url>/myBlog/2021/03/12/2021-03-12-CSS%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
+    <content><![CDATA[<p>今天是三月十二日植树节，记录一些自己写样式的时候，以前不知道的东西。</p>
+<h5 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h5><p><strong>设置<code>padding</code>的时候为了不改变盒子的大小要设置<code>box-sizing:border-box</code></strong></p>
+<h5 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h5><p><strong>盒子内部阴影在末尾加一个<code>inset</code>比如<code>box-shadow: 0 0 5px 0 red inset</code></strong></p>
+<h5 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h5><p><strong>设置透明度的时候<code>opacity:0.8</code>这样会让父元素子元素也改变透明度。可以改成<code>rgba(255,255,255,0.8)</code>的这种方式</strong></p>
+<h5 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h5><p><strong>网页字体最小就是<code>12px</code></strong></p>
+<h5 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h5><p><strong>设置背景图时使用路径时<code> background-image: url(~@/assets/carMonitor/warn-info.png);</code>写成这种样式。还有加上<code> background-size: cover;</code></strong></p>
+<p>不想写了，今天很难受，心情很不好。</p>
 ]]></content>
       <tags>
-        <tag>vue3</tag>
+        <tag>css</tag>
       </tags>
   </entry>
   <entry>
@@ -327,18 +318,27 @@
       </tags>
   </entry>
   <entry>
-    <title>CSS的一些知识点</title>
-    <url>/myBlog/2021/03/12/2021-03-12-CSS%E7%9A%84%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/</url>
-    <content><![CDATA[<p>今天是三月十二日植树节，记录一些自己写样式的时候，以前不知道的东西。</p>
-<h5 id="1、"><a href="#1、" class="headerlink" title="1、"></a>1、</h5><p><strong>设置<code>padding</code>的时候为了不改变盒子的大小要设置<code>box-sizing:border-box</code></strong></p>
-<h5 id="2、"><a href="#2、" class="headerlink" title="2、"></a>2、</h5><p><strong>盒子内部阴影在末尾加一个<code>inset</code>比如<code>box-shadow: 0 0 5px 0 red inset</code></strong></p>
-<h5 id="3、"><a href="#3、" class="headerlink" title="3、"></a>3、</h5><p><strong>设置透明度的时候<code>opacity:0.8</code>这样会让父元素子元素也改变透明度。可以改成<code>rgba(255,255,255,0.8)</code>的这种方式</strong></p>
-<h5 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h5><p><strong>网页字体最小就是<code>12px</code></strong></p>
-<h5 id="5、"><a href="#5、" class="headerlink" title="5、"></a>5、</h5><p><strong>设置背景图时使用路径时<code> background-image: url(~@/assets/carMonitor/warn-info.png);</code>写成这种样式。还有加上<code> background-size: cover;</code></strong></p>
-<p>不想写了，今天很难受，心情很不好。</p>
+    <title>创建一个vue3.0+element-plus项目</title>
+    <url>/myBlog/2021/03/20/2021-03-20-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvue3.0+element-plus%E9%A1%B9%E7%9B%AE/</url>
+    <content><![CDATA[<h5 id="创建一个vue3-0-element-plus项目"><a href="#创建一个vue3-0-element-plus项目" class="headerlink" title="创建一个vue3.0+element-plus项目"></a>创建一个vue3.0+element-plus项目</h5><p><strong>首先要确认自己电脑中的@vue/cli&gt;4.5</strong></p>
+<p><strong>可以用<code>vue -V</code>查看</strong></p>
+<p><strong>没有的话可以用<code>npm i -g @vue/cli</code>升级</strong></p>
+<p><strong>升级成功后</strong></p>
+<p>**<code>vue create my-pro</code>**这里选择Vue 3的项目。</p>
+<p><img src="https://s4.ax1x.com/2021/03/20/6h81Dx.png"></p>
+<p>创建成功后。</p>
+<p>执行下面的命令。</p>
+<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="keyword">cd</span> my-<span class="keyword">pro</span></span><br><span class="line">vue <span class="built_in">add</span> element-plus</span><br></pre></td></tr></table></figure>
+<p>全局加载和按需加载自己选择。</p>
+<p>安装成功后。</p>
+<p><code>npm run serve</code></p>
+<p>发现项目跑起来了。</p>
+<p><img src="https://s4.ax1x.com/2021/03/20/6h8hMn.png"></p>
+<p>按需加载的话，需要在src/plugins/element.js文件里，引入自己所需要的组件就可以了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; ElButton,ElTimeline &#125; <span class="keyword">from</span> <span class="string">&#x27;element-plus&#x27;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> (app) =&gt; &#123;</span><br><span class="line">  app.use(ElButton)</span><br><span class="line">  app.use(ElTimeline)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
       <tags>
-        <tag>css</tag>
+        <tag>vue3</tag>
       </tags>
   </entry>
   <entry>
@@ -362,6 +362,23 @@
       <tags>
         <tag>随笔</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Dav结构的分析</title>
+    <url>/myBlog/2021/02/23/davjs%E5%AD%A6%E4%B9%A0/</url>
+    <content><![CDATA[<p>下面是davjs   models的一个基本结构</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"> <span class="comment">//dav model的名字</span></span><br><span class="line">namespace: <span class="string">&#x27;example&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据</span></span><br><span class="line">state: &#123;<span class="attr">num</span>:<span class="number">1</span>&#125;, <span class="comment">//表示当前的example中的state状态，这里可以给初始值，这里num初始为1</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//这里是做异步处理的相当于VueX的action</span></span><br><span class="line">effects: &#123; </span><br><span class="line"> <span class="comment">//payload是参数   put触发action ，select获取数据， call异步操作   </span></span><br><span class="line">*<span class="function"><span class="title">addByONe</span>(<span class="params">&#123; payload&#125;, &#123; call, put,select &#125;</span>)</span> &#123; </span><br><span class="line">    </span><br><span class="line"> <span class="comment">//这里使用select</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.num) <span class="comment">//这里就获取到了当前state中的数据num</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> param1;</span><br><span class="line"> </span><br><span class="line">param1 = num + payload; 这里就可以使用num进行操作了</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> put(&#123;</span><br><span class="line">type: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">num:param1</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">   </span><br><span class="line"><span class="comment">//用来保存更新state值 上面的put方法调用这里的方法,</span></span><br><span class="line">reducers: &#123;</span><br><span class="line"><span class="function"><span class="title">save</span>(<span class="params">state, action</span>)</span> &#123; <span class="comment">//这里的state是当前总的state，这里的action包含了上面传递的参数和type</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> &#123; ...state, ...action.num &#125;; <span class="comment">//这里用ES6语法来更新当前state中num的值</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>React</tag>
+        <tag>Davjs</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>新年快乐</title>
+    <url>/myBlog/2021/02/11/hello-world/</url>
+    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
+]]></content>
   </entry>
   <entry>
     <title>Vue3中路由的相关配置</title>
@@ -401,14 +418,24 @@
       </tags>
   </entry>
   <entry>
-    <title>Dav结构的分析</title>
-    <url>/myBlog/2021/02/23/davjs%E5%AD%A6%E4%B9%A0/</url>
-    <content><![CDATA[<p>下面是davjs   models的一个基本结构</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line"> <span class="comment">//dav model的名字</span></span><br><span class="line">namespace: <span class="string">&#x27;example&#x27;</span>,</span><br><span class="line"></span><br><span class="line"><span class="comment">//数据</span></span><br><span class="line">state: &#123;<span class="attr">num</span>:<span class="number">1</span>&#125;, <span class="comment">//表示当前的example中的state状态，这里可以给初始值，这里num初始为1</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//这里是做异步处理的相当于VueX的action</span></span><br><span class="line">effects: &#123; </span><br><span class="line"> <span class="comment">//payload是参数   put触发action ，select获取数据， call异步操作   </span></span><br><span class="line">*<span class="function"><span class="title">addByONe</span>(<span class="params">&#123; payload&#125;, &#123; call, put,select &#125;</span>)</span> &#123; </span><br><span class="line">    </span><br><span class="line"> <span class="comment">//这里使用select</span></span><br><span class="line"><span class="keyword">const</span> num = <span class="keyword">yield</span> select(<span class="function"><span class="params">state</span> =&gt;</span> state.num) <span class="comment">//这里就获取到了当前state中的数据num</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> param1;</span><br><span class="line"> </span><br><span class="line">param1 = num + payload; 这里就可以使用num进行操作了</span><br><span class="line"></span><br><span class="line"><span class="keyword">yield</span> put(&#123;</span><br><span class="line">type: <span class="string">&#x27;save&#x27;</span>,</span><br><span class="line">num:param1</span><br><span class="line">&#125;);</span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">   </span><br><span class="line"><span class="comment">//用来保存更新state值 上面的put方法调用这里的方法,</span></span><br><span class="line">reducers: &#123;</span><br><span class="line"><span class="function"><span class="title">save</span>(<span class="params">state, action</span>)</span> &#123; <span class="comment">//这里的state是当前总的state，这里的action包含了上面传递的参数和type</span></span><br><span class="line"> </span><br><span class="line"><span class="keyword">return</span> &#123; ...state, ...action.num &#125;; <span class="comment">//这里用ES6语法来更新当前state中num的值</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;,</span><br><span class="line">    </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    <title>davJs学习02</title>
+    <url>/myBlog/2021/02/24/umi%E4%B8%AD%EF%BC%8Cdavjs%E5%AD%A6%E4%B9%A002/</url>
+    <content><![CDATA[<p><strong>最近公司新项目用的UmiJs3.x，整个项目的数据，通过内置的Davjs来控制。</strong></p>
+<p><strong>昨天自己分析了一下Davjs。但是脑海中的概念还是很模糊。今天再梳理一下。</strong></p>
+<h5 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h5><p><strong>首先是在Models文件夹下创建一个JS文件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> GlobalModel = &#123;</span><br><span class="line">    <span class="comment">//model的名称</span></span><br><span class="line">  namespace: <span class="string">&quot;global&quot;</span>,</span><br><span class="line">  state: &#123;</span><br><span class="line">      <span class="comment">//放数据的地方</span></span><br><span class="line">      user:&#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    <span class="comment">// 异步获取数据，不能直接修改数据，需要通过put调用reducers的方法。</span></span><br><span class="line">     <span class="string">`其中call和普通是dva 提供的effect 函数内部的处理函数</span></span><br><span class="line"><span class="string">      call：执行异步函数， put：发出一个 Action，类似于 dispatch  select获取数据，`</span></span><br><span class="line">      *<span class="function"><span class="title">getTableData</span>(<span class="params">&#123; payload &#125;, &#123; put, select, call &#125;</span>)</span> &#123;</span><br><span class="line">          </span><br><span class="line"> <span class="keyword">const</span> tableList = <span class="keyword">yield</span> select(<span class="function">(<span class="params">state</span>) =&gt;</span> state.global.tableData);</span><br><span class="line">      <span class="keyword">yield</span> put(&#123;</span><br><span class="line">        type: <span class="string">&quot;setTableParams&quot;</span>,</span><br><span class="line">        payload,</span><br><span class="line">      &#125;);</span><br><span class="line">      </span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">   <span class="comment">//同步获取数据</span></span><br><span class="line">      <span class="function"><span class="title">setTableParams</span>(<span class="params">state</span>)</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123;</span><br><span class="line">              ...state</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> GlobalModel;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h5 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h5><p><strong>对应页面中</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&quot;umi&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TableDemo = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//能直接获取到users</span></span><br><span class="line">    <span class="keyword">const</span> &#123;dispatch, users&#125; = props</span><br><span class="line">    </span><br><span class="line">    dispatch(&#123;</span><br><span class="line">        <span class="comment">//global这个model中，getTableData这个异步操作函数</span></span><br><span class="line">      type: <span class="string">&quot;global/getTableData&quot;</span>,</span><br><span class="line">      payload: &#123;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;users.name&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//把global中state中的数据绑定到页面的props上</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(<span class="function">(<span class="params">&#123; <span class="built_in">global</span> &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">  users: <span class="built_in">global</span>.users</span><br><span class="line">&#125;))(TableDemo);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><strong>还可以调用Service文件夹里的接口，获取数据</strong></p>
 ]]></content>
       <tags>
         <tag>React</tag>
         <tag>Davjs</tag>
+        <tag>UmiJs</tag>
       </tags>
   </entry>
   <entry>
@@ -430,33 +457,6 @@
 ]]></content>
       <tags>
         <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>新年快乐</title>
-    <url>/myBlog/2021/02/11/hello-world/</url>
-    <content><![CDATA[<p><strong>大家新年快乐</strong></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>davJs学习02</title>
-    <url>/myBlog/2021/02/24/umi%E4%B8%AD%EF%BC%8Cdavjs%E5%AD%A6%E4%B9%A002/</url>
-    <content><![CDATA[<p><strong>最近公司新项目用的UmiJs3.x，整个项目的数据，通过内置的Davjs来控制。</strong></p>
-<p><strong>昨天自己分析了一下Davjs。但是脑海中的概念还是很模糊。今天再梳理一下。</strong></p>
-<h5 id="第一步"><a href="#第一步" class="headerlink" title="第一步"></a>第一步</h5><p><strong>首先是在Models文件夹下创建一个JS文件</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> GlobalModel = &#123;</span><br><span class="line">    <span class="comment">//model的名称</span></span><br><span class="line">  namespace: <span class="string">&quot;global&quot;</span>,</span><br><span class="line">  state: &#123;</span><br><span class="line">      <span class="comment">//放数据的地方</span></span><br><span class="line">      user:&#123;&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  effects: &#123;</span><br><span class="line">    <span class="comment">// 异步获取数据，不能直接修改数据，需要通过put调用reducers的方法。</span></span><br><span class="line">     <span class="string">`其中call和普通是dva 提供的effect 函数内部的处理函数</span></span><br><span class="line"><span class="string">      call：执行异步函数， put：发出一个 Action，类似于 dispatch  select获取数据，`</span></span><br><span class="line">      *<span class="function"><span class="title">getTableData</span>(<span class="params">&#123; payload &#125;, &#123; put, select, call &#125;</span>)</span> &#123;</span><br><span class="line">          </span><br><span class="line"> <span class="keyword">const</span> tableList = <span class="keyword">yield</span> select(<span class="function">(<span class="params">state</span>) =&gt;</span> state.global.tableData);</span><br><span class="line">      <span class="keyword">yield</span> put(&#123;</span><br><span class="line">        type: <span class="string">&quot;setTableParams&quot;</span>,</span><br><span class="line">        payload,</span><br><span class="line">      &#125;);</span><br><span class="line">      </span><br><span class="line">  &#125;,</span><br><span class="line">  reducers: &#123;</span><br><span class="line">   <span class="comment">//同步获取数据</span></span><br><span class="line">      <span class="function"><span class="title">setTableParams</span>(<span class="params">state</span>)</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> &#123;</span><br><span class="line">              ...state</span><br><span class="line">          &#125;</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> GlobalModel;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<h5 id="第二步"><a href="#第二步" class="headerlink" title="第二步"></a>第二步</h5><p><strong>对应页面中</strong></p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; connect &#125; <span class="keyword">from</span> <span class="string">&quot;umi&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> TableDemo = <span class="function">(<span class="params">props</span>) =&gt;</span> &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//能直接获取到users</span></span><br><span class="line">    <span class="keyword">const</span> &#123;dispatch, users&#125; = props</span><br><span class="line">    </span><br><span class="line">    dispatch(&#123;</span><br><span class="line">        <span class="comment">//global这个model中，getTableData这个异步操作函数</span></span><br><span class="line">      type: <span class="string">&quot;global/getTableData&quot;</span>,</span><br><span class="line">      payload: &#123;</span><br><span class="line">      &#125;,</span><br><span class="line">    &#125;);</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">        &#123;users.name&#125;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//把global中state中的数据绑定到页面的props上</span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> connect(<span class="function">(<span class="params">&#123; <span class="built_in">global</span> &#125;</span>) =&gt;</span> (&#123;</span><br><span class="line">  users: <span class="built_in">global</span>.users</span><br><span class="line">&#125;))(TableDemo);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p><strong>还可以调用Service文件夹里的接口，获取数据</strong></p>
-]]></content>
-      <tags>
-        <tag>React</tag>
-        <tag>Davjs</tag>
-        <tag>UmiJs</tag>
       </tags>
   </entry>
   <entry>
