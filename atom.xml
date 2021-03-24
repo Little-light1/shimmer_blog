@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/myBlog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/myBlog/"/>
-  <updated>2021-03-22T09:28:12.629Z</updated>
+  <updated>2021-03-24T05:47:33.481Z</updated>
   <id>https://gitee.com/shimmer612/myBlog/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react hooks useEffect的使用</title>
+    <link href="https://gitee.com/shimmer612/myBlog/2021/03/24/2021-03-24-react-hooks-useEffect%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://gitee.com/shimmer612/myBlog/2021/03/24/2021-03-24-react-hooks-useEffect%E7%9A%84%E4%BD%BF%E7%94%A8/</id>
+    <published>2021-03-23T16:00:00.000Z</published>
+    <updated>2021-03-24T05:47:33.481Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="useEffect的tips"><a href="#useEffect的tips" class="headerlink" title="useEffect的tips"></a>useEffect的tips</h5><p>useEffect的语法：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function">()=&gt;</span>&#123;</span><br><span class="line"><span class="comment">//逻辑</span></span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure><p>如果没有第二个空数组参数，useEffect就会在页面状态改变的时候执行，加了空数组参数，只会在页面mount的时候更新一次。</p><p><strong>传第二个参数：</strong>可以用作页面数据初始化</p><p><strong>不传第二个参数</strong></p><p>按照useEffect的这个在页面状态变化的时候调用的特性，可以做很多东西。</p><p>可以每次数据变化的时候，把数据传给后台，相当于监听。</p><p>分数变化的时候打印当前得了多少分。</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Main = <span class="function">() =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 相当于componentDidMount和componentDidUpdate</span></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 打印点击的次数</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">`当前得分为<span class="subst">$&#123;count&#125;</span>`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1 onClick=&#123;<span class="function">() =&gt;</span> &#123; setCount(count + <span class="number">1</span>) &#125;&#125;&gt;当前得分为：&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Main /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure><h5 id="useEffect-不应该返回任何内容"><a href="#useEffect-不应该返回任何内容" class="headerlink" title="useEffect 不应该返回任何内容"></a>useEffect 不应该返回任何内容</h5><p>但是使用async await  会返回一个隐式的promise</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样写是错误的</span></span><br><span class="line">useEffect(<span class="keyword">async</span>()=&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span>  ......</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure><p>应该把async await  写在useEffect里面，如：</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//应该这样写</span></span><br><span class="line">useEffect(<span class="function">()=&gt;</span> &#123;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">     <span class="keyword">await</span>.....</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure><p>今天就记录到这，马上我把react-redux在复习一下。好久不用都忘的差不多了。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;useEffect的tips&quot;&gt;&lt;a href=&quot;#useEffect的tips&quot; class=&quot;headerlink&quot; title=&quot;useEffect的tips&quot;&gt;&lt;/a&gt;useEffect的tips&lt;/h5&gt;&lt;p&gt;useEffect的语法：&lt;/p&gt;
+&lt;fig</summary>
+      
+    
+    
+    
+    
+    <category term="react hooks" scheme="https://gitee.com/shimmer612/myBlog/tags/react-hooks/"/>
+    
+  </entry>
   
   <entry>
     <title>杂记02</title>
@@ -467,33 +490,6 @@
     <category term="React" scheme="https://gitee.com/shimmer612/myBlog/tags/React/"/>
     
     <category term="Davjs" scheme="https://gitee.com/shimmer612/myBlog/tags/Davjs/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于我</title>
-    <link href="https://gitee.com/shimmer612/myBlog/2021/02/12/%E5%85%B3%E4%BA%8E%E6%88%91/"/>
-    <id>https://gitee.com/shimmer612/myBlog/2021/02/12/%E5%85%B3%E4%BA%8E%E6%88%91/</id>
-    <published>2021-02-11T16:00:00.000Z</published>
-    <updated>2021-03-16T02:53:51.135Z</updated>
-    
-    <content type="html"><![CDATA[<p>姓名：微光</p><p>学校：常州大学</p><p>公司： 万帮数字新能源星星充电</p><p>现居：江苏-常州</p><p>技术栈：Html5、Css3、JavaScript、Vue、React、Node.js、Express、微信小程序、Mongodb</p><p>熟练使用AntDesign ElementUI Vant deng</p><p>码云： <a href="https://gitee.com/shimmer612">https://gitee.com/shimmer612</a></p><p>github: <a href="https://github.com/Little-light1">https://github.com/Little-light1</a></p><hr><p><strong>路</strong></p><p><strong>很长</strong></p><p><strong>顺道寻光</strong>    </p><p><img src="https://s3.ax1x.com/2021/03/15/6BvLAU.jpg"></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;姓名：微光&lt;/p&gt;
-&lt;p&gt;学校：常州大学&lt;/p&gt;
-&lt;p&gt;公司： 万帮数字新能源星星充电&lt;/p&gt;
-&lt;p&gt;现居：江苏-常州&lt;/p&gt;
-&lt;p&gt;技术栈：Html5、Css3、JavaScript、Vue、React、Node.js、Express、微信小程序、Mongodb&lt;/p&gt;
-</summary>
-      
-    
-    
-    
-    
-    <category term="Aboutme" scheme="https://gitee.com/shimmer612/myBlog/tags/Aboutme/"/>
     
   </entry>
   

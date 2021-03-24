@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    杂记02 |  Shimmer
+    react hooks useEffect的使用 |  Shimmer
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-2021-03-22-杂记02"
+  id="post-2021-03-24-react-hooks-useEffect的使用"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  杂记02
+  react hooks useEffect的使用
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/myBlog/2021/03/22/2021-03-22-%E6%9D%82%E8%AE%B002/" class="article-date">
-  <time datetime="2021-03-21T16:00:00.000Z" itemprop="datePublished">2021-03-22</time>
+      <a href="/myBlog/2021/03/24/2021-03-24-react-hooks-useEffect%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-date">
+  <time datetime="2021-03-23T16:00:00.000Z" itemprop="datePublished">2021-03-24</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">402</span>
+            <span class="post-count">346</span>
         </span>
     </span>
 
@@ -86,26 +86,34 @@
  
     </div>
       
+    <div class="tocbot"></div>
+
 
 
 
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>今天也没学什么新东西，但是博客总要点新的东西吧。就随便写一点吧。</p>
-<p>今天想给自己的在线购物商城加一个客服聊天功能。百度了下用<code>socket.io</code>可以实现，但是自己折腾了半天也没有成功，就放弃了。</p>
-<p>不过给订单页面加了一个快递查询的功能，用的假数据，点击直接返回一串快递信息，是我自己淘宝买东西的物流信息。用<code>element-ui</code>的<code>TimeLine</code>实现的。</p>
-<p>其实想了很多功能，却不知道怎么实现，比如点击付款按钮，跳出来一个二维码，扫描二维码，跳转到订单页面，没有找到什么插件可以监听二维码的扫描事件。用的<code>qrimage</code>只能生成二维码，扫描跳转到设置特定的页面。</p>
-<p>痛点很多，要学习的东西也很多。</p>
-<p>总感觉自己不是一个合格的前端。</p>
-<p>不务正业去学了后台。写了几个接口学了<code>mongo</code>,也满足自己平时写写小项目自己写后台了。也挺不错的。express真的挺香的。</p>
-<p>昨天去滆湖公园放了风筝，很开心。和高中同学聊聊天散散步真的很愉快。</p>
-<p>还是没事多出去走一走，呼吸呼吸新鲜的空气。</p>
-<p>整个人的精神会好很多。</p>
-<p>看着漫天的飞翔的风筝，抽芽的柳树，盛开的油菜花和家乡的Sakura。</p>
-<p>那时候之前所有的烦闷与苦痛全部抛在脑后。</p>
-<p>真好！</p>
-<p><img src="https://z3.ax1x.com/2021/03/22/6ouenP.jpg" alt="6ouenP.jpg"></p>
+  <h5 id="useEffect的tips"><a href="#useEffect的tips" class="headerlink" title="useEffect的tips"></a>useEffect的tips</h5><p>useEffect的语法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useEffect(<span class="function">()=&gt;</span>&#123;</span><br><span class="line"><span class="comment">//逻辑</span></span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+<p>如果没有第二个空数组参数，useEffect就会在页面状态改变的时候执行，加了空数组参数，只会在页面mount的时候更新一次。</p>
+<p><strong>传第二个参数：</strong>可以用作页面数据初始化</p>
+<p><strong>不传第二个参数</strong></p>
+<p>按照useEffect的这个在页面状态变化的时候调用的特性，可以做很多东西。</p>
+<p>可以每次数据变化的时候，把数据传给后台，相当于监听。</p>
+<p>分数变化的时候打印当前得了多少分。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Main = <span class="function">() =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 相当于componentDidMount和componentDidUpdate</span></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 打印点击的次数</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">`当前得分为<span class="subst">$&#123;count&#125;</span>`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1 onClick=&#123;<span class="function">() =&gt;</span> &#123; setCount(count + <span class="number">1</span>) &#125;&#125;&gt;当前得分为：&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Main /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h5 id="useEffect-不应该返回任何内容"><a href="#useEffect-不应该返回任何内容" class="headerlink" title="useEffect 不应该返回任何内容"></a>useEffect 不应该返回任何内容</h5><p>但是使用async await  会返回一个隐式的promise</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//这样写是错误的</span></span><br><span class="line">useEffect(<span class="keyword">async</span>()=&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span>  ......	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>应该把async await  写在useEffect里面，如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//应该这样写</span></span><br><span class="line">useEffect(<span class="function">()=&gt;</span> &#123;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">     <span class="keyword">await</span>.....</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+
+
+<p>今天就记录到这，马上我把react-redux在复习一下。好久不用都忘的差不多了。</p>
  
       <!-- reward -->
       
@@ -158,12 +166,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2021/03/22/2021-03-22-%E6%9D%82%E8%AE%B002/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2021/03/24/2021-03-24-react-hooks-useEffect%E7%9A%84%E4%BD%BF%E7%94%A8/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/%E9%9A%8F%E7%AC%94/" rel="tag">随笔</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/react-hooks/" rel="tag">react hooks</a></li></ul>
 
     </footer>
   </div>
@@ -171,19 +179,10 @@
    
   <nav class="article-nav">
     
-      <a href="/myBlog/2021/03/24/2021-03-24-react-hooks-useEffect%E7%9A%84%E4%BD%BF%E7%94%A8/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            react hooks useEffect的使用
-          
-        </div>
-      </a>
     
-    
-      <a href="/myBlog/2021/03/20/2021-03-20-%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAvue3.0+element-plus%E9%A1%B9%E7%9B%AE/" class="article-nav-link">
+      <a href="/myBlog/2021/03/22/2021-03-22-%E6%9D%82%E8%AE%B002/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">创建一个vue3.0+element-plus项目</div>
+        <div class="article-nav-title">杂记02</div>
       </a>
     
   </nav>

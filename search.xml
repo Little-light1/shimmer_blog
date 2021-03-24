@@ -670,4 +670,32 @@
         <tag>Vue3</tag>
       </tags>
   </entry>
+  <entry>
+    <title>react hooks useEffect的使用</title>
+    <url>/myBlog/2021/03/24/2021-03-24-react-hooks-useEffect%E7%9A%84%E4%BD%BF%E7%94%A8/</url>
+    <content><![CDATA[<h5 id="useEffect的tips"><a href="#useEffect的tips" class="headerlink" title="useEffect的tips"></a>useEffect的tips</h5><p>useEffect的语法：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">useEffect(<span class="function">()=&gt;</span>&#123;</span><br><span class="line"><span class="comment">//逻辑</span></span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+<p>如果没有第二个空数组参数，useEffect就会在页面状态改变的时候执行，加了空数组参数，只会在页面mount的时候更新一次。</p>
+<p><strong>传第二个参数：</strong>可以用作页面数据初始化</p>
+<p><strong>不传第二个参数</strong></p>
+<p>按照useEffect的这个在页面状态变化的时候调用的特性，可以做很多东西。</p>
+<p>可以每次数据变化的时候，把数据传给后台，相当于监听。</p>
+<p>分数变化的时候打印当前得了多少分。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> ReactDOM <span class="keyword">from</span> <span class="string">&#x27;react-dom&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./index.css&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> Main = <span class="function">() =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [count, setCount] = useState(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 相当于componentDidMount和componentDidUpdate</span></span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="comment">// 打印点击的次数</span></span><br><span class="line">   <span class="built_in">console</span>.log(<span class="string">`当前得分为<span class="subst">$&#123;count&#125;</span>`</span>)</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1 onClick=&#123;<span class="function">() =&gt;</span> &#123; setCount(count + <span class="number">1</span>) &#125;&#125;&gt;当前得分为：&#123;count&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;Main /&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&#x27;root&#x27;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h5 id="useEffect-不应该返回任何内容"><a href="#useEffect-不应该返回任何内容" class="headerlink" title="useEffect 不应该返回任何内容"></a>useEffect 不应该返回任何内容</h5><p>但是使用async await  会返回一个隐式的promise</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//这样写是错误的</span></span><br><span class="line">useEffect(<span class="keyword">async</span>()=&gt; &#123;</span><br><span class="line">  <span class="keyword">await</span>  ......	</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>应该把async await  写在useEffect里面，如：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">//应该这样写</span></span><br><span class="line">useEffect(<span class="function">()=&gt;</span> &#123;</span><br><span class="line">    </span><br><span class="line">     <span class="keyword">async</span> () =&gt; &#123;</span><br><span class="line">     <span class="keyword">await</span>.....</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;,[])</span><br></pre></td></tr></table></figure>
+
+
+<p>今天就记录到这，马上我把react-redux在复习一下。好久不用都忘的差不多了。</p>
+]]></content>
+      <tags>
+        <tag>react hooks</tag>
+      </tags>
+  </entry>
 </search>
