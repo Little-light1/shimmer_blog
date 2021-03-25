@@ -698,4 +698,27 @@
         <tag>react hooks</tag>
       </tags>
   </entry>
+  <entry>
+    <title>react hooks理解</title>
+    <url>/myBlog/2021/03/25/2021-03-25-react-hooks%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<p>在函数式组件中发现了这样的一个问题，代码如下。<br>按理说<strong>1处</strong>打印出来的<code>isShow</code>应该为<code>true</code>可是却是<code>false</code></p>
+<p><strong>2处</strong>打印出来的是true</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> demo = <span class="function">()=&gt;</span> &#123;    </span><br><span class="line"><span class="keyword">const</span> [isShow, setIsShow] = useState(<span class="literal">false</span>)</span><br><span class="line"> <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(isShow)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">     &lt;button onClick=&#123;<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        setIsShow(<span class="literal">true</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//1</span></span><br><span class="line">        <span class="built_in">console</span>.log(isShow)</span><br><span class="line">    &#125;&#125;&gt;新增&lt;/button&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>去百度了一些资料。</p>
+<p>原来函数式组件每次更新的时候都会重新执行一次函数，此时 <strong>1处</strong>打印的<code>isShow</code>其实是初始的状态的旧值。形成了闭包。</p>
+<p><strong>2处</strong>外层能打印出来，是因为函数每次更新都要执行。</p>
+<p>只有用<code>useEffect</code>才能获取到,绑定<code>isShow</code>为依赖。可以这样写:</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> demo = <span class="function">()=&gt;</span> &#123;   </span><br><span class="line">    </span><br><span class="line"><span class="keyword">const</span> [isShow, setIsShow] = useState(<span class="literal">false</span>)</span><br><span class="line"></span><br><span class="line">useEffect(<span class="function">()=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(isShow)</span><br><span class="line">&#125;,[isShow])</span><br><span class="line"> <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(isShow)</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">     &lt;button onClick=&#123;<span class="function">()=&gt;</span>&#123;</span><br><span class="line">        setIsShow(<span class="literal">true</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//1</span></span><br><span class="line">        <span class="built_in">console</span>.log(isShow)</span><br><span class="line">    &#125;&#125;&gt;新增&lt;/button&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<ul>
+<li><strong>hooks是有序的，会被react从上到下依次读取，所以不能在条件中使用，这样会导致解析的时候前后声明顺序不一致。hooks必须放在函数内部顶层。</strong></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>react hooks</tag>
+      </tags>
+  </entry>
 </search>
