@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/myBlog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/myBlog/"/>
-  <updated>2021-04-12T00:42:03.873Z</updated>
+  <updated>2021-04-12T08:52:27.818Z</updated>
   <id>https://gitee.com/shimmer612/myBlog/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>聊天框自动定位到最底部</title>
+    <link href="https://gitee.com/shimmer612/myBlog/2021/04/12/2021-04-12-%E8%81%8A%E5%A4%A9%E6%A1%86%E8%87%AA%E5%8A%A8%E5%AE%9A%E4%BD%8D%E5%88%B0%E6%9C%80%E5%BA%95%E9%83%A8/"/>
+    <id>https://gitee.com/shimmer612/myBlog/2021/04/12/2021-04-12-%E8%81%8A%E5%A4%A9%E6%A1%86%E8%87%AA%E5%8A%A8%E5%AE%9A%E4%BD%8D%E5%88%B0%E6%9C%80%E5%BA%95%E9%83%A8/</id>
+    <published>2021-04-11T16:00:00.000Z</published>
+    <updated>2021-04-12T08:52:27.818Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>最近通过webSocket实现了客服聊天的功能，但是当消息超出聊天框的时候，消息框并不会自动滚到到最新消息的地方。要手动滚动，很蠢。</p><p>而且一开始的滚动条很丑，顺便美化了一下滚动条。</p><p><strong>vue中写在updated的生命周期里/react写在componentDidUpdate生命周期里</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">updated () &#123;</span><br><span class="line">    <span class="comment">// 聊天定位到底部</span></span><br><span class="line">    <span class="built_in">this</span>.$nextTick(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> msg = <span class="built_in">document</span>.getElementsByClassName(<span class="string">&#x27;chat-info&#x27;</span>) <span class="comment">// 获取对象</span></span><br><span class="line">      msg[<span class="number">0</span>].scrollTop = msg[<span class="number">0</span>].scrollHeight <span class="comment">// 滚动高度</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure><p><strong>css</strong></p><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">::-webkit-scrollbar &#123;</span><br><span class="line">  // display: none;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgb</span>(<span class="number">239</span>, <span class="number">239</span>, <span class="number">239</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line">::-webkit-scrollbar-thumb &#123;</span><br><span class="line">  background: <span class="number">#bfbfbf</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;介绍&quot;&gt;&lt;a href=&quot;#介绍&quot; class=&quot;headerlink&quot; title=&quot;介绍&quot;&gt;&lt;/a&gt;介绍&lt;/h5&gt;&lt;p&gt;最近通过webSocket实现了客服聊天的功能，但是当消息超出聊天框的时候，消息框并不会自动滚到到最新消息的地方。要手动滚动，很蠢。&lt;/p&gt;</summary>
+      
+    
+    
+    
+    
+    <category term="javascript" scheme="https://gitee.com/shimmer612/myBlog/tags/javascript/"/>
+    
+    <category term="css" scheme="https://gitee.com/shimmer612/myBlog/tags/css/"/>
+    
+  </entry>
   
   <entry>
     <title>express-ws实现webSocket通信</title>
@@ -448,30 +472,6 @@
     <summary type="html">&lt;p&gt;&lt;strong&gt;分析项目代码经常会看到一些数组方法，some,slice等等。概念都模糊不清，感觉知道又感觉不知道。还是要到W3C上去查一下用法。&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;所以这次把一些常用的数组方法整理一下，用来巩固复习&lt;/strong&gt;&lt;/p&gt;
 </summary>
-      
-    
-    
-    
-    
-    <category term="javascript" scheme="https://gitee.com/shimmer612/myBlog/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>扩展运算符(...)的复习</title>
-    <link href="https://gitee.com/shimmer612/myBlog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/"/>
-    <id>https://gitee.com/shimmer612/myBlog/2021/03/04/2021-03-04-%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6(...)%E7%9A%84%E5%A4%8D%E4%B9%A0/</id>
-    <published>2021-03-03T16:00:00.000Z</published>
-    <updated>2021-03-04T01:39:59.558Z</updated>
-    
-    <content type="html"><![CDATA[<p><strong>最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。</strong></p><p><strong>像下面这样</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> setCacheComponents([</span><br><span class="line">        ...cacheComponentsClone,</span><br><span class="line">        &#123;</span><br><span class="line">          ...currentPane,</span><br><span class="line">          name: name || obj.item.props.children[<span class="number">1</span>] <span class="comment">// 如果调用addtab时传入了name则使用此name</span></span><br><span class="line">        &#125;</span><br><span class="line">      ]);</span><br><span class="line"><span class="comment">//------------------------------------------------------------------------------------------</span></span><br><span class="line"> <span class="keyword">return</span> &#123;</span><br><span class="line">          ...state,</span><br><span class="line">          tableData: [</span><br><span class="line">            ...state.tableData,</span><br><span class="line">            &#123;</span><br><span class="line">              params: &#123;</span><br><span class="line">                ...payload.params,</span><br><span class="line">                page: payload.page || <span class="number">1</span>,</span><br><span class="line">                pageSize: payload.pageSize || <span class="number">10</span></span><br><span class="line">              &#125;,</span><br><span class="line">              tableKey: payload.tableKey,</span><br><span class="line">              loading: <span class="literal">true</span></span><br><span class="line">            &#125;</span><br><span class="line">          ]</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure><p><strong>就整理了一下扩展运算符的用法。</strong></p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浅拷贝</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    name: <span class="string">&quot;张三&quot;</span>,</span><br><span class="line">    age: <span class="string">&quot;20&quot;</span>,</span><br><span class="line">    sex: <span class="string">&quot;男&quot;</span>,</span><br><span class="line">    hobby:&#123;</span><br><span class="line">        play: <span class="string">&quot;ball&quot;</span>,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">const</span> newObj = &#123; ...obj&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(newObj);<span class="comment">//&#123; name: &#x27;张三&#x27;, age: &#x27;20&#x27;, sex: &#x27;男&#x27;, hobby: &#123; play: &#x27;ball&#x27; &#125; &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接数组</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> arr1 = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = [...arr,...arr1]</span><br><span class="line"><span class="built_in">console</span>.log(newArr); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 字符串转换成数组</span></span><br><span class="line"><span class="keyword">const</span> str = <span class="string">&#x27;abcdefg&#x27;</span> </span><br><span class="line"><span class="keyword">const</span> newStr = [...str]</span><br><span class="line"><span class="built_in">console</span>.log(newStr); <span class="comment">//[&#x27;a&#x27;, &#x27;b&#x27;, &#x27;c&#x27;,&#x27;d&#x27;, &#x27;e&#x27;, &#x27;f&#x27;,&#x27;g&#x27;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 解构赋值   数组对象都可以</span></span><br><span class="line"><span class="keyword">const</span> aa = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="keyword">const</span> bb = [...aa,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(bb); <span class="comment">//[ 1, 2, 3, 4, 5, 6 ]</span></span><br></pre></td></tr></table></figure><p><strong>项目里常用的就是在函数里，用来解构赋值的比较多</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;&lt;strong&gt;最近看项目代码，经常看到函数里运用扩展运算符。总是模模糊糊的，看明白又好像没有明白的感觉。&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;像下面这样&lt;/strong&gt;&lt;/p&gt;
-&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;ta</summary>
       
     
     
