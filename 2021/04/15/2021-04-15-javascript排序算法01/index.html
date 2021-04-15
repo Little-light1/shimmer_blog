@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    聊天框自动定位到最底部 |  Shimmer
+    javascript排序算法01 |  Shimmer
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,7 +44,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-2021-04-12-聊天框自动定位到最底部"
+  id="post-2021-04-15-javascript排序算法01"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -55,22 +55,22 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  聊天框自动定位到最底部
+  javascript排序算法01
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/myBlog/2021/04/12/2021-04-12-%E8%81%8A%E5%A4%A9%E6%A1%86%E8%87%AA%E5%8A%A8%E5%AE%9A%E4%BD%8D%E5%88%B0%E6%9C%80%E5%BA%95%E9%83%A8/" class="article-date">
-  <time datetime="2021-04-11T16:00:00.000Z" itemprop="datePublished">2021-04-12</time>
+      <a href="/myBlog/2021/04/15/2021-04-15-javascript%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%9501/" class="article-date">
+  <time datetime="2021-04-14T16:00:00.000Z" itemprop="datePublished">2021-04-15</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">161</span>
+            <span class="post-count">508</span>
         </span>
     </span>
 
@@ -79,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">1 分钟</span>
+            <span class="post-count">2 分钟</span>
         </span>
     </span>
 </div>
@@ -94,14 +94,16 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h5 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h5><p>最近通过webSocket实现了客服聊天的功能，但是当消息超出聊天框的时候，消息框并不会自动滚到到最新消息的地方。要手动滚动，很蠢。</p>
-<p>而且一开始的滚动条很丑，顺便美化了一下滚动条。</p>
-<p><strong>vue中写在updated的生命周期里/react写在componentDidUpdate生命周期里</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">updated () &#123;</span><br><span class="line">    <span class="comment">// 聊天定位到底部</span></span><br><span class="line">    <span class="built_in">this</span>.$nextTick(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">      <span class="keyword">const</span> msg = <span class="built_in">document</span>.getElementsByClassName(<span class="string">&#x27;chat-info&#x27;</span>) <span class="comment">// 获取对象</span></span><br><span class="line">      msg[<span class="number">0</span>].scrollTop = msg[<span class="number">0</span>].scrollHeight <span class="comment">// 滚动高度</span></span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
-<p><strong>css</strong></p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">::-webkit-scrollbar &#123;</span><br><span class="line">  // display: none;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">5px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">rgb</span>(<span class="number">239</span>, <span class="number">239</span>, <span class="number">239</span>);</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">2px</span>;</span><br><span class="line">&#125;</span><br><span class="line">::-webkit-scrollbar-thumb &#123;</span><br><span class="line">  background: <span class="number">#bfbfbf</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+  <h5 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h5><p>两两对比，如果n项大于n+1项，就交换位置。</p>
+<p><strong>基本的</strong></p>
+<p><code>forEach</code>执行就是所有循环结束，不能<code>break</code>。<code>map</code>同理</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">90</span>, <span class="number">33</span>, <span class="number">23</span>, <span class="number">43</span>, <span class="number">54</span>, <span class="number">123</span>, <span class="number">78</span>, <span class="number">56</span>, <span class="number">76</span>, <span class="number">112</span>]</span><br><span class="line"><span class="comment">// const arr = [1, 2, 3, 4, 5, 6, 7]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">0</span></span><br><span class="line"><span class="comment">//基本</span></span><br><span class="line"> arr.forEach(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">     arr.forEach(<span class="function">(<span class="params">k, i</span>) =&gt;</span> &#123;</span><br><span class="line">         <span class="keyword">const</span> count = arr[i + <span class="number">1</span>]</span><br><span class="line">         <span class="keyword">if</span> (arr[i] &gt; arr[i + <span class="number">1</span>]) &#123;</span><br><span class="line">             arr[i + <span class="number">1</span>] = arr[i]</span><br><span class="line">             arr[i] = count</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;)</span><br><span class="line"> &#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">//[ 23, 33, 43,  54,  56, 76, 78, 90, 112, 123 ]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><strong>优化版</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 优化</span></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">90</span>, <span class="number">33</span>, <span class="number">23</span>, <span class="number">43</span>, <span class="number">54</span>, <span class="number">123</span>, <span class="number">78</span>, <span class="number">56</span>, <span class="number">76</span>, <span class="number">112</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">    <span class="keyword">var</span> flag = <span class="literal">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> j = <span class="number">0</span>; j &lt; arr.length - i - <span class="number">1</span>; j++) &#123;</span><br><span class="line">        a++</span><br><span class="line">        <span class="keyword">if</span> (arr[j] &gt; arr[j + <span class="number">1</span>]) &#123;</span><br><span class="line">            <span class="keyword">var</span> temp = arr[j];</span><br><span class="line">            arr[j] = arr[j + <span class="number">1</span>];</span><br><span class="line">            arr[j + <span class="number">1</span>] = temp;</span><br><span class="line">            flag = <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (flag == <span class="literal">false</span>) &#123;</span><br><span class="line">        <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">//[ 23, 33, 43,  54,  56, 76, 78, 90, 112, 123 ]</span></span><br></pre></td></tr></table></figure>
+<h5 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h5><p>每次排序把最大的或者最小的放到开头或者末尾</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [<span class="number">90</span>, <span class="number">33</span>, <span class="number">23</span>, <span class="number">43</span>, <span class="number">54</span>, <span class="number">123</span>, <span class="number">78</span>, <span class="number">56</span>, <span class="number">76</span>, <span class="number">112</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">selectSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">let</span> minIndex, temp</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; arr.length - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="comment">// 保存当前下标</span></span><br><span class="line">        minIndex = i</span><br><span class="line">        <span class="comment">// 找到最小的数的下标</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">let</span> j = i + <span class="number">1</span>; j &lt; arr.length; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (arr[j] &lt; arr[minIndex]) &#123;</span><br><span class="line">                minIndex = j</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 每次找出的最小数和当前的数交换位置</span></span><br><span class="line">        temp = arr[i];</span><br><span class="line">        arr[i] = arr[minIndex];</span><br><span class="line">        arr[minIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">selectSort(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr);<span class="comment">//[ 23, 33, 43,  54,  56, 76, 78, 90, 112, 123 ]</span></span><br></pre></td></tr></table></figure>
+<h5 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h5><p>从第二个数开始，如果当前数大于或者小于前一个数，就交换位置</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">const</span> arr = [<span class="number">90</span>, <span class="number">33</span>, <span class="number">23</span>, <span class="number">43</span>, <span class="number">54</span>, <span class="number">123</span>, <span class="number">78</span>, <span class="number">56</span>, <span class="number">76</span>, <span class="number">112</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertSort</span>(<span class="params">arr</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> len = arr.length;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//key为当前数</span></span><br><span class="line">        <span class="keyword">var</span> key = arr[i];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// j为前一个数的下标</span></span><br><span class="line">        <span class="keyword">var</span> j = i - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//如果前一个数大于当前数</span></span><br><span class="line">        <span class="keyword">while</span> (j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; key) &#123;</span><br><span class="line">            <span class="comment">//当前数等于前一个数</span></span><br><span class="line">            arr[j + <span class="number">1</span>] = arr[j];</span><br><span class="line"></span><br><span class="line">            <span class="comment">//j减一</span></span><br><span class="line">            j--;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line"></span><br><span class="line">        <span class="comment">//满足条件的最前面的数等于当前数</span></span><br><span class="line">        arr[j + <span class="number">1</span>] = key;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> arr;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">insertSort(arr)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(arr); <span class="comment">//[ 23, 33, 43,  54,  56, 76, 78, 90, 112, 123 ]</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -154,12 +156,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2021/04/12/2021-04-12-%E8%81%8A%E5%A4%A9%E6%A1%86%E8%87%AA%E5%8A%A8%E5%AE%9A%E4%BD%8D%E5%88%B0%E6%9C%80%E5%BA%95%E9%83%A8/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2021/04/15/2021-04-15-javascript%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%9501/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/css/" rel="tag">css</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/javascript/" rel="tag">javascript</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/%E6%8E%92%E5%BA%8F/" rel="tag">排序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/%E7%AE%97%E6%B3%95/" rel="tag">算法</a></li></ul>
 
     </footer>
   </div>
@@ -167,19 +169,10 @@
    
   <nav class="article-nav">
     
-      <a href="/myBlog/2021/04/15/2021-04-15-javascript%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%9501/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            javascript排序算法01
-          
-        </div>
-      </a>
     
-    
-      <a href="/myBlog/2021/04/10/2021-04-10-express-ws%E5%AE%9E%E7%8E%B0webSocket%E9%80%9A%E4%BF%A1/" class="article-nav-link">
+      <a href="/myBlog/2021/04/12/2021-04-12-%E8%81%8A%E5%A4%A9%E6%A1%86%E8%87%AA%E5%8A%A8%E5%AE%9A%E4%BD%8D%E5%88%B0%E6%9C%80%E5%BA%95%E9%83%A8/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">express-ws实现webSocket通信</div>
+        <div class="article-nav-title">聊天框自动定位到最底部</div>
       </a>
     
   </nav>
