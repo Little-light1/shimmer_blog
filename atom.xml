@@ -6,7 +6,7 @@
   <link href="https://gitee.com/shimmer612/myBlog/atom.xml" rel="self"/>
   
   <link href="https://gitee.com/shimmer612/myBlog/"/>
-  <updated>2021-04-21T00:44:36.572Z</updated>
+  <updated>2021-04-24T13:20:52.948Z</updated>
   <id>https://gitee.com/shimmer612/myBlog/</id>
   
   <author>
@@ -15,6 +15,28 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>杂记05</title>
+    <link href="https://gitee.com/shimmer612/myBlog/2021/04/24/2021-04-24-%E6%9D%82%E8%AE%B005/"/>
+    <id>https://gitee.com/shimmer612/myBlog/2021/04/24/2021-04-24-%E6%9D%82%E8%AE%B005/</id>
+    <published>2021-04-23T16:00:00.000Z</published>
+    <updated>2021-04-24T13:20:52.948Z</updated>
+    
+    <content type="html"><![CDATA[<h5 id="最近"><a href="#最近" class="headerlink" title="最近"></a>最近</h5><p>这两天做梦又梦到以前的光了，第一次是梦见他就在我隔壁隔壁的宿舍关注着我，我去敲门却怎么也敲不开。第二次做梦我们复合了，又像以前一样好了。</p><p>有人说当你梦见一个很久都不见的人，就代表她已经快要忘记你了。</p><p>可是我们也没有多久没见，48天算很久吗？</p><p>应该不算吧</p><p>打开了抽屉与她有关的东西最近一直出现在眼前，往事也一件件在脑海中浮现。</p><p>一不留神就会想到她。</p><p>该如何是好。</p><p>好像最近也不再关注回避型依恋这个话题了。</p><p>第一次知道这个名词的时候，好像抓住了救命稻草，如获至宝。</p><p>可是救命稻草终究是稻草。</p><p>今天，一个上个月加的遇到同样问题的朋友，问我有好消息没有。</p><p>她过个几天就问我又好消息没有。</p><p>可是我连消息都没有。</p><p>这两天想起来就给她打个电话</p><p>不出意料的都是，您拨打的电话正在通话中。</p><p>听了很多歌，以前不以为意现在感觉都是在唱自己。</p><p>一九年三月份我们也分了一次。</p><p>哄了一个月。</p><p>最后咬了我好几口才消气。</p><p>真疼啊</p><p>再也没有人咬我了。</p><p>我想我再也遇不到一个像你一样的人了。</p><p>学生时代美好的爱情。</p><p>我也再也不会倾尽所有去对一个人好了。</p><p>我理想主义的爱情。</p><p>写着写着第三人称变成了第二人称。</p><p>从她变成了你</p><p>我和你在你和我那都变成了他和她。</p><p>最近也了解到以前同学</p><p>好多都分手了</p><p>和我一样在一起两三年的</p><p>还有见过家长的都分开了</p><p>感情这东西真的的不讲道理的</p><p>最近说笑着还和别人说千万不要再尝爱情的苦了</p><p>我却深陷其中</p><p>好像也没有深陷</p><p>B哥的《天空之城》中唱到：爱情不过是生活的皮，折磨着我也折磨着你</p><p>不确定歌词看了一下原来是生活的 屁</p><p>只是这个屁却要了很多人的命</p><p>早点睡什么事没有</p><p>太矫情了。</p><h5 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h5><p>人间最美好的事莫过于自己的深情和固执得到回应。</p><p>我是真的很喜欢这句话</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h5 id=&quot;最近&quot;&gt;&lt;a href=&quot;#最近&quot; class=&quot;headerlink&quot; title=&quot;最近&quot;&gt;&lt;/a&gt;最近&lt;/h5&gt;&lt;p&gt;这两天做梦又梦到以前的光了，第一次是梦见他就在我隔壁隔壁的宿舍关注着我，我去敲门却怎么也敲不开。第二次做梦我们复合了，又像以前一样好了。&lt;/</summary>
+      
+    
+    
+    
+    
+    <category term="随笔" scheme="https://gitee.com/shimmer612/myBlog/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>把多层嵌套的一层数据结构转换成原本的多层</title>
@@ -457,28 +479,6 @@
     
     
     <category term="javascript" scheme="https://gitee.com/shimmer612/myBlog/tags/javascript/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>CSS margin折叠</title>
-    <link href="https://gitee.com/shimmer612/myBlog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/"/>
-    <id>https://gitee.com/shimmer612/myBlog/2021/03/09/2021-03-09-CSS-margin%E6%8A%98%E5%8F%A0/</id>
-    <published>2021-03-08T16:00:00.000Z</published>
-    <updated>2021-03-09T09:49:37.080Z</updated>
-    
-    <content type="html"><![CDATA[<h5 id="margin折叠"><a href="#margin折叠" class="headerlink" title="margin折叠"></a>margin折叠</h5><p><strong>今天在写页面的时候发现，子元素设置了<code>margin-top:101px</code>不生效，父元素却向下移动了。</strong></p><p><strong>这就是margin折叠</strong></p><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"> //这里给子元素设置margin-top</span><br><span class="line">//父元素却向下移动了101px</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;main&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line">      <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;car-message&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span>             </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line">    .main &#123;</span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1440px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">810px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/bg.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">box-sizing</span>: border-box;</span></span><br><span class="line"><span class="css">  <span class="attribute">padding</span>: <span class="number">0</span> <span class="number">19px</span> <span class="number">0</span> <span class="number">17px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.car-message &#123;</span><br><span class="line"><span class="css">  <span class="attribute">margin-top</span>: <span class="number">101px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">~@/assets/one.png</span>);</span></span><br><span class="line"><span class="css">  <span class="attribute">background-size</span>: cover;</span></span><br><span class="line"><span class="css">  <span class="attribute">width</span>: <span class="number">1404px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">height</span>: <span class="number">51px</span>;</span></span><br><span class="line"><span class="css">  <span class="attribute">display</span>: flex;</span></span><br><span class="line"><span class="css">  <span class="attribute">align-items</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure><p><strong>百度了下</strong></p><p><strong>外边距叠加存在两种情况：一是父子外边距叠加；二是兄弟外边距叠加。</strong></p><h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h5><p><strong>兄弟间重叠时</strong></p><ol><li><strong>底部元素变为行内盒子(<code>display: inline-block</code>);</strong></li><li><strong>底部元素的position的值为absolute/fixed</strong></li></ol><p><strong>父元素与子元素重叠</strong></p><ol><li><strong>父元素加入(<code>overflow: hidden</code>);</strong></li><li><strong>父元素添加透明边框(<code>border:1px solid transparent</code>);</strong></li><li><strong>子元素变为行内盒子(<code>display: inline-block</code>);</strong></li><li><strong>子元素加入浮动属性或定位</strong></li></ol><p><strong>这里我给父元素设置了<code>overflow:hidden</code>就解决了。</strong></p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h5 id=&quot;margin折叠&quot;&gt;&lt;a href=&quot;#margin折叠&quot; class=&quot;headerlink&quot; title=&quot;margin折叠&quot;&gt;&lt;/a&gt;margin折叠&lt;/h5&gt;&lt;p&gt;&lt;strong&gt;今天在写页面的时候发现，子元素设置了&lt;code&gt;margin-top:101</summary>
-      
-    
-    
-    
-    
-    <category term="css" scheme="https://gitee.com/shimmer612/myBlog/tags/css/"/>
     
   </entry>
   
