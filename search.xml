@@ -1122,4 +1122,62 @@
         <tag>观后感</tag>
       </tags>
   </entry>
+  <entry>
+    <title>星球空间站项目总结</title>
+    <url>/myBlog/2021/06/30/2021-06-30-%E6%98%9F%E7%90%83%E7%A9%BA%E9%97%B4%E7%AB%99%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h5 id="“星球空间站”项目总结"><a href="#“星球空间站”项目总结" class="headerlink" title="“星球空间站”项目总结"></a>“星球空间站”项目总结</h5><p>星球空间站是OMS项目的3.0版本，入职以来，都是在老项目中写页面，上一个项目组中的新项目《重卡换电》场站管理系统，做到80%,就被调走了，不过也只是写写页面，项目都是健哥搭的<code>umijs</code></p>
+<p>星球空间站算是第一个全部由我开发的项目。虽然只算是OMS的一个导航页面。不过对于我来说，也是很好的锻炼了。</p>
+<p>今天把遇到的一些知识点记录一下。</p>
+<p>最终图差不多如下。</p>
+<p><img src="https://z3.ax1x.com/2021/06/30/RDFBzd.png" alt="RDFBzd.png"></p>
+<p><strong>如下</strong></p>
+<p><strong>1、</strong>首页有三个echarts图表，一个曲线折线图。两个环形图。</p>
+<p>​     这个比较简单一些，因为之前有recat引用echarts的经验，所以官网找到相关的示例。</p>
+<p>只是改样式比较麻烦。只能慢慢找配置项。</p>
+<p>这里记录一下用到的配置项，里面详细的配置就不记录了。</p>
+<p><strong>配置项的地址如下</strong></p>
+<p><code>https://echarts.apache.org/zh/option.html</code></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">legend 图例。</span><br><span class="line">dataZoom 用于区域缩放，就是图表可以放大缩小，左右滑动</span><br><span class="line">tooltip提示框。 鼠标移到表格上可以提示数据</span><br><span class="line">series系列列表。每个系列通过 type 决定自己的图表类型，放数据以及数据怎么展示的地方</span><br><span class="line">xAxis 直角坐标轴  x轴</span><br><span class="line">yAxis 直角坐标轴  y轴  </span><br><span class="line">等等</span><br></pre></td></tr></table></figure>
+
+
+<p>然后还有的就是。echarts的加载、数据动态绑定等，大小随窗口变化等要注意的地方</p>
+<hr>
+<p><strong>2、</strong>下面导航按钮图标使用iconfont</p>
+<p>之前使用iconfont都是下载的png图片，这里要用代码引入</p>
+<p>一开始使用的css引入发现图标没有颜色都是黑的，问了一下，要用symbol 方式引入，就是js方式：</p>
+<p>1：我是先新建了一个iconfont的js文件</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"> <span class="keyword">import</span> &#123; Icon &#125; <span class="keyword">from</span> <span class="string">&#x27;antd&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">const</span> IconFont = Icon.createFromIconfontCN(&#123;</span><br><span class="line"> </span><br><span class="line">  scriptUrl: <span class="string">&#x27;symbol方式在线地址&#x27;</span></span><br><span class="line"> </span><br><span class="line">&#125;);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> IconFont;</span><br></pre></td></tr></table></figure>
+<p>2：使用，type就是图标的名</p>
+<figure class="highlight handlebars"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">IconFont</span> <span class="attr">type</span>=<span class="string">&quot;icon-ali-pay&quot;</span> <span class="attr">style</span>=</span></span><span class="template-variable">&#123;&#123; <span class="name">fontSize:</span> <span class="string">&#x27;16px&#x27;</span>, color: <span class="string">&#x27;lightblue&#x27;</span> &#125;&#125;</span><span class="xml"><span class="tag"> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p><strong>3、</strong>日历组件</p>
+<p>最烦的就是这个花了我大量的时间，本来想使用ant的现成组件，可是不会复写样式，而且也麻烦，心一横手写吧。</p>
+<p>因为之前在小程序中写过，获取到当月的天数，然后通过第一天是星期几，来判断上月显示几天，下月显示几天。我这里第一天是兴趣一，要是上个月最后一天是星期天就不用显示了。是星期一的话就显示最后一天，星期二最后2天以此类推。下个月就是下个月第一天是星期一就不用显示。星期天就显示下个月第一天。星期二就显示下个月一二两天，依次类推。</p>
+<p>然后三个数组拼成一个数组用<code>arr.concat()</code>连接数组。</p>
+<p>又因为日期要可以点击，样式产生变化，而且可以获取到当前日期，</p>
+<p>日期数组中，每一项的结构如下,</p>
+<p>flag是判断当前哪个日期被选中了，初始化当天的flag为true</p>
+<p>isActivity是判断当前日前有没有活动</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">[&#123;</span><br><span class="line">year:<span class="number">2021</span>,</span><br><span class="line">month：<span class="number">6</span>,</span><br><span class="line">day:<span class="number">30</span>,</span><br><span class="line">flag:<span class="literal">true</span>,</span><br><span class="line">isActivity:<span class="literal">true</span></span><br><span class="line">&#125;]</span><br></pre></td></tr></table></figure>
+<p>然后就是点击上月日期和下月日期切换月份。</p>
+<p>判断当前点击的日期月份。</p>
+<p>select框也是和数据绑定，</p>
+<p>需要考虑的就是<code>setState()</code>是异步的，需要在<code>setState()</code>的回调中，或者<code>setTimeout()</code>调用相关的方法,以及方法的传参等等。</p>
+<p><strong>4、</strong>主要的就是这些，还有的就是路由传值、跳转，因为oms没有路由通过tabs页签切换页面的，吧tab的</p>
+<p>key传过去等</p>
+<p>父组件中跳转传参</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.props.history.push(&#123;</span><br><span class="line">    pathname:<span class="string">&quot;/index&quot;</span>,</span><br><span class="line">    name:<span class="string">&quot;xxx&quot;</span>,<span class="comment">//参数</span></span><br><span class="line">    age:<span class="string">&quot;18&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>子组件中：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//父组件通过props传给子组件</span></span><br><span class="line">&lt;Child history=&#123;<span class="built_in">this</span>.props.history&#125;/&gt;</span><br><span class="line">   </span><br><span class="line">    <span class="built_in">this</span>.props.history.push(&#123;</span><br><span class="line">    pathname:<span class="string">&quot;/index&quot;</span>,</span><br><span class="line">    name:<span class="string">&quot;xxx&quot;</span>,<span class="comment">//参数</span></span><br><span class="line">    age:<span class="string">&quot;18&quot;</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>接收在location：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="built_in">this</span>.props.history.location.name</span><br><span class="line"><span class="built_in">this</span>.props.history.location.age</span><br></pre></td></tr></table></figure>
+<p>还有就是moment.js计算两天某天相差多少天,倒计时</p>
+<p><code>moment(endTime).diff(moment(startTime),&#39;day&#39;)</code> 天</p>
+<p><code>moment(endTime).diff(moment(startTime),&#39;month&#39;)</code>月</p>
+<p><code>moment(endTime).diff(moment(startTime),&#39;year&#39;)</code> 年</p>
+<p>还有就是一些布局方面注意的东西。</p>
+]]></content>
+      <tags>
+        <tag>react</tag>
+      </tags>
+  </entry>
 </search>
