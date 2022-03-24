@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-     Shimmer
+    数组的map方法会不会改变原数组 |  Shimmer
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -44,24 +44,33 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-useContext"
+  id="post-数组的map方法"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
   data-scroll-reveal
 >
   <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  数组的map方法会不会改变原数组
+</h1>
+ 
+
+    </header>
      
     <div class="article-meta">
-      <a href="/myBlog/2022/03/24/useContext/" class="article-date">
-  <time datetime="2022-03-24T08:17:28.793Z" itemprop="datePublished">2022-03-24</time>
+      <a href="/myBlog/2021/09/21/%E6%95%B0%E7%BB%84%E7%9A%84map%E6%96%B9%E6%B3%95/" class="article-date">
+  <time datetime="2021-09-20T16:00:00.000Z" itemprop="datePublished">2021-09-21</time>
 </a>   
 <div class="word_count">
     <span class="post-time">
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> 字数统计:</span>
-            <span class="post-count">408</span>
+            <span class="post-count">341</span>
         </span>
     </span>
 
@@ -70,7 +79,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> 阅读时长≈</span>
-            <span class="post-count">2 分钟</span>
+            <span class="post-count">1 分钟</span>
         </span>
     </span>
 </div>
@@ -85,25 +94,17 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <p>-–</p>
-<p>title: react-hooks中useContext的使用</p>
-<p>date: 2022-02-04</p>
-<p>tags: </p>
-<p>  -react-hooks</p>
-<p>-–</p>
-<h3 id="react-hooks中useContext的使用"><a href="#react-hooks中useContext的使用" class="headerlink" title="react-hooks中useContext的使用"></a>react-hooks中useContext的使用</h3><h5 id="1、作用"><a href="#1、作用" class="headerlink" title="1、作用"></a>1、作用</h5><p><strong>useContext可以多层嵌套传输数据和方法</strong></p>
-<h5 id="2、使用"><a href="#2、使用" class="headerlink" title="2、使用"></a>2、使用</h5><p>1、新建一个store.js文件，使用React.createContext()创建一个自己的Context</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import React from &quot;react&quot;;</span><br><span class="line">const myContext &#x3D; React.createContext(null);</span><br><span class="line"></span><br><span class="line">export &#123; myContext &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>2、最外层组件</p>
-<p>使用myContext.Provider包裹然后value传入自己需要的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">import &#123; myContext &#125; from &quot;.&#x2F;store&quot;;</span><br><span class="line">import React, &#123; useState &#125; from &quot;react&quot;;</span><br><span class="line">import Child from &quot;.&#x2F;child&quot;;</span><br><span class="line">const App &#x3D; () &#x3D;&gt; &#123;</span><br><span class="line">  const [num, setNum] &#x3D; useState(0);</span><br><span class="line">  return (</span><br><span class="line">    &lt;myContext.Provider value&#x3D;&#123;&#123; setNum, num &#125;&#125;&gt;</span><br><span class="line">      &lt;Child&gt;&lt;&#x2F;Child&gt;</span><br><span class="line">    &lt;&#x2F;myContext.Provider&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default App;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>3、子组件</p>
-<p>引入myContext并通过useContext获取到传入的值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">import &#123; myContext &#125; from &quot;.&#x2F;store&quot;;</span><br><span class="line">import React, &#123; useContext&#125; from &quot;react&quot;;</span><br><span class="line">import GrandSon from &quot;.&#x2F;grandSon&quot;;</span><br><span class="line"></span><br><span class="line">const Child &#x3D; (props) &#x3D;&gt; &#123;</span><br><span class="line">  const &#123; setNum, num &#125; &#x3D; useContext(myContext);</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h1&gt;&#123;num&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">      &lt;button</span><br><span class="line">        onClick&#x3D;&#123;() &#x3D;&gt; &#123;</span><br><span class="line">          setNum((prev) &#x3D;&gt; prev + 1);</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        添加</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">      &lt;GrandSon num&#x3D;&#123;num&#125; &#x2F;&gt;</span><br><span class="line">    &lt;&#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default Child;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>3、孙组件</p>
-<p>和子组件中一样</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">import &#123; myContext &#125; from &quot;.&#x2F;store&quot;;</span><br><span class="line">import React, &#123; useContext &#125; from &quot;react&quot;;</span><br><span class="line"></span><br><span class="line">const GrandSon &#x3D; (props) &#x3D;&gt; &#123;</span><br><span class="line">  const &#123; setNum, num &#125; &#x3D; useContext(myContext);</span><br><span class="line">  return (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h1&gt;我是孙子&lt;&#x2F;h1&gt;</span><br><span class="line">      &lt;h1&gt;&#123;num&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">      &lt;button</span><br><span class="line">        onClick&#x3D;&#123;() &#x3D;&gt; &#123;</span><br><span class="line">          setNum((prev) &#x3D;&gt; prev + 1);</span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        添加</span><br><span class="line">      &lt;&#x2F;button&gt;</span><br><span class="line">    &lt;&#x2F;&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">export default GrandSon;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p><strong>多层传值的话结构比较清晰，不需要层层用props传值，在一个单独的组件中传值中比较方便</strong></p>
+  <h5 id="数组的map方法会不会改变原数组"><a href="#数组的map方法会不会改变原数组" class="headerlink" title="数组的map方法会不会改变原数组"></a>数组的map方法会不会改变原数组</h5><p>****父组件朝子组件传值，二次渲染以后有一个数组的值改变了，发现该数组使用了map，map不是不会改变原数组吗。</p>
+<h6 id="会改变原数组"><a href="#会改变原数组" class="headerlink" title="会改变原数组"></a>会改变原数组</h6><p>于是就自己试了一下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [&#123; <span class="attr">name</span>: <span class="string">&quot;aa&quot;</span>, <span class="attr">num</span>: <span class="number">1</span> &#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  item.num *= <span class="number">10</span>;</span><br><span class="line">  <span class="keyword">return</span> item;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;arr: &quot;</span>, arr);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;newArr: &quot;</span>, newArr);</span><br><span class="line"><span class="comment">/*********************</span></span><br><span class="line"><span class="comment">arr:  [ &#123; name: &#x27;aa&#x27;, num: 10 &#125; ]</span></span><br><span class="line"><span class="comment">newArr:  [ &#123; name: &#x27;aa&#x27;, num: 10 &#125; ]</span></span><br><span class="line"><span class="comment">*******************/</span></span><br></pre></td></tr></table></figure>
+<p> <strong>上面代码我们看出原数组arr的值改变了，数组内是引用类型</strong></p>
+<h6 id="不会改变原数组"><a href="#不会改变原数组" class="headerlink" title="不会改变原数组"></a>不会改变原数组</h6><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">const</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]; </span><br><span class="line"> <span class="keyword">const</span> newArr = arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">   <span class="keyword">return</span> item * <span class="number">10</span>;</span><br><span class="line"> &#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;arr: &quot;</span>, arr);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;newArr: &quot;</span>, newArr);</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">arr:  [ 1, 2, 3, 4, 5 ]</span></span><br><span class="line"><span class="comment">newArr:  [ 10, 20, 30, 40, 50 ]</span></span><br><span class="line"><span class="comment">**/</span></span><br></pre></td></tr></table></figure>
+<p><strong>我又试了一下值类型，发现值类型不会被改变</strong></p>
+<p><strong>看来数组的map方法会改变原数组</strong></p>
+<h6 id="不改变的写法"><a href="#不改变的写法" class="headerlink" title="不改变的写法"></a>不改变的写法</h6><p><strong>怎么样能让map方法不改变原数组呢？</strong></p>
+<p><strong>改变原数组的原因是直接对item进行操作。</strong></p>
+<p><strong>可以返回一个新的，如下</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> arr = [&#123; <span class="attr">name</span>: <span class="string">&quot;aa&quot;</span>, <span class="attr">num</span>: <span class="number">1</span> &#125;];</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> newArr = arr.map(<span class="function">(<span class="params">item</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;</span><br><span class="line">  name:item.name,</span><br><span class="line">  num:item.num*<span class="number">10</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;arr: &quot;</span>, arr);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;newArr: &quot;</span>, newArr);</span><br><span class="line"><span class="comment">/***</span></span><br><span class="line"><span class="comment">arr:  [ &#123; name: &#x27;aa&#x27;, num: 1 &#125; ]</span></span><br><span class="line"><span class="comment">newArr:  [ &#123; name: &#x27;aa&#x27;, num: 10 &#125; ]</span></span><br><span class="line"><span class="comment">***/</span></span><br></pre></td></tr></table></figure>
  
       <!-- reward -->
       
@@ -156,30 +157,32 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2022/03/24/useContext/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2021/09/21/%E6%95%B0%E7%BB%84%E7%9A%84map%E6%96%B9%E6%B3%95/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
     </footer>
   </div>
 
    
   <nav class="article-nav">
     
-      <a href="/myBlog/2022/03/24/%E6%96%87%E4%BB%B6%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%B8%8A%E4%BC%A0/" class="article-nav-link">
+      <a href="/myBlog/2021/09/27/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            (no title)
+            常用正则表达式
           
         </div>
       </a>
     
     
-      <a href="/myBlog/2022/03/24/%E5%B8%B8%E7%94%A8%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="article-nav-link">
+      <a href="/myBlog/2021/08/12/%E6%96%87%E4%BB%B6%E4%BD%9C%E4%B8%BA%E5%8F%82%E6%95%B0%E4%B8%8A%E4%BC%A0/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title"></div>
+        <div class="article-nav-title">文件作为参数上传</div>
       </a>
     
   </nav>
