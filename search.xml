@@ -1139,7 +1139,7 @@
   </entry>
   <entry>
     <title>react-hooks中useContext的使用</title>
-    <url>/myBlog/2022/02/04/useContext/</url>
+    <url>/myBlog/2022/02/22/useContext/</url>
     <content><![CDATA[<h3 id="react-hooks中useContext的使用"><a href="#react-hooks中useContext的使用" class="headerlink" title="react-hooks中useContext的使用"></a>react-hooks中useContext的使用</h3><h5 id="1、作用"><a href="#1、作用" class="headerlink" title="1、作用"></a>1、作用</h5><p><strong>useContext可以多层嵌套传输数据和方法</strong></p>
 <h5 id="2、使用"><a href="#2、使用" class="headerlink" title="2、使用"></a>2、使用</h5><p>1、新建一个store.js文件，使用React.createContext()创建一个自己的Context</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">import React from &quot;react&quot;;</span><br><span class="line">const myContext &#x3D; React.createContext(null);</span><br><span class="line"></span><br><span class="line">export &#123; myContext &#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1155,7 +1155,7 @@
 <p><strong>多层传值的话结构比较清晰，不需要层层用props传值，在一个单独的组件中传值中比较方便</strong></p>
 ]]></content>
       <tags>
-        <tag>-react-hooks</tag>
+        <tag>react-hooks</tag>
       </tags>
   </entry>
   <entry>
@@ -1199,6 +1199,112 @@
 ]]></content>
       <tags>
         <tag>JavaScript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>react hooks介绍</title>
+    <url>/myBlog/2022/01/15/react-hook/</url>
+    <content><![CDATA[<h2 id="Hook-是什么？"><a href="#Hook-是什么？" class="headerlink" title="Hook 是什么？"></a>Hook 是什么？</h2><p>“Hook 是 React 16.8 的新增特性。它可以让你在不编写 class 的情况下使用 state 以及其他的 React 特性。”</p>
+<p>从使用感官上来说，主要是对class组件中 <code>setState</code>和生命周期的“替换”。</p>
+<h2 id="Hook的优势"><a href="#Hook的优势" class="headerlink" title="Hook的优势"></a>Hook的优势</h2><ul>
+<li>脱离了class和this。（前端更偏爱组装而不是继承。this因为方法嵌套，箭头函数，call，apply，bind等，逐渐复杂化）。</li>
+<li>拆分生命周期。（ 对于复杂组件， componentDidUpdate 中可能包含很多逻辑，用useeffect拆分后，条理更清晰 ）。</li>
+<li>复用状态逻辑。</li>
+</ul>
+<h2 id="在react开发中经常关注的问题"><a href="#在react开发中经常关注的问题" class="headerlink" title="在react开发中经常关注的问题"></a>在react开发中经常关注的问题</h2><ul>
+<li><p>什么行为会触发组件更新？</p>
+</li>
+<li><ul>
+<li>setState</li>
+<li>props</li>
+<li>useReducer</li>
+</ul>
+</li>
+<li><p>如何让数据在更新过程中不被重置？</p>
+</li>
+<li><ul>
+<li>useMemo</li>
+<li>useState</li>
+<li>const a = useRef(); a.current = 1;</li>
+<li>把变量定义在组件的外层</li>
+</ul>
+</li>
+</ul>
+<h2 id="useState和useEffect"><a href="#useState和useEffect" class="headerlink" title="useState和useEffect"></a>useState和useEffect</h2><ul>
+<li><p>useState兼具触发更新和保存数据的功能。</p>
+</li>
+<li><p>useEffect用于弥补函数式组件生命周期的缺失 </p>
+</li>
+<li><ul>
+<li>依赖缺失会导致哪些问题？</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li>useEffect(fun, []);</li>
+<li>读取到旧数据``</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ul>
+<li>依赖的数据类型？</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li>useEffect(fun, [[123] === [123], props, fn]);</li>
+<li>function 用useCallback进行包裹，useCallback(fn ,[])</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><ul>
+<li>哪些东西不需要写在依赖列表</li>
+</ul>
+</li>
+<li><ul>
+<li><ul>
+<li>import，service，moment</li>
+<li>useRef()</li>
+<li></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="useImperativeHandle和useRef"><a href="#useImperativeHandle和useRef" class="headerlink" title="useImperativeHandle和useRef"></a>useImperativeHandle和useRef</h2><ul>
+<li> useRef可以方便的实现数据持久化，对于不需要进行展示，或者可以依赖其它<code>useState</code>来借东风。 </li>
+<li> ref转发？ </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">FancyInput</span>(<span class="params">props, ref</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> inputRef = useRef();</span><br><span class="line">  useImperativeHandle(ref, <span class="function">() =&gt;</span> (&#123;</span><br><span class="line">    focus: <span class="function">() =&gt;</span> &#123;</span><br><span class="line">      inputRef.current.focus();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;), []);</span><br><span class="line">  <span class="keyword">return</span> <span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">ref</span>=<span class="string">&#123;inputRef&#125;</span> /&gt;</span></span>;</span><br><span class="line">&#125;</span><br><span class="line">FancyInput = forwardRef(FancyInput);</span><br></pre></td></tr></table></figure>
+<h2 id="useCallback和useMemo"><a href="#useCallback和useMemo" class="headerlink" title="useCallback和useMemo"></a>useCallback和useMemo</h2><figure class="highlight reasonml"><table><tr><td class="code"><pre><span class="line">use<span class="constructor">Callback(<span class="params">fn</span>, <span class="params">deps</span>)</span>` 相当于 `use<span class="constructor">Memo(()</span> =&gt; fn, deps)</span><br></pre></td></tr></table></figure>
+<h2 id="其它一些Hook"><a href="#其它一些Hook" class="headerlink" title="其它一些Hook"></a>其它一些Hook</h2><ul>
+<li>useContext</li>
+<li>useReducer</li>
+</ul>
+<h2 id="自定义Hook"><a href="#自定义Hook" class="headerlink" title="自定义Hook"></a>自定义Hook</h2><p>复用状态逻辑</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      <tags>
+        <tag>react-hooks</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>useRef的使用</title>
+    <url>/myBlog/2022/02/21/useRef/</url>
+    <content><![CDATA[<h4 id="react-hooks之useRef的使用"><a href="#react-hooks之useRef的使用" class="headerlink" title="react-hooks之useRef的使用"></a>react-hooks之useRef的使用</h4><h5 id="1、函数内部使用"><a href="#1、函数内部使用" class="headerlink" title="1、函数内部使用"></a>1、函数内部使用</h5><p><strong>useRef可以用来做数据持久化，也可以用来获取到元素实例</strong></p>
+<p><strong>ref.current的变化并不会导致函数组件的重新加载不像useState</strong></p>
+<p><strong>可以用一个假的useState，结合useEffect的依赖让useRef的值改变后重新加载函数</strong></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> React, &#123; useState, useContext, useRef, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [num, setNum] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> myRef = useRef(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> btnRef = useRef();</span><br><span class="line">    </span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    myRef.current += <span class="number">1</span>;</span><br><span class="line">  &#125;, [num]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;我是Ref:&#123;myRef.current&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;button</span><br><span class="line">        ref=&#123;btnRef&#125;</span><br><span class="line">        onClick=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          setNum(<span class="function">(<span class="params">prev</span>) =&gt;</span> prev + <span class="number">1</span>);</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&quot;button的文字: &quot;</span>, btnRef.current.innerText);<span class="comment">//改变ref</span></span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        改变ref</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="2、子组件使用"><a href="#2、子组件使用" class="headerlink" title="2、子组件使用"></a>2、子组件使用</h5><p><strong>子组件使用不能直接<code>&lt;Child ref=&#123;childRef&#125;&gt;&lt;Child/&gt;</code></strong></p>
+<p><strong>这样子组件获取不到ref，要用forwordRef把子组件包裹起来传入两个参数（props,ref）</strong></p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line"><span class="keyword">import</span> React, &#123; useState, useContext, useRef, useEffect &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">import</span> Child <span class="keyword">from</span> <span class="string">&quot;./child&quot;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> App = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">const</span> [num, setNum] = useState(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> myRef = useRef(<span class="number">0</span>);</span><br><span class="line">  <span class="keyword">const</span> btnRef = useRef();</span><br><span class="line">    </span><br><span class="line">  useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    myRef.current += <span class="number">1</span>;</span><br><span class="line">  &#125;, [num]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;我是Ref:&#123;myRef.current&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;button</span><br><span class="line">        ref=&#123;btnRef&#125;</span><br><span class="line">        onClick=&#123;<span class="function">() =&gt;</span> &#123;</span><br><span class="line">          setNum(<span class="function">(<span class="params">prev</span>) =&gt;</span> prev + <span class="number">1</span>);</span><br><span class="line">          <span class="built_in">console</span>.log(<span class="string">&quot;button的文字: &quot;</span>, btnRef.current.innerText);<span class="comment">//改变ref</span></span><br><span class="line">        &#125;&#125;</span><br><span class="line">      &gt;</span><br><span class="line">        改变ref</span><br><span class="line">      &lt;/button&gt;</span><br><span class="line">      &lt;Child ref=&#123;childRef&#125;&gt;&lt;/Child&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> App;</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">//子组件</span></span><br><span class="line"><span class="keyword">import</span> React, &#123;useEffect, forwardRef &#125; <span class="keyword">from</span> <span class="string">&quot;react&quot;</span>;</span><br><span class="line"><span class="keyword">const</span> Child = forwardRef(<span class="function">(<span class="params">props, ref</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">&quot;props: &quot;</span>, props);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;div ref=&#123;ref&#125;&gt;</span><br><span class="line">      &lt;h1&gt;我是子组件&lt;/h1&gt;</span><br><span class="line">      &lt;h1&gt;&#123;num&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Child;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>react-hooks</tag>
       </tags>
   </entry>
 </search>
