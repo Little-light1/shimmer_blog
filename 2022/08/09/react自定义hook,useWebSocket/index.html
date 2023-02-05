@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    react自定义hook,useWebSocket |  Shimmer
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/myBlog/images/ayer.svg" />
+  
+  
+<link rel="stylesheet" href="/myBlog/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/myBlog/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/myBlog/atom.xml" title="Shimmer" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-react自定义hook,useWebSocket"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  react自定义hook,useWebSocket
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/myBlog/2022/08/09/react%E8%87%AA%E5%AE%9A%E4%B9%89hook,useWebSocket/" class="article-date">
+  <time datetime="2022-08-09T14:18:00.000Z" itemprop="datePublished">2022-08-09</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">790</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">3 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h3 id="react自定义hook-useWebSocket"><a href="#react自定义hook-useWebSocket" class="headerlink" title="react自定义hook,useWebSocket"></a>react自定义hook,useWebSocket</h3><h4 id="1、描述"><a href="#1、描述" class="headerlink" title="1、描述"></a>1、描述</h4><p><strong>本来项目的告警和消息提醒是用的接口30秒调用一次，这次要改成webSocket传输。</strong></p>
+<p>因为前端是用的https，后端用的http，后端的socket只支持<code>ws</code>不支持<code>wss</code>,这里使用了<code>webpack-dev-server</code>的<code>proxy</code>代理了一下。</p>
+<p><strong>target：ws目标地址、pathRewrite:地址重写，这里是把/aapp_socket重写成aapp/websocket,ws：是否开启socket,secure： 默认情况下不接收转发到https的服务器上，如果希望支持，可以设置为false ，changeOrigin：是否跨域</strong>。差不多就这个意思</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&#x27;/aapp_socket&#x27;</span>: &#123;</span><br><span class="line">              target: <span class="string">`ws://xxx.xxx.xxx/`</span>,</span><br><span class="line">              pathRewrite: &#123;</span><br><span class="line">                  <span class="string">&#x27;^/aapp_socket&#x27;</span>: <span class="string">&#x27;aapp/websocket&#x27;</span>,</span><br><span class="line">              &#125;,</span><br><span class="line">              ws: <span class="literal">true</span>,</span><br><span class="line">              secure: <span class="literal">false</span>,</span><br><span class="line">              changeOrigin: <span class="literal">true</span>,</span><br><span class="line">          &#125;,</span><br></pre></td></tr></table></figure>
+<p>使用连接的地址:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`wss://localhost:3000/aapp_socket`</span>;</span><br></pre></td></tr></table></figure>
+<p>实际的访问的地址就是：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`ws://xxx.xxx.xxx/aapp/websocket</span></span><br></pre></td></tr></table></figure>
+
+
+<h4 id="2、代码"><a href="#2、代码" class="headerlink" title="2、代码"></a>2、代码</h4><p>这里socket,没有配置心跳监测，还是通过我主动去推送来获取信息。这里是获取告警数和消息数量，</p>
+<p>首先绑定websocket的事件。主要就是在<strong>message</strong>的事件中，连接成功后端返回的是sucess,就不做操作。后面就是判断返回的消息格式是否正确，如果不正确就重新连接。</p>
+<p>还可以把获取<strong>消息的时间间隔，和重新连接间隔，地址等</strong>变量抽出来，作为参数传进来。</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">import</span> &#123;useCallback, useRef, useState, useEffect&#125; <span class="keyword">from</span> <span class="string">&#x27;react&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> token = <span class="built_in">window</span>.localStorage.getItem(<span class="string">&#x27;authorization&#x27;</span>);</span><br><span class="line"><span class="keyword">const</span> userId = <span class="built_in">JSON</span>.parse(<span class="built_in">window</span>.localStorage.getItem(<span class="string">&#x27;userInfo&#x27;</span>) || <span class="string">&#x27;&#x27;</span>)?.id;</span><br><span class="line"><span class="comment">// 获取告警数量</span></span><br><span class="line"><span class="keyword">const</span> UNREAD_WARN_COUNT = <span class="string">&#x27;UNREAD_WARN_COUNT&#x27;</span>;</span><br><span class="line"><span class="comment">// 获取消息数量</span></span><br><span class="line"><span class="keyword">const</span> UNREAD_MSG_COUNT = <span class="string">&#x27;UNREAD_MSG_COUNT&#x27;</span>;</span><br><span class="line"><span class="comment">// 获取消息的间隔</span></span><br><span class="line"><span class="keyword">const</span> INT_TIME = <span class="number">5000</span>;</span><br><span class="line"><span class="comment">// websocket状态</span></span><br><span class="line"><span class="keyword">const</span> webSocketStatus = &#123;</span><br><span class="line">    CONNECTING: <span class="number">0</span>,</span><br><span class="line">    OPEN: <span class="number">1</span>,</span><br><span class="line">    CLOSING: <span class="number">2</span>,</span><br><span class="line">    CLOSED: <span class="number">3</span>,</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> useWebSocket = <span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">const</span> [reset, setReset] = useState&lt;<span class="built_in">boolean</span>&gt;(<span class="literal">false</span>);</span><br><span class="line">    <span class="keyword">const</span> socket = useRef&lt;WebSocket&gt;();</span><br><span class="line">    <span class="keyword">const</span> sendCount = useRef&lt;<span class="built_in">number</span>&gt;(<span class="number">1</span>);</span><br><span class="line">    <span class="keyword">const</span> [alarmCount, setAlarmCount] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line">    <span class="keyword">const</span> [messageCount, setMessageCount] = useState&lt;<span class="built_in">number</span>&gt;(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 开启事件,主动获取数据</span></span><br><span class="line">    <span class="keyword">const</span> socketOnOpen = useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="comment">// 判断连接状态是不是open</span></span><br><span class="line">        <span class="keyword">if</span> (socket?.current?.readyState === webSocketStatus.OPEN) &#123;</span><br><span class="line">            <span class="comment">// 第一次加载触发一次</span></span><br><span class="line">            socket?.current?.send(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">businessKey</span>: [UNREAD_MSG_COUNT, UNREAD_WARN_COUNT]&#125;));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> timer = <span class="built_in">setInterval</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (socket?.current?.readyState === webSocketStatus.OPEN) &#123;</span><br><span class="line">                socket?.current?.send(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">businessKey</span>: [UNREAD_MSG_COUNT, UNREAD_WARN_COUNT]&#125;));</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;, INT_TIME);</span><br><span class="line">        <span class="comment">// 返回信息出错清除定时器</span></span><br><span class="line">        <span class="keyword">if</span> (sendCount.current === <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="built_in">clearInterval</span>(timer);</span><br><span class="line">            setReset(<span class="literal">true</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, [sendCount]);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭事件重新连接</span></span><br><span class="line">    <span class="keyword">const</span> socketOnClose = useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        setReset(<span class="literal">true</span>);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 出错事件</span></span><br><span class="line">    <span class="keyword">const</span> socketOnError = useCallback(<span class="function">(<span class="params">err: <span class="built_in">any</span></span>) =&gt;</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">&#x27;err: &#x27;</span>, err);</span><br><span class="line">    &#125;, []);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 收发信息</span></span><br><span class="line">    <span class="keyword">const</span> socketOnMessage = useCallback(</span><br><span class="line">        (e: <span class="built_in">any</span>) =&gt; &#123;</span><br><span class="line">            <span class="keyword">if</span> (e.data === <span class="string">&#x27;success&#x27;</span>) <span class="keyword">return</span>;</span><br><span class="line">            <span class="keyword">const</span> alarmCountObj = <span class="built_in">JSON</span>.parse(e.data);</span><br><span class="line">            <span class="keyword">const</span> paramNameArr = <span class="built_in">Object</span>.keys(alarmCountObj);</span><br><span class="line">            <span class="comment">// 判断返回告警保持连接否则断开连接</span></span><br><span class="line">            <span class="keyword">if</span> (paramNameArr[<span class="number">1</span>] === <span class="string">&#x27;UNREAD_WARN_COUNT&#x27;</span>) &#123;</span><br><span class="line">                sendCount.current += <span class="number">1</span>;</span><br><span class="line">                setAlarmCount(alarmCountObj.UNREAD_WARN_COUNT);</span><br><span class="line">                setMessageCount(alarmCountObj.UNREAD_MSG_COUNT);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                sendCount.current = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;,</span><br><span class="line">        [sendCount],</span><br><span class="line">    );</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化连接socket</span></span><br><span class="line">    <span class="keyword">const</span> socketInit = useCallback(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">const</span> scoketUrl = <span class="string">`wss://<span class="subst">$&#123;<span class="built_in">window</span>.location.host&#125;</span>/aapp_socket/<span class="subst">$&#123;userId&#125;</span>/<span class="subst">$&#123;token&#125;</span>`</span>;</span><br><span class="line">            <span class="keyword">const</span> socketObj = <span class="keyword">new</span> WebSocket(scoketUrl);</span><br><span class="line">            socketObj.addEventListener(<span class="string">&#x27;close&#x27;</span>, socketOnClose);</span><br><span class="line">            socketObj.addEventListener(<span class="string">&#x27;error&#x27;</span>, socketOnError);</span><br><span class="line">            socketObj.addEventListener(<span class="string">&#x27;message&#x27;</span>, socketOnMessage);</span><br><span class="line">            socketObj.addEventListener(<span class="string">&#x27;open&#x27;</span>, socketOnOpen);</span><br><span class="line">            socket.current = socketObj;</span><br><span class="line">            sendCount.current = <span class="number">1</span>;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">&#x27;err: &#x27;</span>, err);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;, [socketOnClose, socketOnError, socketOnMessage, socketOnOpen]);</span><br><span class="line">    <span class="comment">// 初始化连接socket</span></span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        socketInit();</span><br><span class="line">    &#125;, [socketInit]);</span><br><span class="line">    <span class="comment">// 断线重连</span></span><br><span class="line">    useEffect(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> (!reset) <span class="keyword">return</span>;</span><br><span class="line">        <span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">            socketInit();</span><br><span class="line">            setReset(<span class="literal">false</span>);</span><br><span class="line">        &#125;, <span class="number">30000</span>);</span><br><span class="line">    &#125;, [reset, socketInit]);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> [alarmCount, messageCount];</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> useWebSocket;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//socket连接</span></span><br><span class="line"> <span class="keyword">const</span> [alarmCount, messageCount] = useWebSocket();</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2022/08/09/react%E8%87%AA%E5%AE%9A%E4%B9%89hook,useWebSocket/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/React/" rel="tag">React</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/myBlog/2022/05/19/echarts%E5%AE%9E%E7%8E%B0%E9%A3%8E%E5%90%91%E7%8E%AB%E7%91%B0%E5%9B%BE/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">Echarts柱状极坐标风向玫瑰图的实现</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "tCtW7EjVj0NLT8lOvix9eY6W-gzGzoHsz",
+    app_key: "6qi4o0SKKrop4t5y6kgzGbfP",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "说出你想说的吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2023
+        <i class="ri-heart-fill heart_icon"></i> Shimmer
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/myBlog/"><img src="/myBlog/images/ayer-side.svg" alt="Shimmer"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/2021/02/12/%E5%85%B3%E4%BA%8E%E6%88%91/">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/message">留言板</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/myBlog/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/myBlog/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/myBlog/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/myBlog/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/myBlog/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/myBlog/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/myBlog/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>
