@@ -1632,4 +1632,17 @@
         <tag>-react-hooks</tag>
       </tags>
   </entry>
+  <entry>
+    <title>git撤销提交</title>
+    <url>/myBlog/2022/04/01/2022-04-01-%E6%92%A4%E9%94%80%E6%8F%90%E4%BA%A4/</url>
+    <content><![CDATA[<p><strong>因为提交了错误的分支,记录一下后面使用</strong></p>
+<h3 id="git-撤销提交"><a href="#git-撤销提交" class="headerlink" title="git 撤销提交"></a>git 撤销提交</h3><h5 id="1、git-log"><a href="#1、git-log" class="headerlink" title="1、git log"></a>1、git log</h5><p>git log 查看 commit 记录，记下自己要撤回的 commitId</p>
+<p><strong>很重要因为 reset 后会删除提交记录，所以要把 commitId 记下来</strong></p>
+<h5 id="2、git-reset-commitId"><a href="#2、git-reset-commitId" class="headerlink" title="2、git reset commitId"></a>2、git reset commitId</h5><p>撤销本地的提交</p>
+<h5 id="3、-git-push-origin-“分支名称”-–force"><a href="#3、-git-push-origin-“分支名称”-–force" class="headerlink" title="3、 git push origin “分支名称” –force"></a>3、 git push origin “分支名称” –force</h5><p>本地覆盖仓库的代码</p>
+]]></content>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
 </search>
