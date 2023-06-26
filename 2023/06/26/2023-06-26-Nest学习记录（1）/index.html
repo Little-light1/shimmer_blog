@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-CN">
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    Nest学习记录（1） |  Shimmer
+  </title>
+  <meta name="generator" content="hexo-theme-ayer">
+  
+  <link rel="shortcut icon" href="/myBlog/images/ayer.svg" />
+  
+  
+<link rel="stylesheet" href="/myBlog/dist/main.css">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Shen-Yu/cdn/css/remixicon.min.css">
+  
+<link rel="stylesheet" href="/myBlog/css/custom.css">
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+<link rel="alternate" href="/myBlog/atom.xml" title="Shimmer" type="application/atom+xml">
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    
+      
+      <canvas width="1777" height="841"
+        style="position: fixed; left: 0px; top: 0px; z-index: 99999; pointer-events: none;"></canvas>
+      
+    <main class="content on">
+      <section class="outer">
+  <article
+  id="post-2023-06-26-Nest学习记录（1）"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  Nest学习记录（1）
+</h1>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/myBlog/2023/06/26/2023-06-26-Nest%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/" class="article-date">
+  <time datetime="2023-06-25T16:00:00.000Z" itemprop="datePublished">2023-06-26</time>
+</a>   
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.2k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">5 分钟</span>
+        </span>
+    </span>
+</div>
+ 
+    </div>
+      
+    <div class="tocbot"></div>
+
+
+
+
+  
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Nest学习记录（1）"><a href="#Nest学习记录（1）" class="headerlink" title="Nest学习记录（1）"></a>Nest学习记录（1）</h2><h4 id="1、nest-cli-的安装升级创建项目"><a href="#1、nest-cli-的安装升级创建项目" class="headerlink" title="1、nest cli 的安装升级创建项目"></a>1、nest cli 的安装升级创建项目</h4><p><strong>安装到全局</strong></p>
+<p><code>npm install -g @nestjs/cli</code></p>
+<p><strong>升级</strong></p>
+<p><code>npm update -g @nestjs/cli</code></p>
+<p><strong>创建项目</strong></p>
+<p><code>nest new 项目名</code></p>
+<h4 id="2、nest-cli常用命令"><a href="#2、nest-cli常用命令" class="headerlink" title="2、nest cli常用命令"></a>2、nest cli常用命令</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// 新建项目</span><br><span class="line">nest new xxx</span><br><span class="line">// 查看命令有哪些选项</span><br><span class="line">nest xxx <span class="literal">-h</span></span><br><span class="line">// 新建代码片段比如 controller、service、module 等。</span><br><span class="line">// xxx文件夹名称</span><br><span class="line">nest generate module xxx</span><br><span class="line">nest generate controller xxx</span><br><span class="line">nest generate service xxx</span><br><span class="line">// 也可以一下子生成整个模板</span><br><span class="line">nest generate resource xxx</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>可以选择生成那种风格的Api，nest支持http,websocket,graphql等风格的api。</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1480b030b48b4517b9ee38e8bda06e81~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp"></p>
+<p>是否生成CRUD（增删改查）代码</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/90edc9b8005547cb9d7c6e10e8f2b73a~tplv-k3u1fbpfcp-zoom-in-crop-mark:3024:0:0:0.awebp"></p>
+<p><strong>启动服务和打包</strong></p>
+<p>启动：<code>nest start</code></p>
+<p>打包：<code>nest build</code></p>
+<p>会在dist目录生成编译后的代码</p>
+<p> <strong>默认是 tsc 编译，也可以切换成 webpack。</strong> </p>
+<p>用tsc打包会对每个文件进行编译</p>
+<p><code>nest build --tsc</code></p>
+<p>webpack只生成一个main.js文件</p>
+<p><code>nest build --webpack</code></p>
+<p><strong>查看项目信息</strong></p>
+<p> 这个就是查看项目信息的，包括系统信息、 node、npm 和依赖版本 </p>
+<p><code>nest info</code></p>
+<h4 id="3、五种Http数据传输方式"><a href="#3、五种Http数据传输方式" class="headerlink" title="3、五种Http数据传输方式"></a>3、五种Http数据传输方式</h4><ol>
+<li>url param  <strong>直接在url地址后面get请求</strong></li>
+<li>query  <strong>url  ‘?’后面拼接参数get请求</strong></li>
+<li>form-urlencoded <strong>post请求参数</strong></li>
+<li>form-data   <strong>传输文件</strong></li>
+<li>json  <strong>post请求json格式</strong></li>
+</ol>
+<p><strong>1、url param</strong></p>
+<p>参数直接在url当中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//123就是参数</span></span><br><span class="line">http:<span class="comment">//localhost:3000/aaa/123</span></span><br></pre></td></tr></table></figure>
+<p><strong>2、query</strong></p>
+<p>url中使用？分割后面就是参数，</p>
+<p>其中非英文字符和中文字符会转码。</p>
+<p>可以使用 encodeURIComponent  来编码</p>
+<p>axios自带编码，不需要手动转</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// name和age是参数，值为123和456</span></span><br><span class="line">http:<span class="comment">//localhost:3000/aaa?name=123&amp;age=456</span></span><br></pre></td></tr></table></figure>
+<p><strong>3、form-urlencoded</strong></p>
+<p>参数放在了body中</p>
+<p>要指定<code>content-type = application/x-www-form-urlencoded </code></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.headers.post[<span class="string">&#x27;Content-Type&#x27;</span>] =</span><br><span class="line">    <span class="string">&#x27;application/x-www-form-urlencoded&#x27;</span>;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">postBody</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> res = <span class="keyword">await</span> axios.post(<span class="string">&#x27;/api/aaa&#x27;</span>, &#123;</span><br><span class="line">      name: <span class="string">&#x27;王五&#x27;</span>,</span><br><span class="line">      age: <span class="number">18</span>,</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;form-urlencoded&#x27;</span>, res);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  postBody();</span><br></pre></td></tr></table></figure>
+<p>[<img src="https://s1.ax1x.com/2023/06/26/pCUex58.md.png" alt="pCUex58.md.png" style="zoom:50%;" /></p>
+<p><strong>4、form-data</strong></p>
+<p>用来传输文件和别的参数</p>
+<p>要指定<code>content-type = multipart/form-data </code></p>
+<p>使用分隔符boundary来分割参数。如下</p>
+<p><img src="https://s1.ax1x.com/2023/06/26/pCUuCBn.png" alt="pCUuCBn.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- axios cdn --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">&quot;fileInput&quot;</span> <span class="attr">type</span>=<span class="string">&quot;file&quot;</span> <span class="attr">multiple</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">button</span> <span class="attr">onclick</span>=<span class="string">&quot;fileData()&quot;</span>&gt;</span>点击<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript">    <span class="comment">// file</span></span></span><br><span class="line"><span class="javascript">    <span class="keyword">const</span> fileInput = <span class="built_in">document</span>.getElementById(<span class="string">&#x27;fileInput&#x27;</span>);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">fileData</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> data = <span class="keyword">new</span> FormData();</span></span><br><span class="line"><span class="javascript">      data.set(<span class="string">&#x27;name&#x27;</span>, <span class="string">&#x27;吕布&#x27;</span>);</span></span><br><span class="line"><span class="javascript">      data.set(<span class="string">&#x27;age&#x27;</span>, <span class="number">38</span>);</span></span><br><span class="line"><span class="javascript">      data.set(<span class="string">&#x27;file1&#x27;</span>, fileInput.files[<span class="number">0</span>]);</span></span><br><span class="line"></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> res = <span class="keyword">await</span> axios(&#123;</span></span><br><span class="line"><span class="javascript">        method: <span class="string">&#x27;post&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        url: <span class="string">&#x27;/api/aaa/file&#x27;</span>,</span></span><br><span class="line">        data,</span><br><span class="line"><span class="javascript">        headers: &#123; <span class="string">&#x27;content-type&#x27;</span>: <span class="string">&#x27;multipart/form-data&#x27;</span> &#125;,</span></span><br><span class="line">      &#125;);</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">&#x27;res: &#x27;</span>, res);</span></span><br><span class="line">    &#125;</span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>5、json</strong></p>
+<p>上面几种都需要编码，转码</p>
+<p>json就很好的解决了上面的问题</p>
+<p>只需要指定<code>content-type=application/json</code>就行如下</p>
+<p><img src="https://s1.ax1x.com/2023/06/26/pCUuG9O.png" alt="pCUuG9O.png"></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- axios cdn --&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/axios/dist/axios.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="javascript">    <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">postJsonBody</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">      <span class="keyword">const</span> res = <span class="keyword">await</span> axios(&#123;</span></span><br><span class="line"><span class="javascript">        method: <span class="string">&#x27;post&#x27;</span>,</span></span><br><span class="line"><span class="javascript">        url: <span class="string">&#x27;/api/aaa&#x27;</span>,</span></span><br><span class="line">        data: &#123;</span><br><span class="line"><span class="javascript">          name: <span class="string">&#x27;王五&#x27;</span>,</span></span><br><span class="line">          age: 18,</span><br><span class="line">        &#125;,</span><br><span class="line">        headers: &#123;</span><br><span class="line"><span class="javascript">          <span class="string">&#x27;Content-Type&#x27;</span>: <span class="string">&#x27;application/json&#x27;</span>,</span></span><br><span class="line">        &#125;,</span><br><span class="line">      &#125;);</span><br><span class="line"><span class="javascript">      <span class="built_in">console</span>.log(<span class="string">&#x27;json&#x27;</span>, res);</span></span><br><span class="line">    &#125;</span><br><span class="line">    postJsonBody();</span><br><span class="line">   </span><br><span class="line">  <span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="4、五种传输方式，接口实现"><a href="#4、五种传输方式，接口实现" class="headerlink" title="4、五种传输方式，接口实现"></a>4、五种传输方式，接口实现</h4><p>首先通过<code>nest generate controller aaa</code>新建模板代码，</p>
+<p>会自动在<code>app.module.ts</code>中引入该contorller</p>
+<p>form-data上传文件需要<code>npm i -D @types/multer</code>,引入相关类型声明</p>
+<p><strong>contorller代码</strong></p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;</span><br><span class="line">  Body,</span><br><span class="line">  Controller,</span><br><span class="line">  Param,</span><br><span class="line">  Post,</span><br><span class="line">  UploadedFiles,</span><br><span class="line">  UseInterceptors,</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">&#x27;@nestjs/common&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Get, Query &#125; <span class="keyword">from</span> <span class="string">&#x27;@nestjs/common&#x27;</span>;</span><br><span class="line"><span class="comment">// 对于放在body中的参数，要使用@Body新建dto文件，nest会解析body，注入到dto对象中</span></span><br><span class="line"><span class="keyword">import</span> &#123; CreateAaaDto &#125; <span class="keyword">from</span> <span class="string">&#x27;./dto/create_aaa.dto&#x27;</span>;</span><br><span class="line"><span class="comment">// 多文件上传要使用下面的拦截器 AnyFilesInterceptor</span></span><br><span class="line"><span class="comment">// 单文件直接使用FileInterceptor就行</span></span><br><span class="line"><span class="keyword">import</span> &#123; AnyFilesInterceptor &#125; <span class="keyword">from</span> <span class="string">&#x27;@nestjs/platform-express&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//请求的默认接口app/aaa</span></span><br><span class="line"><span class="meta">@Controller</span>(<span class="string">&#x27;api/aaa&#x27;</span>)</span><br><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">AaaController</span> </span>&#123;</span><br><span class="line">  <span class="meta">@Get</span>(<span class="string">&#x27;:id&#x27;</span>)</span><br><span class="line">  <span class="function"><span class="title">urlParam</span>(<span class="params"><span class="meta">@Param</span>(<span class="string">&#x27;id&#x27;</span>) id: <span class="string">&#x27;string&#x27;</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`the urlParam is: <span class="subst">$&#123;id&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Get</span>(<span class="string">&#x27;find&#x27;</span>)</span><br><span class="line">  <span class="function"><span class="title">getName</span>(<span class="params"><span class="meta">@Query</span>(<span class="string">&#x27;name&#x27;</span>) name: <span class="built_in">string</span></span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`the queryParam is: name=<span class="subst">$&#123;name&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Post</span>()</span><br><span class="line">  <span class="function"><span class="title">body</span>(<span class="params"><span class="meta">@Body</span>() CreateAaaDto: CreateAaaDto</span>)</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">`the body is: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(CreateAaaDto)&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// uploads文件上传后保存的目录</span></span><br><span class="line">  <span class="comment">// body中别的数据，还是用body接收</span></span><br><span class="line">  <span class="meta">@Post</span>(<span class="string">&#x27;file&#x27;</span>)</span><br><span class="line">  <span class="meta">@UseInterceptors</span>(AnyFilesInterceptor(&#123; <span class="attr">dest</span>: <span class="string">&#x27;uploads/&#x27;</span> &#125;))</span><br><span class="line">  bodyFile(</span><br><span class="line">    <span class="meta">@Body</span>() CreateAaaDto: CreateAaaDto,</span><br><span class="line">    <span class="meta">@UploadedFiles</span>() files: <span class="built_in">Array</span>&lt;Express.Multer.File&gt;,</span><br><span class="line">  ) &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;files: &#x27;</span>, files);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="string">`files: <span class="subst">$&#123;<span class="built_in">JSON</span>.stringify(CreateAaaDto)&#125;</span>`</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>dto代码</p>
+<p> <strong>就是用于封装传输的数据的对象</strong> </p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">CreateAaaDto</span> </span>&#123;</span><br><span class="line">  name: <span class="built_in">string</span>;</span><br><span class="line">  age: <span class="built_in">number</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://gitee.com/shimmer612/myBlog/2023/06/26/2023-06-26-Nest%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95%EF%BC%881%EF%BC%89/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/myBlog/tags/nest/" rel="tag">nest</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+  <nav class="article-nav">
+    
+    
+      <a href="/myBlog/2023/06/16/2023-06-16-React%20Native%20%E5%A4%9A%E8%A1%8C%E5%B1%95%E5%BC%80%E6%94%B6%E8%B5%B7%E5%8A%9F%E8%83%BD/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">React Native 多行展开收起功能</div>
+      </a>
+    
+  </nav>
+
+   
+<!-- valine评论 -->
+<div id="vcomments-box">
+  <div id="vcomments"></div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
+<script>
+  new Valine({
+    el: "#vcomments",
+    app_id: "xGZKFxfEhEyqsK7YA4NNoQNr-gzGzoHsz",
+    app_key: "qCe4kOh0W9rCgNWcv31cO3NF",
+    path: window.location.pathname,
+    avatar: "monsterid",
+    placeholder: "说出你想说的吧~",
+    recordIP: true,
+  });
+  const infoEle = document.querySelector("#vcomments .info");
+  if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+    infoEle.childNodes.forEach(function (item) {
+      item.parentNode.removeChild(item);
+    });
+  }
+</script>
+<style>
+  #vcomments-box {
+    padding: 5px 30px;
+  }
+
+  @media screen and (max-width: 800px) {
+    #vcomments-box {
+      padding: 5px 0px;
+    }
+  }
+
+  #vcomments-box #vcomments {
+    background-color: #fff;
+  }
+
+  .v .vlist .vcard .vh {
+    padding-right: 20px;
+  }
+
+  .v .vlist .vcard {
+    padding-left: 10px;
+  }
+</style>
+
+ 
+   
+     
+</article>
+
+</section>
+      <!--
+ * @Author: zhangzhen
+ * @Date: 2023-02-04 10:30:09
+ * @LastEditors: zhangzhen
+ * @LastEditTime: 2023-05-23 09:47:12
+ * 
+-->
+<footer class="footer">
+  <div class="outer">
+    <ul>
+      <li>
+        Copyrights &copy;
+        2021-2023
+        <i class="ri-heart-fill heart_icon"></i> Shimmer
+      </li>
+    </ul>
+    <!-- <ul>
+      <li>
+        
+        
+        
+        由 <a href="https://hexo.io" target="_blank">Hexo</a> 强力驱动
+        <span class="division">|</span>
+        主题 - <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul> -->
+    <ul>
+      <li>
+        
+        
+        <span>
+  <span><i class="ri-user-3-fill"></i>访问人数:<span id="busuanzi_value_site_uv"></span></s>
+  <span class="division">|</span>
+  <span><i class="ri-eye-fill"></i>浏览次数:<span id="busuanzi_value_page_pv"></span></span>
+</span>
+        
+      </li>
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      
+    </ul>
+    <ul>
+      <li>
+        <!-- cnzz统计 -->
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/myBlog/"><img src="/myBlog/images/ayer-side.svg" alt="Shimmer"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/archives">目录</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/photos">相册</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/2021/02/12/2021-02-12-%E5%85%B3%E4%BA%8E%E6%88%91/">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/myBlog/message">留言板</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>请我喝杯咖啡吧~</p>
+  <div class="reward-box">
+    
+    
+  </div>
+</div>
+    
+<script src="/myBlog/js/jquery-2.0.3.min.js"></script>
+
+
+<script src="/myBlog/js/lazyload.min.js"></script>
+
+<!-- Tocbot -->
+
+
+<script src="/myBlog/js/tocbot.min.js"></script>
+
+<script>
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+
+<script src="/myBlog/dist/main.js"></script>
+
+<!-- ImageViewer -->
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+<!-- MathJax -->
+
+<!-- Katex -->
+
+<!-- busuanzi  -->
+
+
+<script src="/myBlog/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<!-- ClickLove -->
+
+<!-- ClickBoom1 -->
+
+<!-- ClickBoom2 -->
+
+
+<script src="/myBlog/js/clickBoom2.js"></script>
+
+
+<!-- CodeCopy -->
+
+
+<link rel="stylesheet" href="/myBlog/css/clipboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script>
+  function wait(callback, seconds) {
+    var timelag = null;
+    timelag = window.setTimeout(callback, seconds);
+  }
+  !function (e, t, a) {
+    var initCopyCode = function(){
+      var copyHtml = '';
+      copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '</button>';
+      $(".highlight .code pre").before(copyHtml);
+      $(".article pre code").before(copyHtml);
+      var clipboard = new ClipboardJS('.btn-copy', {
+        target: function(trigger) {
+          return trigger.nextElementSibling;
+        }
+      });
+      clipboard.on('success', function(e) {
+        let $btn = $(e.trigger);
+        $btn.addClass('copied');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-checkbox-circle-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPIED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-checkbox-circle-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+      clipboard.on('error', function(e) {
+        e.clearSelection();
+        let $btn = $(e.trigger);
+        $btn.addClass('copy-failed');
+        let $icon = $($btn.find('i'));
+        $icon.removeClass('ri-file-copy-2-line');
+        $icon.addClass('ri-time-line');
+        let $span = $($btn.find('span'));
+        $span[0].innerText = 'COPY FAILED';
+        
+        wait(function () { // 等待两秒钟后恢复
+          $icon.removeClass('ri-time-line');
+          $icon.addClass('ri-file-copy-2-line');
+          $span[0].innerText = 'COPY';
+        }, 2000);
+      });
+    }
+    initCopyCode();
+  }(window, document);
+</script>
+
+
+<!-- CanvasBackground -->
+
+
+    
+  </div>
+</body>
+
+</html>
